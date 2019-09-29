@@ -1,0 +1,36 @@
+@import '../../../sass/color.sass'
+@import '../../../sass/var.sass'
+p
+    margin: 0
+    padding: 0.5*$cube
+
+.personDetails
+    width: 100%
+    border-bottom: 0.3*$cube solid $accent-color
+    background: $primary-color-text
+    border-radius: 0.5*$cube
+    margin-top: 0.5*$cube
+    margin-bottom: 0.5*$cube
+    height: 15*$cube
+    display: flex
+    justify-content: space-between
+    align-content: center
+
+    .picture
+        margin-top: auto
+        margin-bottom: auto
+        padding-left: $cube
+        img
+            height: 12*$cube
+    
+    .details
+        margin-top: auto
+        margin-bottom: auto
+
+        p
+            font-family: sans-serif
+            font-size: 1*$cube
+            color: $primary-text-color
+
+            span
+                font-weight: bold

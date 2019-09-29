@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TemplateMenuComponent } from './template-menu.component';
+import { TemplateEventFormComponent } from './template-event-form.component';
 
-describe('TemplateMenuComponent', () => {
-  let component: TemplateMenuComponent;
-  let fixture: ComponentFixture<TemplateMenuComponent>;
+describe('TemplateEventFormComponent', () => {
+  let component: TemplateEventFormComponent;
+  let fixture: ComponentFixture<TemplateEventFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateMenuComponent ]
+      declarations: [ TemplateEventFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TemplateMenuComponent);
+    fixture = TestBed.createComponent(TemplateEventFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

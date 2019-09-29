@@ -1,1 +1,7 @@
-<p>template-header works!</p>
+<div class="header">
+    <p>gena<span>logic</span></p>
+    <button (click)="searchboxshow=!searchboxshow ">Suche</button>
+</div>
+<div *ngIf="searchboxshow" class="searchcontent">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa, corrupti accusantium inventore quisquam obcaecati nemo doloremque esse fugiat id, soluta deserunt aperiam placeat at libero perferendis vitae facilis sequi.</p>
+</div>
