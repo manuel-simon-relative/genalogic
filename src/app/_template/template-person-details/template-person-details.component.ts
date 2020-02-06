@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { Person } from '../../_interface/person';
 
 @Component({
   selector: 'app-template-person-details',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplatePersonDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input() person$ : Person;
+
+  constructor() {
+    
+   }
 
   ngOnInit() {
   }

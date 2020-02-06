@@ -1,10 +1,15 @@
 <div class="personDetails">
         <div class="picture">
-            <img src="../../../assets/pics/jpg/placeholderMan.jpg" alt="">
+            <img  [src]="person$.imageSrc" alt="">
         </div>
         <div class="details">
-            <p class="Name">Mustermann, Max<br>
-            <span>geboren: </span>01.01.2000<br>
-            <span>gestorben: </span>01.04.2020</p>
+        <p class="Name">{{person$.nachname}}, {{person$.vorname}} <br>
+            <span>geboren: </span>{{person$.gebDatum}}<br>
+            <span *ngIf="person$.sterbDatum">gestorben: </span>{{person$.sterbDatum}}
+        </p>
+        <p>
+            <span *ngIf="person$.partnerKind == '1'">verheiratet </span>
+            <span *ngIf="person$.partnerKind == '2'">zusammen </span>mit {{person$.partner}}
+        </p>
         </div>
     </div>
