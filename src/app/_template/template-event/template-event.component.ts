@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Event } from '../../_interface/event';
 
 @Component({
   selector: 'app-template-event',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-event.component.sass']
 })
 export class TemplateEventComponent implements OnInit {
-
-  constructor() { }
+ @Input('pLifeEvent$') lifeEvent$ : Event;
+ 
+  constructor() {
+    
+   }
 
   ngOnInit() {
+    console.log(this.lifeEvent$.label);
   }
 
 }

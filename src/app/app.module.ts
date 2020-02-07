@@ -8,8 +8,10 @@ import { TemplateEventComponent } from './_template/template-event/template-even
 import { TemplateFooterComponent } from './_template/template-footer/template-footer.component';
 import { TemplatePersonDetailsComponent } from './_template/template-person-details/template-person-details.component';
 import { TemplatePersonshowerComponent } from './_template/template-personshower/template-personshower.component';
-import { TemplateEventFormComponent } from './_template/template-event-form/template-event-form.component';
 import { TemplateEventListComponent } from './_template/template-event-list/template-event-list.component';
+import { TemplateEventNormalComponent } from './_template/template-event-normal/template-event-normal.component';
+import { TemplateEventPicComponent } from './_template/template-event-pic/template-event-pic.component';
+import { TemplateEventPicsComponent } from './_template/template-event-pics/template-event-pics.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,10 @@ import { TemplateEventListComponent } from './_template/template-event-list/temp
     TemplateFooterComponent,
     TemplatePersonDetailsComponent,
     TemplatePersonshowerComponent,
-    TemplateEventFormComponent,
-    TemplateEventListComponent
+    TemplateEventListComponent,
+    TemplateEventNormalComponent,
+    TemplateEventPicComponent,
+    TemplateEventPicsComponent
   ],
   imports: [
     BrowserModule

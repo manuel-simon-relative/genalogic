@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TemplateEventFormComponent } from './template-event-form.component';
+import { TemplateEventPicsComponent } from './template-event-pics.component';
 
-describe('TemplateEventFormComponent', () => {
-  let component: TemplateEventFormComponent;
-  let fixture: ComponentFixture<TemplateEventFormComponent>;
+describe('TemplateEventPicsComponent', () => {
+  let component: TemplateEventPicsComponent;
+  let fixture: ComponentFixture<TemplateEventPicsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateEventFormComponent ]
+      declarations: [ TemplateEventPicsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TemplateEventFormComponent);
+    fixture = TestBed.createComponent(TemplateEventPicsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
