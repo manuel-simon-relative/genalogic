@@ -13,7 +13,6 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(){
-    console.log('personlinked selectedID: ', this.person$.vorname)
   }
 
   ngOnInit() {
@@ -29,6 +28,8 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   }
 
   public clickChangeSelectedPerson(selected: any) {
-    this.changeSelectedPersonEvent.emit(selected);
+    if (selected != 0) {
+      this.changeSelectedPersonEvent.emit(selected);
+    }
   }
 }

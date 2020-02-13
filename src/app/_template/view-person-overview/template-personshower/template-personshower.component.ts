@@ -34,7 +34,6 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
       this.changeSelectedPersonEvent.emit(selected);
     }
     ngOnChanges(){
-      console.log('personshower selectedID: ', this.selectedPersonId)
       this.$parents = [];
       this.$childs = [];
       //selectierte Person finden
@@ -112,7 +111,6 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         vorname: "unbekannt",
         nachname: "unbekannt",
         sex: "m",
-        gebDatum: new Date('1900-01-01'),
         imageSrc : "../../../assets/pics/jpg/placeholderMan.jpg"
       }
     }
@@ -123,12 +121,12 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         vorname: "unbekannt",
         nachname: "unbekannt",
         sex: "w",
-        gebDatum: new Date('1900-01-01'),
         imageSrc : "../../../assets/pics/jpg/placeholderWoman.jpg"       
       }
     }
     this.$parents.push(this.father$);
     this.$parents.push(this.mother$); 
+    this.$parents.sort(comparePerson);
       
    
     }

@@ -15,7 +15,6 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
    }
 
    ngOnChanges() {
-     console.log('Person-detail: ', this.person$.vorname)
    }
 
   ngOnInit() {

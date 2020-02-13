@@ -3,8 +3,8 @@
         <img [src]=person$.imageSrc alt="">
     </div>
     <div class="details">
-        <p class="Name">{{person$.nachname}}, {{person$.vorname}}<br>
-        <span>geboren: </span>{{person$.gebDatum.getDate()}}.{{person$.gebDatum.getMonth()+1}}.{{person$.gebDatum.getFullYear()}}<br>
-        <span *ngIf="person$.sterbDatum">gestorben: </span>{{person$.sterbDatum}}</p>
+        <p class="Name">{{person$.nachname}}, {{person$.vorname}}</p>
+        <p *ngIf="person$.id != 0"><span>geboren: </span>{{person$.gebDatum.getDate()}}.{{person$.gebDatum.getMonth()+1}}.{{person$.gebDatum.getFullYear()}}</p>
+        <p><span *ngIf="person$.sterbDatum">gestorben: </span>{{person$.sterbDatum}}</p>
     </div>
 </div>

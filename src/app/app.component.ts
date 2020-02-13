@@ -9,7 +9,8 @@ import { GlobalConstants } from './_service/globalconstants.service';
 export class AppComponent implements OnInit{
   title = 'genalogic';
   public selectedPersonId: number = 1;
-  public selectedMenu : number = 3;
+  public selectedMenu : number = 1;
+  public searchtext: string = "";
 
   constructor() {
   }
@@ -17,13 +18,10 @@ export class AppComponent implements OnInit{
   ngOnInit() {
   }
   public onChangeMenu(selected: number) {
-    console.log('Event ChangeMenu: ', selected)
     this.selectedMenu = selected;
   }
 
   public onChangeSelectedPerson(selected: number) {
-    console.log('Event ChangeSelectedPerson in Hauptebene: ', selected);
     this.selectedPersonId = selected;
-    console.log('neue Selectierte Person: ', this.selectedPersonId);
   }  
 }
