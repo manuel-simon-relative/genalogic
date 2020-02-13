@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Event } from '../../_interface/event';
+import { Event } from '../../../_interface/event';
 
 @Component({
   selector: 'app-template-event-normal',
@@ -17,9 +17,9 @@ export class TemplateEventNormalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.lifeEvent$);
+    
     this.selectedMonth = this.germanMonth[this.lifeEvent$.datum.getMonth()];
-    console.log(this.selectedMonth);
+    
   }
 
 }

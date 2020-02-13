@@ -9,8 +9,8 @@
 <body>
   <app-template-header></app-template-header>
   <div class="content">
-    <app-template-personshower></app-template-personshower>
-    <app-template-event-list></app-template-event-list>
+    <app-template-personshower [selectedPersonId]="this.selectedPersonId"></app-template-personshower>
+    <app-template-event-list [selectedPersonId]="this.selectedPersonId"></app-template-event-list>
   </div>
   <app-template-footer></app-template-footer>
 </body>

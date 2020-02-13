@@ -1,17 +1,17 @@
-@import '../../../sass/color.sass'
-@import '../../../sass/var.sass'
+@import '../../../../sass/color.sass'
+@import '../../../../sass/var.sass'
 p
     margin: 0
     padding: 0.5*$cube
 
-.personDetailsLittle
-    width: 100%
+.personDetails
+    width: 95%
     border-bottom: 0.3*$cube solid $accent-color
     background: $primary-color-text
     border-radius: 0.5*$cube
     margin-top: 0.5*$cube
     margin-bottom: 0.5*$cube
-    height: 6*$cube
+    height: 15*$cube
     display: flex
     justify-content: space-between
     align-content: center
@@ -21,11 +21,13 @@ p
         margin-bottom: auto
         padding-left: $cube
         img
-            height: 5*$cube
+            height: 12*$cube
+            border-radius: 0.5*$cube
     
     .details
         margin-top: auto
         margin-bottom: auto
+        magrin-right: 10%
 
         p
             font-family: sans-serif
@@ -33,4 +35,6 @@ p
             color: $primary-text-color
 
             span
+                font-weight: normal
+            .keyword
                 font-weight: bold

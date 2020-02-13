@@ -1,5 +1,5 @@
 export interface RelEventPerson {
-    id? : number;
-    idPerson? : number;
-    idEvent? : number;
+    id : number;
+    idPerson : number;
+    idEvent : number;
 }

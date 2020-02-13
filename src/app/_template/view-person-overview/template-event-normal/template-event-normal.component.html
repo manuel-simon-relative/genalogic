@@ -1,9 +1,11 @@
 <div class="event">
     <div class="date">
         <p>
+            <span>
+                {{lifeEvent$.datum.getDate()}}.
+                {{selectedMonth}}<br>
+            </span>
             {{lifeEvent$.datum.getFullYear()}}<br>
-            {{lifeEvent$.datum.getDate()}}<br>
-            {{selectedMonth}}
         </p>
     </div>
     <div class="label">
