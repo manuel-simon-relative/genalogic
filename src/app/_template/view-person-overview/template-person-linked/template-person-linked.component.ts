@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import { Person } from '../../../_interface/person';
 
 @Component({
@@ -6,10 +6,15 @@ import { Person } from '../../../_interface/person';
   templateUrl: './template-person-linked.component.html',
   styleUrls: ['./template-person-linked.component.sass']
 })
-export class TemplatePersonLinkedComponent implements OnInit {
+export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   @Input() person$ : Person;
+  @Output('changeSelectedPerson') changeSelectedPersonEvent: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
+
+  ngOnChanges(){
+    console.log('personlinked selectedID: ', this.person$.vorname)
+  }
 
   ngOnInit() {
 
@@ -23,4 +28,7 @@ export class TemplatePersonLinkedComponent implements OnInit {
     }
   }
 
+  public clickChangeSelectedPerson(selected: any) {
+    this.changeSelectedPersonEvent.emit(selected);
+  }
 }

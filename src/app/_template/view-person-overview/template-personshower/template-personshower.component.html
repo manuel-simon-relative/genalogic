@@ -1,13 +1,13 @@
 <div class="personshower">
     <div class="parents">
-        <app-template-person-linked [person$]="parent" *ngFor="let parent of $parents"></app-template-person-linked>
+        <app-template-person-linked (changeSelectedPerson)=onChangeSelectedPerson($event) [person$]="parent" *ngFor="let parent of $parents"></app-template-person-linked>
         
     </div>
     <div class="selectedperson">
         <app-template-person-details [person$]="selectedPerson$"></app-template-person-details>
     </div>
     <div class="childs">
-        <app-template-person-linked [person$]="child" *ngFor="let child of $childs"></app-template-person-linked>
+        <app-template-person-linked (changeSelectedPerson)=onChangeSelectedPerson($event) [person$]="child" *ngFor="let child of $childs"></app-template-person-linked>
         
     </div>       
 </div>

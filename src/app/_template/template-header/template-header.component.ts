@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-template-header',
@@ -8,11 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class TemplateHeaderComponent implements OnInit {
   public searchboxshow: boolean;
 
+  @Input() selectedMenu : number;
+  @Output('changeMenu') changeMenuEvent: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() {
-      this.searchboxshow = false;
+
+  
+      
    }
 
   ngOnInit() {
   }
 
+  public clickChangeMenu(selected: any) {
+    this.changeMenuEvent.emit(selected);
+  }
+
 }
+
+

@@ -12,6 +12,11 @@ import { TemplateEventListComponent } from './_template/view-person-overview/tem
 import { TemplateEventNormalComponent } from './_template/view-person-overview/template-event-normal/template-event-normal.component';
 import { TemplateEventPicComponent } from './_template/view-person-overview/template-event-pic/template-event-pic.component';
 import { TemplateEventPicsComponent } from './_template/view-person-overview/template-event-pics/template-event-pics.component';
+import { ViewPersonListComponent } from './_template/view-person-list/view-person-list/view-person-list.component';
+import { PersonComponent } from './_template/view-person-list/person/person.component';
+import { ViewPersonOverviewComponent } from './_template/view-person-overview/view-person-overview/view-person-overview.component';
+import { ViewEventListComponent } from './_template/view-event-list/view-event-list/view-event-list.component';
+import { EventComponent } from './_template/view-event-list/event/event.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { TemplateEventPicsComponent } from './_template/view-person-overview/tem
     TemplateEventListComponent,
     TemplateEventNormalComponent,
     TemplateEventPicComponent,
-    TemplateEventPicsComponent
+    TemplateEventPicsComponent,
+    ViewPersonListComponent,
+    PersonComponent,
+    ViewPersonOverviewComponent,
+    ViewEventListComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule

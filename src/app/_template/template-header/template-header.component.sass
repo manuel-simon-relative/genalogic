@@ -11,41 +11,29 @@ p
     display: flex
     justify-content: space-between
     align-items: center
-    
-    
+    .logo
+        p
+            font-weight: bold
+            font-size: 2.5*$cube
+            font-family: sans-serif
+            color: $primary-color-text
+            padding-left: 5*$cube
+            padding-top: 0
+            padding-bottom: 0
+            margin: 0
+            span
+                color: $accent-color
+    menu
+        padding: $cube
+        margin-right: $cube
+        background: $primary-color-darker
+        border-radius: 5%
+        
 
-    p
-        font-weight: bold
-        font-size: 2.5*$cube
-        font-family: sans-serif
-        color: $primary-color-text
-        padding-left: 5*$cube
-        padding-top: 0
-        padding-bottom: 0
-        margin: 0
-
-        span
-            color: $accent-color
-    button
-        border: 0px
-        background: $primary-color
-        color: $primary-color-light
-        margin-top: 0.5*$cube
-        margin-bottom: 0.5*$cube
-        width : 10*$cube
-        margin-right: 2*$cube
-        font-family: sans-serif
-        font-size: 2.5*$cube
-        font-weight: bold
-    
-
-.searchcontent
-    height: 15*$cube
-    background: $primary-color
-    transition: all 250ms
-    margin:0
-    padding: 0.5*$cube
-    p
-        font-family: sans-serif
-        font-size: 1.5*$cube
-        color: $primary-color-text
+        menuitem
+            padding: $cube - 0.2
+            color: $primary-color-text
+            font-family: sans-serif
+            border-radius: 8%
+        .selected
+            background: $accent-color

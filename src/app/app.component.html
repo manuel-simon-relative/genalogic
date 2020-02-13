@@ -7,10 +7,11 @@
   <title>genalogic</title>
 </head>
 <body>
-  <app-template-header></app-template-header>
+  <app-template-header [selectedMenu]="this.selectedMenu" (changeMenu)=onChangeMenu($event)></app-template-header>
   <div class="content">
-    <app-template-personshower [selectedPersonId]="this.selectedPersonId"></app-template-personshower>
-    <app-template-event-list [selectedPersonId]="this.selectedPersonId"></app-template-event-list>
+    <app-view-person-overview *ngIf="this.selectedMenu == 1" (changeSelectedPerson)=onChangeSelectedPerson($event) [(selectedPersonId)]="this.selectedPersonId"></app-view-person-overview>
+    <app-view-person-list *ngIf="this.selectedMenu == 2"></app-view-person-list>
+    <app-view-event-list *ngIf="this.selectedMenu == 3"></app-view-event-list>
   </div>
   <app-template-footer></app-template-footer>
 </body>

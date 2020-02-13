@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, OnChanges} from '@angular/core';
 import { Person } from '../../../_interface/person';
 
 @Component({
@@ -6,12 +6,16 @@ import { Person } from '../../../_interface/person';
   templateUrl: './template-person-details.component.html',
   styleUrls: ['./template-person-details.component.sass']
 })
-export class TemplatePersonDetailsComponent implements OnInit {
+export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
 
   @Input() person$ : Person;
 
   constructor() {
     
+   }
+
+   ngOnChanges() {
+     console.log('Person-detail: ', this.person$.vorname)
    }
 
   ngOnInit() {

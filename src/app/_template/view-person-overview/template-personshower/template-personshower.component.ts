@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Person } from '../../../_interface/person';
 import { GlobalConstants } from '../../../_service/globalconstants.service';
 
@@ -8,7 +8,7 @@ import { GlobalConstants } from '../../../_service/globalconstants.service';
   templateUrl: './template-personshower.component.html',
   styleUrls: ['./template-personshower.component.sass']
 })
-export class TemplatePersonshowerComponent implements OnInit {
+export class TemplatePersonshowerComponent implements OnInit, OnChanges {
   public $childs: Array<Person> = [];
   public $parents: Array<Person> = [];
   public selectedPerson$ : Person;
@@ -16,6 +16,7 @@ export class TemplatePersonshowerComponent implements OnInit {
   public mother$ : Person;
 
   @Input() selectedPersonId : any;
+  @Output('changeSelectedPerson') changeSelectedPersonEvent: EventEmitter<any> = new EventEmitter<any>();
   
 
 
@@ -23,14 +24,26 @@ export class TemplatePersonshowerComponent implements OnInit {
 
  }
 
+
   ngOnInit() {
-    //selectierte Person finden
+
+    }
+
+    public onChangeSelectedPerson(selected: number) {
+
+      this.changeSelectedPersonEvent.emit(selected);
+    }
+    ngOnChanges(){
+      console.log('personshower selectedID: ', this.selectedPersonId)
+      this.$parents = [];
+      this.$childs = [];
+      //selectierte Person finden
     for (var forPerson of GlobalConstants.personList) {
       if (forPerson.id == this.selectedPersonId) {
         this.selectedPerson$ = forPerson;
       }
     }
-    console.log(this.selectedPerson$);
+    
 
     //Kinder finden
     for (var i of GlobalConstants.relPersonPerson) {
@@ -114,13 +127,11 @@ export class TemplatePersonshowerComponent implements OnInit {
         imageSrc : "../../../assets/pics/jpg/placeholderWoman.jpg"       
       }
     }
-    console.log(this.father$);
-    console.log(this.mother$);
-    console.log(this.$childs)
     this.$parents.push(this.father$);
-    this.$parents.push(this.mother$);  
-    };
-
+    this.$parents.push(this.mother$); 
+      
+   
+    }
   }
 
 
