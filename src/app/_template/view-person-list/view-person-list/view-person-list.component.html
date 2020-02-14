@@ -1,6 +1,19 @@
-<div class="tablehead">
-
+<div class="searchfield">
+    <input type="text" [(ngModel)]="this.searchText" (keyup)="onChangeSearchField()">
 </div>
+<div class="tablehead">
+    <div (click)="clickSortArray('id')" class="colum">ID</div>
+    <div class="colum">Bild</div>
+    <div (click)="clickSortArray('nachname')" class="colum">Nachname</div>
+    <div (click)="clickSortArray('vorname')" class="colum">Vorname</div>
+    <div (click)="clickSortArray('gebdatum')" class="colum">Geburtstaum</div>
+    <div (click)="clickSortArray('sterbdatum')" class="colum">Sterbedatum</div>
+    <div class="colum">Geschlecht</div>
+    <div class="colum">Adresse</div>
+    <div class="colum">Partner</div>
+    <div class="colum">Aktionen</div>
+</div>
+
 <div class="personlist">
-    <app-person [pPerson$]="person"  *ngFor="let person of this.personList"></app-person>
+    <app-person [pPerson$]="person"  *ngFor="let person of this.searchedPersonList"></app-person>
 </div>

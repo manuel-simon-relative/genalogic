@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { TemplateHeaderComponent } from './_template/template-header/template-header.component';
@@ -35,10 +36,11 @@ import { EventComponent } from './_template/view-event-list/event/event.componen
     PersonComponent,
     ViewPersonOverviewComponent,
     ViewEventListComponent,
-    EventComponent
+    EventComponent    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

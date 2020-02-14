@@ -1,10 +1,24 @@
 @import '../../../../sass/color.sass'
 @import '../../../../sass/var.sass'
 
+.searchfield
+    background: $primary-color-darker
+
 .tablehead
     background: $primary-color-dark
     margin: 0
     padding: 0
+    display: grid
+    width: 98%
+    height: 2*$cube
+    margin-left: 1%
+    margin-right: 1%
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+    .colum
+        text-align: center
+        font-family: sans-serif
+        color: $primary-color-text
+        
 
 .personlist
     background: $primary-color
