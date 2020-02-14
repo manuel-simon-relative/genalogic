@@ -28,4 +28,9 @@ export class AppComponent implements OnInit{
   public onChangeSearchText(searchText: string) {
     this.searchText = searchText;
   }
+
+  public onShowPerson(personId:number) {
+    this.selectedPersonId = personId;
+    this.selectedMenu = 1;
+  }
 }

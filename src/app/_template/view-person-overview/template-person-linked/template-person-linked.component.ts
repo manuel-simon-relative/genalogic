@@ -9,6 +9,8 @@ import { Person } from '../../../_interface/person';
 export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   @Input() person$ : Person;
   @Output('changeSelectedPerson') changeSelectedPersonEvent: EventEmitter<string> = new EventEmitter<string>();
+  public gebDateString: string = ""
+  public sterbDateSTring: string = ""
 
   constructor() { }
 
@@ -16,7 +18,9 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-
+    if (typeof(this.person$.gebDatum) != "undefined") {this.gebDateString = this.dateToString(this.person$.gebDatum);}
+    if (typeof(this.person$.sterbDatum) != "undefined") {this.sterbDateSTring = this.dateToString(this.person$.sterbDatum);}
+    
     if (this.person$.imageSrc == "") {
       console.log('kein Bild vorhanden');
       if (this.person$.sex == "m") {
@@ -31,5 +35,27 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
     if (selected != 0) {
       this.changeSelectedPersonEvent.emit(selected);
     }
+  }
+
+  public dateToString(datum: Date):string {
+    var datestring = "";
+    //Geburtsdatum bauen
+    var day:string;
+    var month:string;
+    var year:string = datum.getFullYear().toString();
+    if (datum.getDate() < 10) {
+      day = '0' + datum.getDate();
+    } else {
+      day = datum.getDate().toString();
+    }
+    if ((datum.getMonth()+1) < 10) {
+      month = '0' + (datum.getMonth()+1);
+    } else {
+      month = "" + (datum.getMonth()+1);
+    }
+    datestring = day + '.' + month + '.' +year;
+
+
+    return datestring
   }
 }
