@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import { GlobalConstants } from '../../../_service/globalconstants.service'
 import { Person } from '../../../_interface/person'
 
@@ -10,8 +10,10 @@ import { Person } from '../../../_interface/person'
 export class ViewPersonListComponent implements OnInit , OnChanges{
 public personList: Array<Person> = GlobalConstants.personList;
 public searchedPersonList: Array<Person> = []
-public sortColum: string = "";
+public sortColum: string = "id";
 @Input() searchText : string;
+@Output('changeSearchText') changeSearchTextEvent: EventEmitter<string> = new EventEmitter<string>();
+
 public isSort: Boolean = false;
 
   constructor() {
@@ -24,7 +26,6 @@ public isSort: Boolean = false;
         //Suchtext leer
         if (this.searchText == "") {
           this.searchedPersonList = this.personList
-          console.log('Suchstring ist leer')
           if (this.sortColum == "") {
             this.sortArray("id");
           }
@@ -54,7 +55,7 @@ public isSort: Boolean = false;
     this.isSort = this.sortArray(colum);
   }
 
-  public sortArray( colum: string, force: boolean = false ) : boolean {
+  public sortArray( colum: string = 'id', force: boolean = false ) : boolean {
     if (force) {
       switch (colum) {
         case 'id':
@@ -131,8 +132,9 @@ public isSort: Boolean = false;
   }
 
   public onChangeSearchField() {
-    console.log('neuersuchegriff: ', this.searchText)
+
     this.searchArray();
+    this.changeSearchTextEvent.emit(this.searchText);
   }
 
   public comparePersonById(person1:Person, person2:Person): number {

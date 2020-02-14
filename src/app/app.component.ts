@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
   title = 'genalogic';
   public selectedPersonId: number = 1;
   public selectedMenu : number = 2;
-  public searchText: string = "St";
+  public searchText: string = "";
 
   constructor() {
   }
@@ -23,5 +23,9 @@ export class AppComponent implements OnInit{
 
   public onChangeSelectedPerson(selected: number) {
     this.selectedPersonId = selected;
-  }  
+  }
+  
+  public onChangeSearchText(searchText: string) {
+    this.searchText = searchText;
+  }
 }
