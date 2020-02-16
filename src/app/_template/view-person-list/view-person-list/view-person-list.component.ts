@@ -39,8 +39,11 @@ public isSort: Boolean = false;
           if (i.id.toString().toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
           if (i.vorname.toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
           if (i.nachname.toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
-          if (i.adress != null) {
-            if (i.adress.toLowerCase().indexOf(searchString) != -1) { sumIndex = sumIndex + 1;}
+          if (i.adress1 != null) {
+            if (i.adress1.toLowerCase().indexOf(searchString) != -1) { sumIndex = sumIndex + 1;}
+          }
+          if (i.adress2 != null) {
+            if (i.adress2.toLowerCase().indexOf(searchString) != -1) { sumIndex = sumIndex + 1;}
           }
           if (sumIndex != -1) { this.searchedPersonList.push(i);}
           

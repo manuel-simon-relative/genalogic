@@ -9,7 +9,7 @@ import { GlobalConstants } from './_service/globalconstants.service';
 export class AppComponent implements OnInit{
   title = 'genalogic';
   public selectedPersonId: number = 1;
-  public selectedMenu : number = 2;
+  public selectedMenu : number = 1;
   public searchText: string = "";
 
   constructor() {

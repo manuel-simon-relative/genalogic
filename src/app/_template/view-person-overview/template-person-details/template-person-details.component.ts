@@ -10,7 +10,7 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
 
   @Input() person$ : Person;
   public gebDateString: string = ""
-  public sterbDateSTring: string = ""
+  public sterbDateString: string = ""
 
   constructor() {
     
@@ -21,7 +21,7 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     if (typeof(this.person$.gebDatum) != "undefined") {this.gebDateString = this.dateToString(this.person$.gebDatum);}
-    if (typeof(this.person$.sterbDatum) != "undefined") {this.sterbDateSTring = this.dateToString(this.person$.sterbDatum);}
+    if (typeof(this.person$.sterbDatum) != "undefined") {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
     
     if (this.person$.imageSrc == "") {
       console.log('kein Bild vorhanden');

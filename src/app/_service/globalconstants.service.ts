@@ -20,7 +20,9 @@ export class GlobalConstants {
       imageSrc: "../../../assets/data/pics/p01.jpeg",
       partner: "Daniela Simon",
       partnerKind: 1,
-      sex: "m" 
+      sex: "m", 
+      adress1: "Gohliserstraße 30",
+      adress2: "01159 Dresden"
     },
     {
       id: 2,
@@ -51,7 +53,7 @@ export class GlobalConstants {
       partner: "Jan Richter",
       partnerKind: 1,
       sex: "w",
-      gebname: "Odrich"
+      gebName: "Odrich"
      },
      {
       id: 5,
@@ -142,7 +144,7 @@ export class GlobalConstants {
       partner: "Manuel Simon",
       partnerKind: 1,
       sex: "w",
-      gebname: "Kerber"
+      gebName: "Kerber"
      },
      {
       id: 14,

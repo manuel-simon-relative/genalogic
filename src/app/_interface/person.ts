@@ -1,7 +1,7 @@
 export interface Person {
     id : number;
     nachname : string;
-    gebname? : string
+    gebName? : string
     vorname : string;
     gebDatum? : Date;
     sterbDatum? : Date;
@@ -10,7 +10,8 @@ export interface Person {
     partnerKind? :number;
     imageSrc? : string;
     sex : string;
-    adress? : string;
+    adress1? : string;
+    adress2? : string;
     tel? : string;
 
 }
