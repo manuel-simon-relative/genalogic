@@ -18,6 +18,8 @@ import { PersonComponent } from './_template/view-person-list/person/person.comp
 import { ViewPersonOverviewComponent } from './_template/view-person-overview/view-person-overview/view-person-overview.component';
 import { ViewEventListComponent } from './_template/view-event-list/view-event-list/view-event-list.component';
 import { EventComponent } from './_template/view-event-list/event/event.component';
+import { EditorPersonComponent } from './_template/overlay-editor-person/editor-person/editor-person.component';
+import { EditorEventComponent } from './_template/overlay-editor-event/editor-event/editor-event.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { EventComponent } from './_template/view-event-list/event/event.componen
     PersonComponent,
     ViewPersonOverviewComponent,
     ViewEventListComponent,
-    EventComponent    
+    EventComponent,
+    EditorPersonComponent,
+    EditorEventComponent    
   ],
   imports: [
     BrowserModule,

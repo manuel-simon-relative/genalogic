@@ -5,8 +5,8 @@
     <div class="colum"><div>{{pPerson$.vorname}}</div></div>
     <div class="colum"><div>{{this.gebDateString}}</div></div>
     <div class="colum"><div>{{pPerson$.sterbDatum}}</div></div>
-    <div *ngIf="pPerson$.sex == 'w'" class="colum"><div>weiblich</div></div>
-    <div *ngIf="pPerson$.sex == 'm'" class="colum"><div>männlich</div></div>
+    <div *ngIf="!pPerson$.male" class="colum"><div>weiblich</div></div>
+    <div *ngIf="pPerson$.male" class="colum"><div>männlich</div></div>
     <div class="colum">
         <div>
             <span *ngIf="pPerson$.adress1">

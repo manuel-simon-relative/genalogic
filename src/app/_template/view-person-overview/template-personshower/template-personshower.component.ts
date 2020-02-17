@@ -62,7 +62,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     for (var i of GlobalConstants.relPersonPerson) {
       if (this.selectedPersonId == i.childId && i.real) {
         for (var forFather of GlobalConstants.personList) {
-          if (i.parentId == forFather.id && forFather.sex == "m") {
+          if (i.parentId == forFather.id && forFather.male) {
             foundFather = true;
             this.father$ = forFather;
           }
@@ -72,7 +72,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     for (var i of GlobalConstants.relPersonPerson) {
       if (this.selectedPersonId == i.childId && i.real) {
         for (var forMother of GlobalConstants.personList) {
-          if (i.parentId == forMother.id && forMother.sex == "w") {
+          if (i.parentId == forMother.id && !forMother.male) {
             foundMother = true;
             this.mother$ = forMother;
           }
@@ -83,7 +83,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
       for (var i of GlobalConstants.relPersonPerson) {
         if (this.selectedPersonId == i.childId) {
           for (var forFather of GlobalConstants.personList) {
-            if (i.parentId == forFather.id && forFather.sex == "m") {
+            if (i.parentId == forFather.id && forFather.male) {
               foundFather = true;
               this.father$ = forFather;
             }
@@ -96,7 +96,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
       for (var i of GlobalConstants.relPersonPerson) {
         if (this.selectedPersonId == i.childId) {
           for (var forMother of GlobalConstants.personList) {
-            if (i.parentId == forMother.id && forMother.sex == "w") {
+            if (i.parentId == forMother.id && !forMother.male) {
               foundMother = true;
               this.mother$ = forMother;
             }
@@ -110,7 +110,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         id: 0,
         vorname: "unbekannt",
         nachname: "unbekannt",
-        sex: "m",
+        male: true,
         imageSrc : "../../../assets/pics/jpg/placeholderMan.jpg"
       }
     }
@@ -120,7 +120,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         id: 0,
         vorname: "unbekannt",
         nachname: "unbekannt",
-        sex: "w",
+        male: false,
         imageSrc : "../../../assets/pics/jpg/placeholderWoman.jpg"       
       }
     }

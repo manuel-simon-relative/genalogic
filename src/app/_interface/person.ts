@@ -6,10 +6,10 @@ export interface Person {
     gebDatum? : Date;
     sterbDatum? : Date;
     partner? : string;
-    partnerId? : string;
-    partnerKind? :number;
+    partnerId? : number;
+    married? :boolean;
     imageSrc? : string;
-    sex : string;
+    male : boolean;
     adress1? : string;
     adress2? : string;
     tel? : string;

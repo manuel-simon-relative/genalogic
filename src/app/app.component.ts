@@ -10,6 +10,9 @@ export class AppComponent implements OnInit{
   title = 'genalogic';
   public selectedPersonId: number = 1;
   public selectedMenu : number = 1;
+  public showOverlay: number = 1; //0:aus; 1:EditorPerson; 2:EditorEvent
+  public editPersonId: number = 1; //für Personeditorübergabe
+  public editEventId: number = 1; //für Eventeditorübergabe
   public searchText: string = "";
 
   constructor() {

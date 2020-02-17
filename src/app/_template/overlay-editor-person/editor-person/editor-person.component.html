@@ -1,0 +1,61 @@
+<div class="blur">
+    <form novalidate (ngSubmit)="onClickSaveButton()">
+        <div class="editorcontent">
+            <div class="head">
+                <h1>Person bearbeiten</h1>
+            </div>
+            <div class="formular">
+                <div class="input-group">
+                    <label for="vornamename">Vorname*</label>
+                    <input type="text" [(ngModel)]="this.selected.vorname" id="vorname" name="vornamename">
+                </div>
+                <div class="input-group">
+                    <label for="nachname">Nachname*</label>
+                    <input type="text" [(ngModel)]="this.selected.nachname"  id="nachname" name="nachname">
+                </div>
+                <div class="input-group">
+                    <label for="gebname">Geburtsname</label>
+                    <input type="text" [(ngModel)]="this.selected.gebname"  id="gebname" name="gebname">
+                </div>
+                <div class="input-group">
+                    <label for="gebdatum">Geburtstag*</label>
+                    <input type="date" [(ngModel)]="this.selected.gebDatum"  id="gebdatum" name="gebdatum">
+                </div>
+                <div class="input-group">
+                    <label for="sterbdatum">Sterbetag:</label>
+                    <input type="date" [(ngModel)]="this.selected.sterbDatum"  id="sterbdatum" name="sterbdatum">
+                </div>
+                <div class="input-group">
+                    <label for="Adresse1">Adresse 1:</label>
+                    <input type="text" [(ngModel)]="this.selected.adress1"  id="Adresse1" name="Adresse1">
+                </div>
+                <div class="input-group">
+                    <label for="Adresse2">Adresse 2:</label>
+                    <input type="text" [(ngModel)]="this.selected.adress2"  id="Adresse2" name="Adresse2">
+                </div>
+                <div class="input-group">
+                    <label for="partner">Aktueller Lebenspartner</label>
+                    <select name="partnerSelect" [(ngModel)]="this.selected.partnerId" (change)="onChangeSelectPartner()">
+                        <option value="">-----kein----</option>
+                        <option *ngFor="let id of this.partnerList" [value]="id.id" [selected]="this.selected.partnerId == id.id">{{id.personName}}</option>
+                    </select>
+                    <input name="partnername" type="text" [(ngModel)]="this.selected.partner" (keyup)="onKeyUpPartnerName()">
+                    <label for="partnerkind">verheiratet:</label>
+                    <input type="checkbox" name="partnerkind" [(ngModel)]="this.selected.married">
+                </div>
+
+
+
+                
+                
+                
+            </div>
+            <div class="footer-buttons">
+                <input type="submit" value="Speichern">
+                <input type="button" value="Abbrechen">
+            
+            </div>
+            
+        </div>
+    </form>
+</div>

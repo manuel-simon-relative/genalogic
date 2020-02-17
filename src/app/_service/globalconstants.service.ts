@@ -19,8 +19,9 @@ export class GlobalConstants {
       gebDatum: new Date('1987-05-27'),
       imageSrc: "../../../assets/data/pics/p01.jpeg",
       partner: "Daniela Simon",
-      partnerKind: 1,
-      sex: "m", 
+      married: true,
+      male: true, 
+      partnerId: 13,
       adress1: "Gohliserstraße 30",
       adress2: "01159 Dresden"
     },
@@ -31,8 +32,8 @@ export class GlobalConstants {
       gebDatum: new Date('2012-12-06'),
       imageSrc: "../../../assets/data/pics/p02.jpeg",
       partner: "",
-      partnerKind: 0,
-      sex: "m"
+      married: false,
+      male: true
      },
      {
       id: 3,
@@ -41,8 +42,8 @@ export class GlobalConstants {
       gebDatum: new Date('2018-01-30'),
       imageSrc: "../../../assets/data/pics/p03.jpeg",
       partner: "",
-      partnerKind: 0,
-      sex: "w"
+      married: false,
+      male: false,
      },
      {
       id: 4,
@@ -51,8 +52,8 @@ export class GlobalConstants {
       gebDatum: new Date('1967-08-08'),
       imageSrc: "../../../assets/data/pics/p04.jpeg",
       partner: "Jan Richter",
-      partnerKind: 1,
-      sex: "w",
+      married: true,
+      male: false,
       gebName: "Odrich"
      },
      {
@@ -62,8 +63,8 @@ export class GlobalConstants {
       gebDatum: new Date('1968-02-05'),
       imageSrc: "../../../assets/data/pics/p05.jpeg",
       partner: "Yvonne Simon",
-      partnerKind: 1,
-      sex: "m"
+      married: true,
+      male: true
      },
      {
       id: 6,
@@ -72,8 +73,8 @@ export class GlobalConstants {
       gebDatum: new Date('1996-03-07'),
       imageSrc: "../../../assets/data/pics/p06.jpeg",
       partner: "Konstantin Müller",
-      partnerKind: 2,
-      sex: "w"
+      married: false,
+      male: false,
      },
      {
       id: 7,
@@ -82,8 +83,8 @@ export class GlobalConstants {
       gebDatum: new Date('1998-07-05'),
       imageSrc: "../../../assets/data/pics/p07.jpeg",
       partner: "Konstantin Decker",
-      partnerKind: 2,
-      sex: "w"
+      married: false,
+      male: false,
      },
      {
       id: 8,
@@ -92,8 +93,9 @@ export class GlobalConstants {
       gebDatum: new Date('1993-11-13'),
       imageSrc: "../../../assets/data/pics/p08.jpeg",
       partner: "",
-      partnerKind: 0,
-      sex: "w"
+      partnerId: null,
+      married: false,
+      male: false,
      },
      {
       id: 9,
@@ -102,8 +104,8 @@ export class GlobalConstants {
       gebDatum: new Date('1997-04-27'),
       imageSrc: "../../../assets/data/pics/p09.jpeg",
       partner: "Deborah Simon",
-      partnerKind: 2,
-      sex: "m"
+      married: false,
+      male: true
      },
      {
       id: 10,
@@ -112,8 +114,8 @@ export class GlobalConstants {
       gebDatum: new Date('1997-04-27'),
       imageSrc: "../../../assets/data/pics/p10.jpeg",
       partner: "Philomena Heinrich",
-      partnerKind: 2,
-      sex: "m"
+      married: false,
+      male: true
      },
      {
       id: 11,
@@ -122,8 +124,8 @@ export class GlobalConstants {
       gebDatum: new Date('1972-03-03'),
       imageSrc: "../../../assets/data/pics/p11.jpeg",
       partner: "Stefanie Richter",
-      partnerKind: 1,
-      sex: "m"
+      married: true,
+      male: true
      },
      {
       id: 12,
@@ -132,8 +134,8 @@ export class GlobalConstants {
       gebDatum: new Date('1990-03-27'),
       imageSrc: "../../../assets/data/pics/p12.jpeg",
       partner: "",
-      partnerKind: 0,
-      sex: "m"
+      married: false,
+      male: true
      },
      {
       id: 13,
@@ -142,8 +144,8 @@ export class GlobalConstants {
       gebDatum: new Date('1987-09-19'),
       imageSrc: "../../../assets/data/pics/p13.jpeg",
       partner: "Manuel Simon",
-      partnerKind: 1,
-      sex: "w",
+      married: true,
+      male: false,
       gebName: "Kerber"
      },
      {
@@ -153,8 +155,8 @@ export class GlobalConstants {
       gebDatum: new Date('2002-08-16'),
       imageSrc: "../../../assets/data/pics/p14.jpeg",
       partner: "",
-      partnerKind: 0,
-      sex: "m"
+      married: false,
+      male: true
      }
 
     ];

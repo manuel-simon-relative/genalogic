@@ -13,8 +13,8 @@
           <span *ngIf="person$.adress2">{{person$.adress2}}</span>   
         </p>
         <p>
-            <span class="keyword" *ngIf="person$.partnerKind === 1">verheiratet </span><span *ngIf="person$.partnerKind === 1">mit {{person$.partner}}</span>
-            <span class="keyword" *ngIf="person$.partnerKind === 2">zusammen  </span><span *ngIf="person$.partnerKind === 2">mit {{person$.partner}}</span>
+            <span class="keyword" *ngIf="person$.married && person$.partner != ''">verheiratet </span><span *ngIf="person$.married && person$.partner != ''">mit {{person$.partner}}</span>
+            <span class="keyword" *ngIf="!person$.married && person$.partner != ''">zusammen  </span><span *ngIf="!person$.married && person$.partner != ''">mit {{person$.partner}}</span>
         </p>
         </div>
     </div>

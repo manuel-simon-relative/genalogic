@@ -23,7 +23,7 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
     
     if (this.person$.imageSrc == "") {
       console.log('kein Bild vorhanden');
-      if (this.person$.sex == "m") {
+      if (this.person$.male) {
         this.person$.imageSrc = "../../../assets/pics/jpg/placeholderMan.jpg";
       } else {
         this.person$.imageSrc = "../../../assets/pics/jpg/placeholderWoman.jpg";
