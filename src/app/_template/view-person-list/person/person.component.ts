@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Person } from 'src/app/_interface/person';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-person',
@@ -10,6 +11,7 @@ export class PersonComponent implements OnInit {
 
   @Input() pPerson$ : Person;
   @Output('showPerson') showPersonEvent: EventEmitter<number> = new EventEmitter<number>();
+  @Output('editPerson') editPersonEvent: EventEmitter<number> = new EventEmitter<number>();
 
   public gebDateString: string = ""
   public sterbDateSTring: string = ""
@@ -47,6 +49,10 @@ export class PersonComponent implements OnInit {
 
   public clickShowPerson(personId:number) {
     this.showPersonEvent.emit(personId);
+  }
+
+  public clickEditPerson(personId:number) {
+    this.editPersonEvent.emit(personId)
   }
 
 }

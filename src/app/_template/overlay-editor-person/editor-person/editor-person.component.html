@@ -15,11 +15,18 @@
                 </div>
                 <div class="input-group">
                     <label for="gebname">Geburtsname</label>
-                    <input type="text" [(ngModel)]="this.selected.gebname"  id="gebname" name="gebname">
+                    <input type="text" [(ngModel)]="this.selected.gebName"  id="gebname" name="gebname">
+                </div>
+                <div class="input-group">
+                    <label>Geschlecht</label>
+                    <input (click)="onChangeGenderButton('male')"  type="radio" [checked]="this.selected.male" id="male" name="gender" value="male">
+                    <label for="male">Männlich</label><br>
+                    <input (click)="onChangeGenderButton('female')"  [checked]="!this.selected.male" type="radio" id="female" name="gender" value="female">
+                    <label for="female">weiblich</label><br>
                 </div>
                 <div class="input-group">
                     <label for="gebdatum">Geburtstag*</label>
-                    <input type="date" [(ngModel)]="this.selected.gebDatum"  id="gebdatum" name="gebdatum">
+                    <input type="date" [ngModel]="this.selected.gebDatum | date:'yyyy-MM-dd'" (ngModelChange)="this.selected.gebDatum = $event"   id="gebdatum" name="gebdatum">
                 </div>
                 <div class="input-group">
                     <label for="sterbdatum">Sterbetag:</label>
@@ -34,14 +41,49 @@
                     <input type="text" [(ngModel)]="this.selected.adress2"  id="Adresse2" name="Adresse2">
                 </div>
                 <div class="input-group">
-                    <label for="partner">Aktueller Lebenspartner</label>
+                    <label for="partnerSelect">Aktueller Lebenspartner</label>
                     <select name="partnerSelect" [(ngModel)]="this.selected.partnerId" (change)="onChangeSelectPartner()">
-                        <option value="">-----kein----</option>
-                        <option *ngFor="let id of this.partnerList" [value]="id.id" [selected]="this.selected.partnerId == id.id">{{id.personName}}</option>
+                        <option value="0">-----kein----</option>
+                        <option *ngFor="let p of this.partnerList" [value]="p.id" [selected]="this.selected.partnerId == p.id">{{p.vorname}} {{p.nachname}}</option>
                     </select>
                     <input name="partnername" type="text" [(ngModel)]="this.selected.partner" (keyup)="onKeyUpPartnerName()">
                     <label for="partnerkind">verheiratet:</label>
                     <input type="checkbox" name="partnerkind" [(ngModel)]="this.selected.married">
+                </div>
+                <div class="parentsselector">
+                    <div class="parents">
+                        <div class="fatherselector">
+                            <label for="fatherSelect">Vater</label>
+                            <select name="fatherSelect" [(ngModel)]="this.fatherId">
+                                <option value="0">Unbekannt</option>
+                                <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.fatherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                            </select>
+                        </div>
+                        <div class="motherselector">
+                            <label for="motherSelect">Mutter</label>
+                            <select name="motherSelect" [(ngModel)]="this.motherId">
+                                <option value="0">Unbekannt</option>
+                                <option *ngFor="let p of this.womanList" [value]="p.id" [selected]="this.motherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="step-parents">
+                        <div class="fatherselector">
+                            <label for="stepFatherSelect">evtl. Stiefvater</label>
+                            <select name="stepFatherSelect" [(ngModel)]="this.stepFatherId">
+                                <option value="0">Unbekannt/nicht vorhanden</option>
+                                <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.stepFatherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                            </select>
+                        </div>
+                        <div class="motherselector">
+                            <label for="stepMotherSelect">evtl. Stiefmutter</label>
+                            <select name="stepMotherSelect" [(ngModel)]="this.stepMotherId">
+                                <option value="0">Unbekannt/nicht vorhanden</option>
+                                <option *ngFor="let p of this.womanList" [value]="p.id" [selected]="this.stepMotherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                            </select>                            
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -52,7 +94,7 @@
             </div>
             <div class="footer-buttons">
                 <input type="submit" value="Speichern">
-                <input type="button" value="Abbrechen">
+                <input type="button" value="Abbrechen" (click)="onClickAbortButton()">
             
             </div>
             

@@ -32,8 +32,19 @@ export class AppComponent implements OnInit{
     this.searchText = searchText;
   }
 
+  public onEditPerson(personId: number) {
+    this.editPersonId = personId;
+    this.showOverlay = 1
+  }
+
   public onShowPerson(personId:number) {
     this.selectedPersonId = personId;
     this.selectedMenu = 1;
+  }
+  public onClosePersonEditor($event: any) {
+    console.log('PersonEditor wird geschlossen');
+    console.log($event);
+    console.log(GlobalConstants.personList)
+    this.showOverlay = 0;
   }
 }

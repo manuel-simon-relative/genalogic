@@ -14,6 +14,7 @@ public sortColum: string = "id";
 @Input() searchText : string;
 @Output('changeSearchText') changeSearchTextEvent: EventEmitter<string> = new EventEmitter<string>();
 @Output('showPerson') showPersonEvent: EventEmitter<number> = new EventEmitter<number>();
+@Output('editPerson') editPersonEvent: EventEmitter<number> = new EventEmitter<number>();
 
 public isSort: Boolean = false;
 
@@ -143,6 +144,10 @@ public isSort: Boolean = false;
 
   public onShowPerson(personId:number) {
     this.showPersonEvent.emit(personId);
+  }
+
+  public onEditPerson(personId:number) {
+    this.editPersonEvent.emit(personId)
   }
 
   public comparePersonById(person1:Person, person2:Person): number {

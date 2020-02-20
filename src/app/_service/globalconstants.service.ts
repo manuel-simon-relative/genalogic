@@ -144,6 +144,7 @@ export class GlobalConstants {
       gebDatum: new Date('1987-09-19'),
       imageSrc: "../../../assets/data/pics/p13.jpeg",
       partner: "Manuel Simon",
+      partnerId: 1,
       married: true,
       male: false,
       gebName: "Kerber"

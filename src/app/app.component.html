@@ -10,13 +10,13 @@
   <div [class.blur]="this.showOverlay != 0">
     <app-template-header [selectedMenu]="this.selectedMenu" (changeMenu)=onChangeMenu($event)></app-template-header>
     <div class="content">
-      <app-view-person-overview *ngIf="this.selectedMenu == 1" (changeSelectedPerson)=onChangeSelectedPerson($event)  [(selectedPersonId)]="this.selectedPersonId"></app-view-person-overview>
-      <app-view-person-list [searchText]="this.searchText" *ngIf="this.selectedMenu == 2" (changeSearchText)=onChangeSearchText($event) (showPerson)=onShowPerson($event)></app-view-person-list>
+      <app-view-person-overview *ngIf="this.selectedMenu == 1" (changeSelectedPerson)="onChangeSelectedPerson($event)"  [(selectedPersonId)]="this.selectedPersonId"></app-view-person-overview>
+      <app-view-person-list [searchText]="this.searchText" *ngIf="this.selectedMenu == 2" (changeSearchText)=onChangeSearchText($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event)></app-view-person-list>
       <app-view-event-list *ngIf="this.selectedMenu == 3"></app-view-event-list>
     </div>
     <app-template-footer></app-template-footer>
   </div>
-  <app-editor-person *ngIf="this.showOverlay == 1" [personId]="this.editPersonId"></app-editor-person>
+  <app-editor-person *ngIf="this.showOverlay == 1" [personId]="this.editPersonId" (closePersonEditor)="onClosePersonEditor($event)"></app-editor-person>
   <app-editor-event *ngIf="this.showOverlay == 2" [eventId]="this.editEventId"></app-editor-event>
 </body>
 </html>

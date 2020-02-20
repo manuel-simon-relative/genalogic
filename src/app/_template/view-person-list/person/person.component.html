@@ -20,7 +20,7 @@
     <div class="colum"><div>{{pPerson$.partner}}</div></div>
     <div class="colum">
         <div class="actions">
-            <div id="edit">B</div>
+            <div id="edit" (click)="clickEditPerson(pPerson$.id)">B</div>
             <div (click)="clickShowPerson(pPerson$.id)" id="show">A</div>
             <div id="delete">D</div>
         </div>

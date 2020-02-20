@@ -15,5 +15,5 @@
 </div>
 
 <div class="personlist">
-    <app-person (showPerson)=onShowPerson($event) [pPerson$]="person"  *ngFor="let person of this.searchedPersonList"></app-person>
+    <app-person (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event) [pPerson$]="person"  *ngFor="let person of this.searchedPersonList"></app-person>
 </div>
