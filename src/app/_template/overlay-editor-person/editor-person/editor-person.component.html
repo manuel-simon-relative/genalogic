@@ -26,11 +26,11 @@
                 </div>
                 <div class="input-group">
                     <label for="gebdatum">Geburtstag*</label>
-                    <input type="date" [ngModel]="this.selected.gebDatum | date:'yyyy-MM-dd'" (ngModelChange)="this.selected.gebDatum = $event"   id="gebdatum" name="gebdatum">
+                    <input type="date" [ngModel]="this.selected.gebDatum | date:'yyyy-MM-dd'" (ngModelChange)="onChangeGebDate($event)"   id="gebdatum" name="gebdatum">
                 </div>
                 <div class="input-group">
                     <label for="sterbdatum">Sterbetag:</label>
-                    <input type="date" [(ngModel)]="this.selected.sterbDatum"  id="sterbdatum" name="sterbdatum">
+                    <input type="date" [ngModel]="this.selected.sterbDatum | date:'yyyy-MM-dd'" (ngModelChange)="onChangeSterbDate($event)" id="sterbdatum" name="sterbdatum">
                 </div>
                 <div class="input-group">
                     <label for="Adresse1">Adresse 1:</label>

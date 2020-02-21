@@ -18,8 +18,8 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (typeof(this.person$.gebDatum) != "undefined") {this.gebDateString = this.dateToString(this.person$.gebDatum);}
-    if (typeof(this.person$.sterbDatum) != "undefined") {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
+    if (this.person$.gebDatum != null ) {this.gebDateString = this.dateToString(this.person$.gebDatum);}
+    if (this.person$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
     
     if (this.person$.imageSrc == "") {
       console.log('kein Bild vorhanden');

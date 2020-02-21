@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import { Person } from '../../../_interface/person';
 
 @Component({
@@ -9,6 +9,7 @@ import { Person } from '../../../_interface/person';
 export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
 
   @Input() person$ : Person;
+  @Output('changeSelectedPerson') showNewPersonEvent: EventEmitter<number> = new EventEmitter<number>();
   public gebDateString: string = ""
   public sterbDateString: string = ""
 
@@ -17,11 +18,12 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
    }
 
    ngOnChanges() {
-   }
-
-  ngOnInit() {
-    if (typeof(this.person$.gebDatum) != "undefined") {this.gebDateString = this.dateToString(this.person$.gebDatum);}
-    if (typeof(this.person$.sterbDatum) != "undefined") {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
+    this.gebDateString = "";
+    this.sterbDateString = "";
+    if (this.person$.gebDatum != null ) {this.gebDateString = this.dateToString(this.person$.gebDatum);}
+    if (this.person$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
+    console.log(this.sterbDateString);
+    
     
     if (this.person$.imageSrc == "") {
       console.log('kein Bild vorhanden');
@@ -31,6 +33,10 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
         this.person$.imageSrc = "../../../assets/pics/jpg/placeholderWoman.jpg";
       }
     }
+   }
+
+  ngOnInit() {
+    
 
   }
   public dateToString(datum: Date):string {
@@ -53,6 +59,12 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
 
 
     return datestring
+  }
+
+  onClickPartner() {
+    if (this.person$.partnerId != 0) {
+      this.showNewPersonEvent.emit(this.person$.partnerId);
+    }
   }
 
 }

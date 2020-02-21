@@ -6,15 +6,15 @@
         <p class="Name">{{person$.nachname}}, {{person$.vorname}} <br>
             <span *ngIf="person$.gebName">geb. {{person$.gebName}}<br></span>
             <span class="keyword">geboren: </span>{{gebDateString}}<br>
-            <span class= keyword *ngIf="person$.sterbDatum">gestorben:</span><span>{{sterbDateString}}</span>
+            <span class= keyword *ngIf="person$.sterbDatum">gestorben:</span><span *ngIf="person$.sterbDatum != null">{{sterbDateString}}</span>
         </p>
         <p>
           <span *ngIf="person$.adress1">{{person$.adress1}}<br></span>
           <span *ngIf="person$.adress2">{{person$.adress2}}</span>   
         </p>
         <p>
-            <span class="keyword" *ngIf="person$.married && person$.partner != ''">verheiratet </span><span *ngIf="person$.married && person$.partner != ''">mit {{person$.partner}}</span>
-            <span class="keyword" *ngIf="!person$.married && person$.partner != ''">zusammen  </span><span *ngIf="!person$.married && person$.partner != ''">mit {{person$.partner}}</span>
+            <span class="keyword" *ngIf="person$.married && person$.partner != ''">verheiratet </span><span *ngIf="person$.married && person$.partner != ''" (click)="onClickPartner()">mit {{person$.partner}}</span>
+            <span class="keyword" *ngIf="!person$.married && person$.partner != ''">zusammen  </span><span *ngIf="!person$.married && person$.partner != ''" (click)="onClickPartner()">mit {{person$.partner}}</span>
         </p>
         </div>
     </div>

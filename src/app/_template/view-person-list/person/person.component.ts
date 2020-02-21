@@ -19,8 +19,8 @@ export class PersonComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (typeof(this.pPerson$.gebDatum) != "undefined") {this.gebDateString = this.dateToString(this.pPerson$.gebDatum);}
-    if (typeof(this.pPerson$.sterbDatum) != "undefined") {this.sterbDateSTring = this.dateToString(this.pPerson$.sterbDatum);}
+    if (this.pPerson$.gebDatum != null ) {this.gebDateString = this.dateToString(this.pPerson$.gebDatum);}
+    if (this.pPerson$.sterbDatum != null ) {this.sterbDateSTring = this.dateToString(this.pPerson$.sterbDatum);}
     
 
   }
