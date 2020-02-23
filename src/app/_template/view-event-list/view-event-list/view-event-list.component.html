@@ -1,6 +1,17 @@
+<div class="searchbar">
+    <input type="text" [(ngModel)]="this.searchTextEvent" placeholder="Nach Event suchen...">
+</div>
 <div class="tablehead">
+    <div class="colum">Datum</div>
+    <div class="colum">ID</div>
+    <div class="colum">Text</div>
+    <div class="colum">Aktionen</div>
 
-    </div>
+</div>
 <div class="eventlist">
         <app-event [pLifeEvent$]="event"  *ngFor="let event of this.eventList"></app-event>
+</div>
+
+<div class="newPerson">
+    <div class="plus" (click)="onClickPlusButton()">+</div>
 </div>

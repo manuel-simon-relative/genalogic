@@ -1,13 +1,54 @@
 @import '../../../../sass/color.sass'
 @import '../../../../sass/var.sass'
 
+.searchbar
+    background: $primary-color-dark
+    height: 3*$cube
+    width: 100%
+    padding: 3px 6px 3px 6px
+    input
+        width: 35%
+        background: $primary-color-darker
+        color: $primary-color-text
+        font-family: sans-serif
+        height: 1.5*$cube
+        border: none
+        font-size: $cube
+        padding: 6px 6px 6px 6px
+
 .tablehead
     background: $primary-color-dark
     margin: 0
-    padding: 0
+    padding: $cube $cube $cube $cube
+    display: grid
+    grid-template-columns: 3fr 1fr 10fr 1fr 
+    font-family: sans-serif
+    
+    .colum
+            align-content: space-evenly
+            display: flex
+            align-items: stretch
+            color: $primary-color-text
 
 .eventlist
     background: $primary-color
-    padding-right: 2*$cube
-    padding-top: 2*$cube
-    padding-bottom: 2*$cube
+    padding: $cube $cube $cube $cube
+
+.newPerson
+    border-radius: 50%
+    background: $accent-color
+    color: $primary-color-text
+    font-family: sans-serif
+    position: absolute
+    right: 2*$cube
+    bottom: 5*$cube
+    width: 3*$cube
+    height: 3*$cube
+    display: flex
+    box-shadow: 11px 9px 30px 10px rgba(0,0,0,0.64)
+    z-index: 2
+    align-items: center
+    justify-content: center
+    .plus
+        font-size: 2*$cube
+        font-weight: bolder

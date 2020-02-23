@@ -1,15 +1,26 @@
 <div class="event">
-    <div class="date">
-        <p>
-            <span>
-                {{lifeEvent$.datum.getDate()}}.
-                {{selectedMonth}}<br>
-            </span>
-            {{lifeEvent$.datum.getFullYear()}}<br>
-        </p>
+    <div class="colums">
+        <div class="colum">
+            <div>
+                <p>
+                    <span>
+                        {{lifeEvent$.datum.getDate()}}.
+                        {{selectedMonth}}<br>
+                    </span>
+                    {{lifeEvent$.datum.getFullYear()}}<br>
+                </p>
+            </div>
+        </div>
+        <div class="colum"><div>{{lifeEvent$.id}}</div></div>
+        <div class="colum"><div>{{lifeEvent$.label}}</div></div>
+        <div class="colum">
+            <div>
+                <div class="action" id="edit">B</div>
+                <div class="action" id="delete">D</div>
+            </div>
+        </div>
     </div>
-    <div class="label">
-        {{lifeEvent$.label}}
-    </div>
-    
+    <div class="persons">
+        <div class="person" *ngFor="let person of personsOfEvent">{{person.vorname}} {{person.nachname}}</div>
+    </div> 
 </div>

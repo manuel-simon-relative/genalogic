@@ -1,5 +1,5 @@
 <div class="searchfield">
-    <input type="text" [(ngModel)]="this.searchText" (keyup)="onChangeSearchField()">
+    <input placeholder="nach Personen suchen..." type="text" [(ngModel)]="this.searchText" (keyup)="onChangeSearchField()">
 </div>
 <div class="tablehead">
     <div (click)="clickSortArray('id')" class="colum">ID</div>
@@ -16,4 +16,8 @@
 
 <div class="personlist">
     <app-person (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event) [pPerson$]="person"  *ngFor="let person of this.searchedPersonList"></app-person>
+</div>
+
+<div class="newPerson">
+    <div class="plus" (click)="onClickPlusButton()">+</div>
 </div>

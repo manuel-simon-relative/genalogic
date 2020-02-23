@@ -1,5 +1,16 @@
-.content
-    overflow: hidden
+@import '../sass/color.sass'
+@import '../sass/var.sass'
+    
+.site
+    display: grid
+    height: 100vh
+    grid-template-rows: 4*$cube auto 3*$cube
+    .title
+        height: 100%
+    .content
+        overflow: scroll
+    .credits
+        height: 100%
 
 .blur 
     filter: blur(10px)

@@ -150,6 +150,10 @@ public isSort: Boolean = false;
     this.editPersonEvent.emit(personId)
   }
 
+  public onClickPlusButton() {
+    this.editPersonEvent.emit(0)
+  }
+
   public comparePersonById(person1:Person, person2:Person): number {
     if (person1.id < person2.id) {return -1} else {return 1}
   }

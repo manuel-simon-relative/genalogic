@@ -19,10 +19,10 @@
                 </div>
                 <div class="input-group">
                     <label>Geschlecht</label>
-                    <input (click)="onChangeGenderButton('male')"  type="radio" [checked]="this.selected.male" id="male" name="gender" value="male">
                     <label for="male">Männlich</label><br>
-                    <input (click)="onChangeGenderButton('female')"  [checked]="!this.selected.male" type="radio" id="female" name="gender" value="female">
+                    <input (click)="onChangeGenderButton('male')"  type="radio" [checked]="this.selected.male" id="male" name="gender" value="male">
                     <label for="female">weiblich</label><br>
+                    <input (click)="onChangeGenderButton('female')"  [checked]="!this.selected.male" type="radio" id="female" name="gender" value="female">              
                 </div>
                 <div class="input-group">
                     <label for="gebdatum">Geburtstag*</label>

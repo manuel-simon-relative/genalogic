@@ -14,13 +14,13 @@ export class PersonComponent implements OnInit {
   @Output('editPerson') editPersonEvent: EventEmitter<number> = new EventEmitter<number>();
 
   public gebDateString: string = ""
-  public sterbDateSTring: string = ""
+  public sterbDateString: string = ""
 
   constructor() { }
 
   ngOnInit() {
     if (this.pPerson$.gebDatum != null ) {this.gebDateString = this.dateToString(this.pPerson$.gebDatum);}
-    if (this.pPerson$.sterbDatum != null ) {this.sterbDateSTring = this.dateToString(this.pPerson$.sterbDatum);}
+    if (this.pPerson$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.pPerson$.sterbDatum);}
     
 
   }

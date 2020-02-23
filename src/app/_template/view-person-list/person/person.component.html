@@ -4,7 +4,7 @@
     <div class="colum"><div>{{pPerson$.nachname}}<br><span *ngIf="pPerson$.gebName">geb. {{pPerson$.gebName}}</span></div></div>
     <div class="colum"><div>{{pPerson$.vorname}}</div></div>
     <div class="colum"><div>{{this.gebDateString}}</div></div>
-    <div class="colum"><div>{{pPerson$.sterbDatum}}</div></div>
+    <div class="colum"><div>{{this.sterbDateString}}</div></div>
     <div *ngIf="!pPerson$.male" class="colum"><div>weiblich</div></div>
     <div *ngIf="pPerson$.male" class="colum"><div>männlich</div></div>
     <div class="colum">
