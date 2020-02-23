@@ -22,7 +22,7 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
     this.sterbDateString = "";
     if (this.person$.gebDatum != null ) {this.gebDateString = this.dateToString(this.person$.gebDatum);}
     if (this.person$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
-    console.log(this.sterbDateString);
+
     
     
     if (this.person$.imageSrc == "") {

@@ -2,6 +2,6 @@
     <p>Lebenserereignisse</p>
 </div>
 <div class="eventlist">
-    <app-template-event [pLifeEvent$]="lifeEvent"  *ngFor="let lifeEvent of $lifeEvents" ></app-template-event>
+    <app-template-event [pLifeEvent$]="lifeEvent"  *ngFor="let lifeEvent of $lifeEvents" (showSelectedPerson)="onShowSelectedPerson($event)"></app-template-event>
     
 </div>

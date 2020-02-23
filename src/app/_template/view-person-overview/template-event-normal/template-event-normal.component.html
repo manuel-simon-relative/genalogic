@@ -10,6 +10,10 @@
     </div>
     <div class="label">
         {{lifeEvent$.label}}
+        <div class="persons">
+            <div class="person" *ngFor="let person of personsOfEvent" (click)="showSelectedPerson(person.id)">{{person.vorname}} {{person.nachname}}</div>
+        </div>
     </div>
+    
     
 </div>

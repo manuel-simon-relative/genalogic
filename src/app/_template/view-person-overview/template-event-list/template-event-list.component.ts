@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Event } from '../../../_interface/event';
 import { GlobalConstants } from '../../../_service/globalconstants.service';
-import { Glob } from 'glob';
 
 @Component({
   selector: 'app-template-event-list',
@@ -11,6 +10,7 @@ import { Glob } from 'glob';
 export class TemplateEventListComponent implements OnInit,  OnChanges{
  public $lifeEvents: Array<Event> = [];
  @Input() selectedPersonId : any;
+ @Output('showSelectedPerson') showSelectedPersonEvent: EventEmitter<number> = new EventEmitter<number>();
 
 
   constructor() { 
@@ -38,6 +38,10 @@ ngOnChanges(){
     }
   }
   this.$lifeEvents.sort(this.compareEvents);
+}
+
+onShowSelectedPerson($event) {
+  this.showSelectedPersonEvent.emit($event)
 }
 
 }

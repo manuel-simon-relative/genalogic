@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Event } from '../../../_interface/event';
 
 @Component({
@@ -8,6 +8,7 @@ import { Event } from '../../../_interface/event';
 })
 export class TemplateEventComponent implements OnInit {
  @Input('pLifeEvent$') lifeEvent$ : Event;
+ @Output('showSelectedPerson') showSelectedPersonEvent: EventEmitter<any> = new EventEmitter<any>();
  
   constructor() {
     
@@ -15,6 +16,10 @@ export class TemplateEventComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  onShowSelectedPerson($event) {
+    this.showSelectedPersonEvent.emit($event)
   }
 
 }

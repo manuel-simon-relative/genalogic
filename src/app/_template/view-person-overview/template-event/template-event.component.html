@@ -1,1 +1,1 @@
-<app-template-event-normal  *ngIf="lifeEvent$.kind == 0" [pLifeEvent$]="lifeEvent$" ></app-template-event-normal>
+<app-template-event-normal  *ngIf="lifeEvent$.kind == 0" [pLifeEvent$]="lifeEvent$" (showSelectedPerson)="onShowSelectedPerson($event)"></app-template-event-normal>

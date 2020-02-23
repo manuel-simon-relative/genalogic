@@ -4,7 +4,6 @@ import { GlobalConstants } from '../../../_service/globalconstants.service';
 import { Person } from '../../../_interface/person';
 import { RelPersonPerson } from '../../../_interface/rel-person-person';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { runInThisContext } from 'vm';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
