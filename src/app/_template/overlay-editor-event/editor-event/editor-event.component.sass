@@ -1,0 +1,105 @@
+@import '../../../../sass/color.sass'
+@import '../../../../sass/var.sass'
+
+.blur
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    
+        
+    form
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 90%
+        height:95%
+        .editorcontent
+            box-shadow: 11px 9px 30px 10px rgba(0,0,0,0.64)
+            z-index: 4
+            font-family: sans-serif
+            width: 100%
+            height: 100%            
+            background: $primary-color-text
+            border-radius: 5px
+            display: grid
+            grid-template-rows: 10% 80% 10%
+            .head
+                background: $primary-color-dark
+                color: $primary-color-text
+                display: flex
+                align-items: center
+                padding: 0 0 0 2*$cube
+                h1
+
+                    margin: 0 0 0 0
+                    padding: 0 0 0 0
+            .formular
+                overflow: scroll
+                color: $primary-text-color
+                font-size: 1*$cube
+                .input-group
+                    margin-top: 3*$cube
+                    padding: 0 $cube 0 $cube
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                
+                .add-persons
+                    font-family: sans-serif
+                    font-size: $cube
+                    margin-top: $cube
+                    
+
+                .choosed-persons
+                    margin-top: 2*$cube
+                    padding-left: 2*$cube
+                    .personbatch
+                        background: $accent-color
+                        color: $primary-color-text
+                        padding: 3px 6px 3px 6px
+                        margin-right: 6px
+                        border-radius: 5px
+                        display: inline
+                        margin-top: $cube
+                        span
+                            font-weight: bolder
+                            font-size: 1.3*$cube
+
+                textarea
+                    width: 80%
+                    height: 50%
+                    font-family: sans-serif
+                    font-size: 1.5*$cube
+                    text-align: left
+                    resize: none
+                    padding: $cube
+                    border: 3px solid #cccccc
+                    font-family: Tahoma, sans-serif
+
+            .footer-buttons
+                background: $primary-color-dark
+                color: $primary-color-text
+                display: flex
+                justify-content: space-around
+                align-items: center
+
+                input
+                    padding: 0 2*$cube 0 2*$cube
+                    border: none
+                    display: block
+                    background: $accent-color
+                    color: $primary-text-color
+                    font-size: 2*$cube
+                    height: 80%
+
+
+
+
+

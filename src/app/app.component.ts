@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalConstants } from './_service/globalconstants.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,9 +11,9 @@ export class AppComponent implements OnInit{
   title = 'genalogic';
   public selectedPersonId: number = 1;
   public selectedMenu : number = 2;
-  public showOverlay: number = 1; //0:aus; 1:EditorPerson; 2:EditorEvent
-  public editPersonId: number = 1; //für Personeditorübergabe
-  public editEventId: number = 1; //für Eventeditorübergabe
+  public showOverlay: number = 2; //0:aus; 1:EditorPerson; 2:EditorEvent
+  public editPersonId: number = 0; //für Personeditorübergabe
+  public editEventId: number = 3; //für Eventeditorübergabe
   public searchTextPerson: string = "";
   public searchTextEvent: string = "";
 
@@ -46,6 +47,12 @@ export class AppComponent implements OnInit{
     console.log('PersonEditor wird geschlossen');
     console.log($event);
     console.log(GlobalConstants.personList)
+    this.showOverlay = 0;
+  }
+  public onCloseEventEditor($event: any) {
+    console.log('EventEditor wird geschlossen');
+    console.log($event);
+    
     this.showOverlay = 0;
   }
 }

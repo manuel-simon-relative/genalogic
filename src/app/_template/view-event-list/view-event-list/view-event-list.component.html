@@ -9,9 +9,9 @@
 
 </div>
 <div class="eventlist">
-        <app-event [pLifeEvent$]="event"  *ngFor="let event of this.eventList"></app-event>
+        <app-event [pLifeEvent$]="event"  *ngFor="let event of this.eventList" (EditEvent)="onEditEvent(id)"></app-event>
 </div>
 
-<div class="newPerson">
+<div class="fab">
     <div class="plus" (click)="onClickPlusButton()">+</div>
 </div>

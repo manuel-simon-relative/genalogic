@@ -2,7 +2,8 @@
     <form novalidate (ngSubmit)="onClickSaveButton()">
         <div class="editorcontent">
             <div class="head">
-                <h1>Person bearbeiten</h1>
+                <h1 *ngIf="this.selected.id == 0">neue Person</h1>
+                <h1 *ngIf="this.selected.id != 0">Person bearbeiten: {{this.selected.vorname}} {{this.selected.nachname}} </h1>
             </div>
             <div class="formular">
                 <div class="input-group">
@@ -22,7 +23,7 @@
                     <label for="male">Männlich</label><br>
                     <input (click)="onChangeGenderButton('male')"  type="radio" [checked]="this.selected.male" id="male" name="gender" value="male">
                     <label for="female">weiblich</label><br>
-                    <input (click)="onChangeGenderButton('female')"  [checked]="!this.selected.male" type="radio" id="female" name="gender" value="female">              
+                    <input (click)="onChangeGenderButton('female')"  [checked]="!this.selected.male" type="radio" id="female" name="gender" value="female"> 
                 </div>
                 <div class="input-group">
                     <label for="gebdatum">Geburtstag*</label>
@@ -52,14 +53,14 @@
                 </div>
                 <div class="parentsselector">
                     <div class="parents">
-                        <div class="fatherselector">
+                        <div class="fatherselector parent">
                             <label for="fatherSelect">Vater</label>
                             <select name="fatherSelect" [(ngModel)]="this.fatherId">
                                 <option value="0">Unbekannt</option>
                                 <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.fatherId== p.id">{{p.vorname}} {{p.nachname}}</option>
                             </select>
                         </div>
-                        <div class="motherselector">
+                        <div class="motherselector parent">
                             <label for="motherSelect">Mutter</label>
                             <select name="motherSelect" [(ngModel)]="this.motherId">
                                 <option value="0">Unbekannt</option>
@@ -68,14 +69,14 @@
                         </div>
                     </div>
                     <div class="step-parents">
-                        <div class="fatherselector">
+                        <div class="fatherselector parent">
                             <label for="stepFatherSelect">evtl. Stiefvater</label>
                             <select name="stepFatherSelect" [(ngModel)]="this.stepFatherId">
                                 <option value="0">Unbekannt/nicht vorhanden</option>
                                 <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.stepFatherId== p.id">{{p.vorname}} {{p.nachname}}</option>
                             </select>
                         </div>
-                        <div class="motherselector">
+                        <div class="motherselector parent">
                             <label for="stepMotherSelect">evtl. Stiefmutter</label>
                             <select name="stepMotherSelect" [(ngModel)]="this.stepMotherId">
                                 <option value="0">Unbekannt/nicht vorhanden</option>

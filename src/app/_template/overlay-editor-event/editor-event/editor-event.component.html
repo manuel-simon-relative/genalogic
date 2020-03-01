@@ -1,1 +1,38 @@
-<p>editor-event works!</p>
+<div class="blur">
+    <form novalidate >
+        <div class="editorcontent">
+            <div class="head">
+                <h1 *ngIf="this.selected.id != 0">Event bearbeiten</h1>
+                <h1 *ngIf="this.selected.id == 0">neues Event</h1>
+            </div>
+            <div class="formular">
+                
+                <div class="textField input-group">
+                    <label for="eventText" >Text*</label>
+                    <textarea id="eventText" [(ngModel)]="this.selected.label" name="eventText" ></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="datum">Datum*</label>
+                    <input type="date" [ngModel]="this.selected.datum | date:'yyyy-MM-dd'" (ngModelChange)="onChangeDate($event)"   id="datum" name="datum">
+                </div>
+                <div class="add-persons">
+                    <label for="personSelect">Person hinzufügen</label>
+                    <select name="personSelect" [(ngModel)]="this.choose">
+                        <option value="0">-----kein----</option>
+                        <option *ngFor="let p of this.availablePersons" [value]="p.id" [selected]="this.choose == p.id">{{p.vorname}} {{p.nachname}}</option>
+                    </select>
+                    <button (click)="onClickAddPersonButton(this.choose)">Person hinzufügen</button>
+                </div>
+                <div class="choosed-persons">
+                    <div class="personbatch" *ngFor="let p of this.choosedPersons" (click)="onClickDeletePersonBatch(p.id)">{{p.vorname}} {{p.nachname}}    <span>x</span></div>
+                </div>
+            </div>
+            <div class="footer-buttons">
+                <input type="submit" value="Speichern" (click)="onClickSaveButton()">
+                <input type="button" value="Abbrechen" (click)="onClickAbortButton()">
+            
+            </div>
+            
+        </div>
+    </form>
+</div>

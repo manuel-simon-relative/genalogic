@@ -21,6 +21,6 @@
     </div>
   </div>
   <app-editor-person *ngIf="this.showOverlay == 1" [personId]="this.editPersonId" (closePersonEditor)="onClosePersonEditor($event)"></app-editor-person>
-  <app-editor-event *ngIf="this.showOverlay == 2" [eventId]="this.editEventId"></app-editor-event>
+  <app-editor-event *ngIf="this.showOverlay == 2" [eventId]="this.editEventId" (closePersonEditor)="onCloseEventEditor($event)"></app-editor-event>
 </body>
 </html>

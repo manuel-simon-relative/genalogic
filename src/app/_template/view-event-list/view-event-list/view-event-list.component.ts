@@ -24,4 +24,9 @@ export class ViewEventListComponent implements OnInit {
   onClickPlusButton() {
     this.editEventEvent.emit(0);
   }
+
+  onEditEvent(id) {
+    console.log('Eventlist Click Event: ',id)
+    this.editEventEvent.emit(id);
+  }
 }

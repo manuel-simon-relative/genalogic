@@ -15,7 +15,7 @@
         <div class="colum"><div>{{lifeEvent$.label}}</div></div>
         <div class="colum">
             <div>
-                <div class="action" id="edit">B</div>
+                <div class="action" (click)=onEditEventButton(lifeEvent$.id) id="edit">B</div>
                 <div class="action" id="delete">D</div>
             </div>
         </div>

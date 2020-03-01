@@ -20,6 +20,7 @@ import { ViewEventListComponent } from './_template/view-event-list/view-event-l
 import { EventComponent } from './_template/view-event-list/event/event.component';
 import { EditorPersonComponent } from './_template/overlay-editor-person/editor-person/editor-person.component';
 import { EditorEventComponent } from './_template/overlay-editor-event/editor-event/editor-event.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EditorEventComponent } from './_template/overlay-editor-event/editor-ev
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
