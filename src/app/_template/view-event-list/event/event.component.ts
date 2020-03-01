@@ -10,7 +10,7 @@ import { GlobalConstants } from '../../../_service/globalconstants.service';
 })
 export class EventComponent implements OnInit {
   @Input('pLifeEvent$') lifeEvent$ : Event;
-  @Output('EditEvent') EditEventEvent: EventEmitter<number> = new EventEmitter<number>()
+  @Output('editEvent') editEventEvent: EventEmitter<any> = new EventEmitter<any>()
   public germanMonth: Array<String> = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
   public selectedMonth : String;
   public personsOfEvent: Array<Person> = new Array<Person>()
@@ -33,9 +33,9 @@ export class EventComponent implements OnInit {
     }
    
   }
-  onEditEventButton(id:number) {
-    this.EditEventEvent.emit(id);
-    console.log('click Edit ',this.lifeEvent$.id )
+  onEditEventButton(id) {
+    this.editEventEvent.emit(id);
+    console.log('click Edit Event: ',id )
   }
 
 }

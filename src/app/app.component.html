@@ -13,8 +13,8 @@
     </div>
     <div class="content">
       <app-view-person-overview *ngIf="this.selectedMenu == 1" (changeSelectedPerson)="onChangeSelectedPerson($event)"  [(selectedPersonId)]="this.selectedPersonId"></app-view-person-overview>
-      <app-view-person-list [searchText]="this.searchTextPerson" *ngIf="this.selectedMenu == 2" (changeSearchText)=onChangeSearchText($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event)></app-view-person-list>
-      <app-view-event-list *ngIf="this.selectedMenu == 3"></app-view-event-list>
+      <app-view-person-list [searchText]="this.searchTextPerson" *ngIf="this.selectedMenu == 2" (changeSearchText)=onChangeSearchTextPerson($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event)></app-view-person-list>
+      <app-view-event-list [searchTextEvent]="this.searchTextEvent"  *ngIf="this.selectedMenu == 3" (editEvent)="onEditEvent($event)" (changeSearchText)=onChangeSearchTextEvent($event)></app-view-event-list>
     </div>
     <div class="credits">
       <app-template-footer></app-template-footer>

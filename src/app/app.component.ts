@@ -10,12 +10,12 @@ import { GlobalConstants } from './_service/globalconstants.service';
 export class AppComponent implements OnInit{
   title = 'genalogic';
   public selectedPersonId: number = 1;
-  public selectedMenu : number = 2;
-  public showOverlay: number = 2; //0:aus; 1:EditorPerson; 2:EditorEvent
+  public selectedMenu : number = 3;
+  public showOverlay: number = 0; //0:aus; 1:EditorPerson; 2:EditorEvent
   public editPersonId: number = 0; //für Personeditorübergabe
   public editEventId: number = 3; //für Eventeditorübergabe
   public searchTextPerson: string = "";
-  public searchTextEvent: string = "";
+  public searchTextEvent: string = "toll";
 
   constructor() {
   }
@@ -30,8 +30,12 @@ export class AppComponent implements OnInit{
     this.selectedPersonId = selected;
   }
   
-  public onChangeSearchText(searchText: string) {
+  public onChangeSearchTextPerson(searchText: string) {
     this.searchTextPerson = searchText;
+  }
+
+  public onChangeSearchTextEvent(searchText: string) {
+    this.searchTextEvent = searchText;
   }
 
   public onEditPerson(personId: number) {
@@ -54,5 +58,11 @@ export class AppComponent implements OnInit{
     console.log($event);
     
     this.showOverlay = 0;
+  }
+
+  public onEditEvent($event: any) {
+    console.log($event)
+    this.showOverlay=2
+    this.editEventId = $event;
   }
 }

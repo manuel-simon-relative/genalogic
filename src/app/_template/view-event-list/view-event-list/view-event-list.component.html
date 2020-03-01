@@ -1,15 +1,15 @@
 <div class="searchbar">
-    <input type="text" [(ngModel)]="this.searchTextEvent" placeholder="Nach Event suchen...">
+    <input type="text" [(ngModel)]="this.searchTextEvent" placeholder="Nach Event suchen..." (keyup)="onChangeSearchField()">
 </div>
 <div class="tablehead">
-    <div class="colum">Datum</div>
-    <div class="colum">ID</div>
-    <div class="colum">Text</div>
+    <div (click)="clickSortArray('datum')" class="colum">Datum</div>
+    <div (click)="clickSortArray('id')"  class="colum">ID</div>
+    <div (click)="clickSortArray('label')"  class="colum">Text</div>
     <div class="colum">Aktionen</div>
 
 </div>
 <div class="eventlist">
-        <app-event [pLifeEvent$]="event"  *ngFor="let event of this.eventList" (EditEvent)="onEditEvent(id)"></app-event>
+        <app-event [pLifeEvent$]="event"  *ngFor="let event of this.searchedEventList" (editEvent)="onEditEvent($event)"></app-event>
 </div>
 
 <div class="fab">
