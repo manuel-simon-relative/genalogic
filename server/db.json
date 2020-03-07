@@ -1,0 +1,325 @@
+{
+  "person": [
+    {
+      "id": 1,
+      "vorname": "Manuel",
+      "nachname": "Simon",
+      "gebDatum": "1987-05-27",
+      "imageSrc": "../../../assets/data/pics/p01.jpeg",
+      "partner": "Daniela Simon",
+      "married": true,
+      "male": true,
+      "partnerId": 13,
+      "adress1": "Gohliserstraße 30",
+      "adress2": "01159 Dresden"
+    },
+    {
+      "id": 2,
+      "vorname": "Nathaniel",
+      "nachname": "Simon",
+      "gebDatum": "2012-12-06",
+      "imageSrc": "../../../assets/data/pics/p02.jpeg",
+      "partner": "",
+      "married": false,
+      "male": true
+    },
+    {
+      "id": 3,
+      "vorname": "Mathilda",
+      "nachname": "Simon",
+      "gebDatum": "2018-01-30",
+      "imageSrc": "../../../assets/data/pics/p03.jpeg",
+      "partner": "",
+      "married": false,
+      "male": false
+    },
+    {
+      "id": 4,
+      "vorname": "Stefanie",
+      "nachname": "Richter",
+      "male": false,
+      "partnerId": "11",
+      "gebDatum": "1967-08-08T00:00:00.000Z",
+      "gebName": "Odrich",
+      "partner": "Jan Richter",
+      "imageSrc": "../../../assets/data/pics/p04.jpeg",
+      "married": true
+    },
+    {
+      "id": 5,
+      "vorname": "Michael",
+      "nachname": "Simon",
+      "gebDatum": "1968-02-05",
+      "imageSrc": "../../../assets/data/pics/p05.jpeg",
+      "partner": "Yvonne Simon",
+      "married": true,
+      "male": true
+    },
+    {
+      "id": 6,
+      "vorname": "Deborah",
+      "nachname": "Simon",
+      "male": false,
+      "partnerId": "9",
+      "gebDatum": "1996-03-07T00:00:00.000Z",
+      "partner": "Konstantin Müller",
+      "imageSrc": "../../../assets/data/pics/p06.jpeg",
+      "married": true
+    },
+    {
+      "id": 7,
+      "vorname": "Philomena",
+      "nachname": "Heinrich",
+      "male": false,
+      "partnerId": "10",
+      "gebDatum": "1998-07-05T00:00:00.000Z",
+      "partner": "Konstantin Decker",
+      "imageSrc": "../../../assets/data/pics/p07.jpeg",
+      "married": false
+    },
+    {
+      "id": 8,
+      "vorname": "Luisa",
+      "nachname": "Heinrich",
+      "gebDatum": "1993-11-13",
+      "imageSrc": "../../../assets/data/pics/p08.jpeg",
+      "partner": "",
+      "partnerId": null,
+      "married": false,
+      "male": false
+    },
+    {
+      "id": 9,
+      "vorname": "Konstantin",
+      "nachname": "Müller",
+      "male": true,
+      "partnerId": "6",
+      "gebDatum": "1997-04-27T00:00:00.000Z",
+      "partner": "Deborah Simon",
+      "imageSrc": "../../../assets/data/pics/p09.jpeg",
+      "married": true
+    },
+    {
+      "id": 10,
+      "vorname": "Konstantin",
+      "nachname": "Decker",
+      "male": true,
+      "partnerId": "7",
+      "gebDatum": "1997-04-27T00:00:00.000Z",
+      "partner": "Philomena Heinrich",
+      "imageSrc": "../../../assets/data/pics/p10.jpeg",
+      "married": false
+    },
+    {
+      "id": 11,
+      "vorname": "Jan",
+      "nachname": "Richter",
+      "male": true,
+      "partnerId": "4",
+      "gebDatum": "1972-03-03T00:00:00.000Z",
+      "partner": "Stefanie Richter",
+      "imageSrc": "../../../assets/data/pics/p11.jpeg",
+      "married": true
+    },
+    {
+      "id": 12,
+      "vorname": "Jonas",
+      "nachname": "Simon",
+      "gebDatum": "1990-03-27",
+      "imageSrc": "../../../assets/data/pics/p12.jpeg",
+      "partner": "",
+      "married": false,
+      "male": true
+    },
+    {
+      "id": 13,
+      "vorname": "Daniela",
+      "nachname": "Simon",
+      "gebDatum": "1987-09-19",
+      "imageSrc": "../../../assets/data/pics/p13.jpeg",
+      "partner": "Manuel Simon",
+      "partnerId": 1,
+      "married": true,
+      "male": false,
+      "gebName": "Kerber"
+    },
+    {
+      "id": 14,
+      "vorname": "Maximilian",
+      "nachname": "Nicolaus",
+      "gebDatum": "2002-08-16",
+      "imageSrc": "../../../assets/data/pics/p14.jpeg",
+      "partner": "",
+      "married": false,
+      "male": true
+    },
+    {
+      "id": 15,
+      "vorname": "Hubert",
+      "nachname": "Odrich",
+      "male": true,
+      "partnerId": 0,
+      "gebDatum": "2020-03-02T23:00:00.000Z"
+    }
+  ],
+  "relPersonPerson": [
+    {
+      "id": 1,
+      "parentId": 1,
+      "childId": 2,
+      "real": true
+    },
+    {
+      "id": 2,
+      "parentId": 1,
+      "childId": 3,
+      "real": true
+    },
+    {
+      "id": 4,
+      "parentId": 5,
+      "childId": 6,
+      "real": true
+    },
+    {
+      "id": 6,
+      "parentId": 4,
+      "childId": 7,
+      "real": false
+    },
+    {
+      "id": 7,
+      "parentId": 13,
+      "childId": 2,
+      "real": true
+    },
+    {
+      "id": 8,
+      "parentId": 13,
+      "childId": 3,
+      "real": true
+    },
+    {
+      "id": 9,
+      "parentId": 4,
+      "childId": 8,
+      "real": false
+    },
+    {
+      "id": 10,
+      "parentId": 4,
+      "childId": 12,
+      "real": true
+    },
+    {
+      "id": 11,
+      "parentId": 4,
+      "childId": 6,
+      "real": true
+    },
+    {
+      "id": 12,
+      "parentId": 4,
+      "childId": 14,
+      "real": true
+    },
+    {
+      "id": 20,
+      "parentId": 5,
+      "childId": 1,
+      "real": true
+    },
+    {
+      "id": 21,
+      "parentId": 4,
+      "childId": 1,
+      "real": true
+    },
+    {
+      "id": 22,
+      "parentId": 15,
+      "childId": 4,
+      "real": true
+    },
+    {
+      "id": 28,
+      "parentId": 13,
+      "childId": 16,
+      "real": true
+    }
+  ],
+  "event": [
+    {
+      "id": 1,
+      "datum": "1998-06-13",
+      "label": "Mein erstes Lebensereignis",
+      "kind": 0
+    },
+    {
+      "id": 2,
+      "datum": "2001-04-01",
+      "label": "ein weiteres tolles Ereignis",
+      "kind": 0
+    },
+    {
+      "id": 3,
+      "datum": "2012-12-06",
+      "label": "In einer kalten Winternacht kam Nathaniel im Diakonissenkrankehaus in Dresden gegen 3:00 Uhr nachts zu Welt. In dieser Nacht hat es so viel geschneit, das der Heimweg durch den Schnee in Dresden lange gedauert hat.",
+      "kind": 0
+    },
+    {
+      "id": 4,
+      "datum": "2018-05-19",
+      "label": "Hochzeit in Dresden von Daniela Simon geb. Kerber und Manuel Simon",
+      "kind": 0
+    },
+    {
+      "id": 5,
+      "datum": "2018-01-30",
+      "label": "Geburt Mathilda im Uniklinikum Dresden",
+      "kind": 0
+    }
+  ],
+  "relEventPerson": [
+    {
+      "id": 1,
+      "idEvent": 1,
+      "idPerson": 1
+    },
+    {
+      "id": 2,
+      "idEvent": 2,
+      "idPerson": 1
+    },
+    {
+      "id": 3,
+      "idEvent": 3,
+      "idPerson": 1
+    },
+    {
+      "id": 4,
+      "idEvent": 4,
+      "idPerson": 1
+    },
+    {
+      "id": 8,
+      "idEvent": 3,
+      "idPerson": 13
+    },
+    {
+      "id": 5,
+      "idEvent": 4,
+      "idPerson": 13
+    },
+    {
+      "id": 6,
+      "idEvent": 5,
+      "idPerson": 1
+    },
+    {
+      "id": 7,
+      "idEvent": 5,
+      "idPerson": 13
+    }
+  ]
+}

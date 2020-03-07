@@ -3,8 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { GlobalConstants } from '../../../_service/globalconstants.service';
 import { Person } from '../../../_interface/person';
 import { RelPersonPerson } from '../../../_interface/rel-person-person';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { DbConnectService } from '../../../_service/dbconnect.service';
 
 @Component({
   selector: 'app-editor-person',
@@ -19,7 +18,7 @@ export class EditorPersonComponent implements OnInit {
   public partnerList : Array<Person> = new Array<Person>();
   public menList : Array<Person> = new Array<Person>();
   public womanList : Array<Person> = new Array<Person>();
-  public personRelationsList : Array<RelPersonPerson> = new Array<RelPersonPerson>();
+  //public personRelationsList : Array<RelPersonPerson> = new Array<RelPersonPerson>();
   fatherId : number = 0;
   motherId : number = 0;
   stepFatherId : number = 0;
@@ -28,7 +27,10 @@ export class EditorPersonComponent implements OnInit {
 
 
 
-  constructor() {    
+
+  constructor(
+    private _dbconnect : DbConnectService
+  ) {    
   }
 
   ngOnInit() {
@@ -88,19 +90,12 @@ export class EditorPersonComponent implements OnInit {
         }
       }
 
-    console.log(this.fatherId);
-    console.log(this.motherId);
-    console.log(this.stepFatherId);
-    console.log(this.stepMotherId);
-    console.log(this.partnerList)
   }
 
 
   onClickSaveButton() {
-    if ((this.selected.vorname != "") && (this.selected.nachname != "")) { //form validate
-      console.log('speichern!!')
+    if ((this.selected.vorname != "") && (this.selected.nachname != "") && (this.selected.gebDatum != undefined)) { //form validate
       if (this.selected.id == 0) { //neue Person
-        console.log('Neue Person angelegt');
         // neue PersonID finden
         var newPersonId:number = 0;
         for (var p of GlobalConstants.personList) {
@@ -108,9 +103,13 @@ export class EditorPersonComponent implements OnInit {
         }
         newPersonId = newPersonId+1;
         this.selected.id = newPersonId;
-        GlobalConstants.personList.push(this.selected);
-        console.log('neue Person eingehangen:', newPersonId);
-        console.log(GlobalConstants.personList)
+        
+        this._dbconnect.postPerson(this.selected).subscribe((data: Person) => {
+
+          GlobalConstants.personList.push(this.selected);
+        }, error => {
+          console.log(`%cERROR: ${error.message}`);
+        })
         // neue RelID finden
         var newRelId:number = 0;
         for (var r of GlobalConstants.relPersonPerson) {
@@ -118,48 +117,70 @@ export class EditorPersonComponent implements OnInit {
         }
         newRelId = newRelId+1;
         if (this.fatherId != 0) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
-            parentId: this.fatherId,
+            parentId: +this.fatherId,
             childId: newPersonId,
             real: true
+          }).subscribe((data: RelPersonPerson) => {
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
           newRelId = newRelId+1;
         }
         if (this.motherId != 0) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
-            parentId: this.motherId,
+            parentId: +this.motherId,
             childId: newPersonId,
             real: true
+          }).subscribe((data: RelPersonPerson) => {
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
           newRelId = newRelId+1;
         }
         if (this.stepFatherId != 0) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
-            parentId: this.stepFatherId,
+            parentId: +this.stepFatherId,
             childId: newPersonId,
             real: false
+          }).subscribe((data: RelPersonPerson) => {
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
           newRelId = newRelId+1;
         }
         if (this.stepMotherId != 0) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
-            parentId: this.stepMotherId,
+            parentId: +this.stepMotherId,
             childId: newPersonId,
             real: false
+          }).subscribe((data: RelPersonPerson) => {
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
         }
-        console.log('neue Relationen eingefügt:');
-        console.log(GlobalConstants.relPersonPerson)
         this.closePersonEditorEvent.emit('savenew');
 
       } else { //vorhandene Person aktualisieren
+        console.log(this.selected)
         for (var i=0; i < GlobalConstants.personList.length; i++) {
           if (GlobalConstants.personList[i].id == this.selected.id) {
-            console.log(GlobalConstants.personList.splice(i,1,this.selected));
+            console.log(+i)
+            //GlobalConstants.personList.splice(i-1,1,this.selected)
+            GlobalConstants.personList[i] = this.selected;
+            this._dbconnect.putPerson(this.selected).subscribe((data: Person) => {
+              //GlobalConstants.personList[i] = this.selected;
+            }, error => {
+              console.log(`${error.message}`);
+            })
           }
         }
         var fatherExist:Boolean = false;
@@ -187,7 +208,15 @@ export class EditorPersonComponent implements OnInit {
             }
             //prüfen nach vorhandenen aber alten Einträgen und diese löschem
             if ((GlobalConstants.relPersonPerson[j].parentId != this.fatherId) && (GlobalConstants.relPersonPerson[j].parentId != this.motherId) &&(GlobalConstants.relPersonPerson[j].parentId != this.stepFatherId) && (GlobalConstants.relPersonPerson[j].parentId != this.stepMotherId)) {
-              GlobalConstants.relPersonPerson.splice(j,1);
+              var elemetToDelete = GlobalConstants.relPersonPerson[j];
+              GlobalConstants.relPersonPerson.splice(j-1,1);  
+              this._dbconnect.deleteRelPersonPerson(elemetToDelete).subscribe((data: RelPersonPerson) => {
+                
+              }, error => {
+                console.log("Error: ", GlobalConstants.relPersonPerson[j], " konnte nicht gelöscht werden.")
+              });
+              
+              
             }
           }
         }
@@ -198,38 +227,58 @@ export class EditorPersonComponent implements OnInit {
         }
         newRelId = newRelId+1;
         if (this.fatherId != 0 && !fatherExist) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
             parentId: +this.fatherId,
             childId: this.selected.id,
             real: true
+          }).subscribe((data: RelPersonPerson) => {
+            console.log(`"${data.id}" wurde erstellt.`)
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
           newRelId = newRelId+1;
         }
         if (this.motherId != 0 && !motherExist) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
             parentId: +this.motherId,
             childId: this.selected.id,
             real: true
+          }).subscribe((data: RelPersonPerson) => {
+            console.log(`"${data.id}" wurde erstellt.`)
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
           newRelId = newRelId+1;
         }
         if (this.stepFatherId != 0 && !stepFatherExist) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
             parentId: +this.stepFatherId,
             childId: this.selected.id,
             real: false
+          }).subscribe((data: RelPersonPerson) => {
+            console.log(`"${data.id}" wurde erstellt.`)
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
           newRelId = newRelId+1;
         }
         if (this.stepMotherId != 0 && !stepMotherExist) {
-          GlobalConstants.relPersonPerson.push({
+          this._dbconnect.postRelPersonPerson({
             id: newRelId,
             parentId: +this.stepMotherId,
             childId: this.selected.id,
             real: false
+          }).subscribe((data: RelPersonPerson) => {
+            console.log(`"${data.id}" wurde erstellt.`)
+            GlobalConstants.relPersonPerson.push(data);
+          }, error => {
+            console.log(`%cERROR: ${error.message}`);
           })
         }
         this.closePersonEditorEvent.emit('save');
@@ -258,17 +307,15 @@ export class EditorPersonComponent implements OnInit {
     if (event == "female") {
       this.selected.male = false
     }
-    console.log(event)
   }
 
   onChangeSelectPartner() {
-    console.log('du hast einen neuen Partner')
     if (this.selected.partnerId == 0) {
       this.selected.partner = ""
       this.selected.married = false
     } else {
       for (var i of GlobalConstants.personList) {
-        if (i.id == this.selected.partnerId) {
+        if (i.id == +this.selected.partnerId) {
           this.selected.partner = i.vorname + " " + i.nachname;
         }
       }
@@ -278,9 +325,7 @@ export class EditorPersonComponent implements OnInit {
     this.selected.partnerId = 0
   }
   onChangeGebDate($event) {
-    console.log($event)
     this.selected.gebDatum = new Date($event)
-    console.log(this.selected.gebDatum)
   }
 
   onChangeSterbDate($event) {
@@ -290,7 +335,6 @@ export class EditorPersonComponent implements OnInit {
       this.selected.sterbDatum = null;
 
     }
-    console.log(this.selected.sterbDatum)
   }
 }
 

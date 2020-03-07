@@ -21,6 +21,9 @@
         </div>
     </div>
     <div class="persons">
-        <div class="person" *ngFor="let person of personsOfEvent">{{person.vorname}} {{person.nachname}}</div>
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected *ngFor="let person of personsOfEvent">{{person.vorname}} {{person.nachname}}</mat-chip>
+        </mat-chip-list>
+        
     </div> 
 </div>

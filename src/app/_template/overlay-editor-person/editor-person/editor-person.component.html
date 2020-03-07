@@ -7,39 +7,49 @@
             </div>
             <div class="formular">
                 <div class="input-group">
-                    <label for="vornamename">Vorname*</label>
-                    <input type="text" [(ngModel)]="this.selected.vorname" id="vorname" name="vornamename">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Vorname" [(ngModel)]="this.selected.vorname" name="vorname" required>
+                      </mat-form-field>
                 </div>
                 <div class="input-group">
-                    <label for="nachname">Nachname*</label>
-                    <input type="text" [(ngModel)]="this.selected.nachname"  id="nachname" name="nachname">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Nachname" [(ngModel)]="this.selected.nachname" name="nachname" required>
+                      </mat-form-field>
                 </div>
                 <div class="input-group">
-                    <label for="gebname">Geburtsname</label>
-                    <input type="text" [(ngModel)]="this.selected.gebName"  id="gebname" name="gebname">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Geburtsname" [(ngModel)]="this.selected.gebName" name="gebname">
+                      </mat-form-field>
+                </div>
+                <mat-radio-group aria-label="Geschlecht">
+                    <mat-radio-button [checked]="this.selected.male" value="male" (click)="onChangeGenderButton('male')" >männlich</mat-radio-button>
+                    <mat-radio-button [checked]="!this.selected.male" value="female" (click)="onChangeGenderButton('female')" >weiblich</mat-radio-button>
+                  </mat-radio-group>
+                <div class="input-group">
+                    <mat-form-field>
+                        <mat-label>Geburtstag</mat-label>
+                        <input name="Geburtstag" matInput [matDatepicker]="gd" disabled required (ngModelChange)="onChangeGebDate($event)" [ngModel]="this.selected.gebDatum | date:'yyyy-MM-dd'">
+                        <mat-datepicker-toggle matSuffix [for]="gd"></mat-datepicker-toggle>
+                        <mat-datepicker #gd disabled="false"></mat-datepicker>
+                    </mat-form-field>
                 </div>
                 <div class="input-group">
-                    <label>Geschlecht</label>
-                    <label for="male">Männlich</label><br>
-                    <input (click)="onChangeGenderButton('male')"  type="radio" [checked]="this.selected.male" id="male" name="gender" value="male">
-                    <label for="female">weiblich</label><br>
-                    <input (click)="onChangeGenderButton('female')"  [checked]="!this.selected.male" type="radio" id="female" name="gender" value="female"> 
+                    <mat-form-field>
+                        <mat-label>Sterbetag</mat-label>
+                        <input name="SterbeDatum" matInput [matDatepicker]="st" disabled (ngModelChange)="onChangeSterbDate($event)" [ngModel]="this.selected.sterbDatum | date:'yyyy-MM-dd'">
+                        <mat-datepicker-toggle matSuffix [for]="st"></mat-datepicker-toggle>
+                        <mat-datepicker #st disabled="false"></mat-datepicker>
+                    </mat-form-field>
                 </div>
                 <div class="input-group">
-                    <label for="gebdatum">Geburtstag*</label>
-                    <input type="date" [ngModel]="this.selected.gebDatum | date:'yyyy-MM-dd'" (ngModelChange)="onChangeGebDate($event)"   id="gebdatum" name="gebdatum">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Adresszeile 1" [(ngModel)]="this.selected.adress1" name="Adresse1">
+                      </mat-form-field>
                 </div>
                 <div class="input-group">
-                    <label for="sterbdatum">Sterbetag:</label>
-                    <input type="date" [ngModel]="this.selected.sterbDatum | date:'yyyy-MM-dd'" (ngModelChange)="onChangeSterbDate($event)" id="sterbdatum" name="sterbdatum">
-                </div>
-                <div class="input-group">
-                    <label for="Adresse1">Adresse 1:</label>
-                    <input type="text" [(ngModel)]="this.selected.adress1"  id="Adresse1" name="Adresse1">
-                </div>
-                <div class="input-group">
-                    <label for="Adresse2">Adresse 2:</label>
-                    <input type="text" [(ngModel)]="this.selected.adress2"  id="Adresse2" name="Adresse2">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Adresszeile 2" [(ngModel)]="this.selected.adress2" name="Adresse2">
+                      </mat-form-field>
                 </div>
                 <div class="input-group">
                     <label for="partnerSelect">Aktueller Lebenspartner</label>
@@ -48,11 +58,13 @@
                         <option *ngFor="let p of this.partnerList" [value]="p.id" [selected]="this.selected.partnerId == p.id">{{p.vorname}} {{p.nachname}}</option>
                     </select>
                     <input name="partnername" type="text" [(ngModel)]="this.selected.partner" (keyup)="onKeyUpPartnerName()">
-                    <label for="partnerkind">verheiratet:</label>
-                    <input type="checkbox" name="partnerkind" [(ngModel)]="this.selected.married">
+                    <mat-checkbox name="married" [(ngModel)]="this.selected.married">verheiratet?</mat-checkbox>
                 </div>
                 <div class="parentsselector">
                     <div class="parents">
+                        
+
+
                         <div class="fatherselector parent">
                             <label for="fatherSelect">Vater</label>
                             <select name="fatherSelect" [(ngModel)]="this.fatherId">

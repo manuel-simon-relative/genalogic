@@ -1,17 +1,19 @@
 <div class="event">
     <div class="date">
-        <p>
-            <span>
-                {{lifeEvent$.datum.getDate()}}.
-                {{selectedMonth}}<br>
-            </span>
-            {{lifeEvent$.datum.getFullYear()}}<br>
-        </p>
+        <div class="monthAndDay">
+            {{lifeEvent$.datum.getDate()}}.
+            {{selectedMonth}}
+        </div>
+        <div class="year">
+            {{lifeEvent$.datum.getFullYear()}}
+        </div>
     </div>
-    <div class="label">
+    <div class="content">
         {{lifeEvent$.label}}
         <div class="persons">
-            <div class="person" *ngFor="let person of personsOfEvent" (click)="showSelectedPerson(person.id)">{{person.vorname}} {{person.nachname}}</div>
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip color="primary" selected *ngFor="let person of personsOfEvent" (click)="showSelectedPerson(person.id)">{{person.vorname}} {{person.nachname}}</mat-chip>
+            </mat-chip-list>
         </div>
     </div>
     

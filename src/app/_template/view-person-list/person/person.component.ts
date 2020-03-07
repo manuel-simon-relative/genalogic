@@ -12,6 +12,9 @@ export class PersonComponent implements OnInit {
   @Input() pPerson$ : Person;
   @Output('showPerson') showPersonEvent: EventEmitter<number> = new EventEmitter<number>();
   @Output('editPerson') editPersonEvent: EventEmitter<number> = new EventEmitter<number>();
+  @Output('deletePerson') deletePersonEvent: EventEmitter<number> = new EventEmitter<number>();
+
+  
 
   public gebDateString: string = ""
   public sterbDateString: string = ""
@@ -21,6 +24,7 @@ export class PersonComponent implements OnInit {
   ngOnInit() {
     if (this.pPerson$.gebDatum != null ) {this.gebDateString = this.dateToString(this.pPerson$.gebDatum);}
     if (this.pPerson$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.pPerson$.sterbDatum);}
+    
     
 
   }
@@ -53,6 +57,10 @@ export class PersonComponent implements OnInit {
 
   public clickEditPerson(personId:number) {
     this.editPersonEvent.emit(personId)
+  }
+
+  public clickDeletePerson(personId:number) {
+    this.deletePersonEvent.emit(personId)
   }
 
 }

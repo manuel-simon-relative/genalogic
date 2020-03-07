@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import { GlobalConstants } from '../../../_service/globalconstants.service'
 import { Person } from '../../../_interface/person'
+import { DbConnectService } from '../../../_service/dbconnect.service';
+import { RelPersonPerson } from '../../../_interface/rel-person-person';
+import { RelEventPerson } from '../../../_interface/rel-event-person';
 
 @Component({
   selector: 'app-view-person-list',
@@ -18,7 +21,9 @@ public sortColum: string = "id";
 
 public isSort: Boolean = false;
 
-  constructor() {
+  constructor(
+    private _dbconnect : DbConnectService
+  ) {
    }
 
   ngOnInit() {
@@ -152,6 +157,50 @@ public isSort: Boolean = false;
 
   public onClickPlusButton() {
     this.editPersonEvent.emit(0)
+  }
+
+  public onDeleteOPerson(personId: number) {
+    //löschen von Person
+    for (var i=0; i<GlobalConstants.personList.length; i++) {
+      if (GlobalConstants.personList[i].id == personId) {
+        var PersonToDelete = GlobalConstants.personList[i]
+        GlobalConstants.personList.splice(i,1)
+        this._dbconnect.deletePerson(PersonToDelete).subscribe((data: Person) => {
+                
+        }, error => {
+          console.log("Error: ", GlobalConstants.personList[i], " konnte nicht gelöscht werden.")
+        });
+      }
+    }
+    //löschen aller Relationen
+    //PersonRelationen
+    for (var r1 = 0;r1 < GlobalConstants.relPersonPerson.length;r1++) {
+      if  ((GlobalConstants.relPersonPerson[r1].parentId == personId) || (GlobalConstants.relPersonPerson[r1].childId == personId)) {
+        var relPersonPersonToDelete = GlobalConstants.relPersonPerson[r1];
+        console.log("Element gefunden zum löschen")
+        GlobalConstants.relPersonPerson.splice(r1,1)
+        this._dbconnect.deleteRelPersonPerson(relPersonPersonToDelete).subscribe((data: RelPersonPerson) => {
+                
+        }, error => {
+          console.log("Error: ", relPersonPersonToDelete, " konnte nicht gelöscht werden.")
+        });
+
+      }
+    }
+    //EventRelationen
+    for (var r2 = 0;r2 < GlobalConstants.relEventPerson.length;r2++) {
+      if  ((GlobalConstants.relEventPerson[r2].idPerson == personId) || (GlobalConstants.relEventPerson[r2].idPerson == personId)) {
+        var relEventPersonToDelete = GlobalConstants.relEventPerson[r2];
+        console.log("Element gefunden zum löschen")
+        GlobalConstants.relEventPerson.splice(r2,1)
+        this._dbconnect.deleteRelEventPerson(relEventPersonToDelete).subscribe((data: RelEventPerson) => {
+                
+        }, error => {
+          console.log("Error: ", relPersonPersonToDelete, " konnte nicht gelöscht werden.")
+        });
+
+      }
+    }
   }
 
   public comparePersonById(person1:Person, person2:Person): number {
