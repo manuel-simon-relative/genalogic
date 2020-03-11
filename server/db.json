@@ -159,7 +159,8 @@
       "nachname": "Odrich",
       "male": true,
       "partnerId": 0,
-      "gebDatum": "2020-03-02T23:00:00.000Z"
+      "gebDatum": "2020-03-02T23:00:00.000Z",
+      "sterbDatum": "2020-03-08T23:00:00.000Z"
     }
   ],
   "relPersonPerson": [

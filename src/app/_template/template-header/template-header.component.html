@@ -3,9 +3,9 @@
             <p>gena<span>logic</span></p>
     </div>
     
-    <menu>
-        <menuitem (click)="clickChangeMenu(1)"  [class.selected]="this.selectedMenu == 1">Überblick Person</menuitem>
-        <menuitem (click)="clickChangeMenu(2)"  [class.selected]="this.selectedMenu == 2">Personen</menuitem>
-        <menuitem (click)="clickChangeMenu(3)"  [class.selected]="this.selectedMenu == 3">Lebensereignisse</menuitem>
-    </menu>
+    <div class="menu">
+        <div class="menuitem" (click)="clickChangeMenu(1)"  [class.selected]="this.selectedMenu == 1">Überblick Person</div>
+        <div class="menuitem"  (click)="clickChangeMenu(2)"  [class.selected]="this.selectedMenu == 2">Personen</div>
+        <div class="menuitem"  (click)="clickChangeMenu(3)"  [class.selected]="this.selectedMenu == 3">Lebensereignisse</div>
+    </div>
 </div>

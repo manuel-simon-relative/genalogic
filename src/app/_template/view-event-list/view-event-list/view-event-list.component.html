@@ -12,6 +12,6 @@
         <app-event [pLifeEvent$]="event"  *ngFor="let event of this.searchedEventList" (editEvent)="onEditEvent($event)"></app-event>
 </div>
 
-<div class="fab">
-    <div class="plus" (click)="onClickPlusButton()">+</div>
-</div>
+<button mat-fab aria-label="Example icon-button with a heart icon" (click)="onClickPlusButton()" class="fab" mat-fab color="primary" >
+    <mat-icon>person_add</mat-icon>
+</button>

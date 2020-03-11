@@ -6,8 +6,7 @@
     <div class="colum">Bild</div>
     <div (click)="clickSortArray('nachname')" class="colum">Nachname</div>
     <div (click)="clickSortArray('vorname')" class="colum">Vorname</div>
-    <div (click)="clickSortArray('gebdatum')" class="colum">Geburtstaum</div>
-    <div (click)="clickSortArray('sterbdatum')" class="colum">Sterbedatum</div>
+    <div (click)="clickSortArray('gebdatum')" class="colum">Geburtstaum<br>Sterbedatum</div>
     <div class="colum">Geschlecht</div>
     <div class="colum">Adresse</div>
     <div class="colum">Partner</div>
@@ -18,6 +17,6 @@
     <app-person (deletePerson)=onDeleteOPerson($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event) [pPerson$]="person"  *ngFor="let person of this.searchedPersonList"></app-person>
 </div>
 <button mat-fab aria-label="Example icon-button with a heart icon" (click)="onClickPlusButton()" class="newPerson" mat-fab color="primary" >
-    <mat-icon>person_add</mat-icon>
-  </button>
+    <mat-icon >person_add</mat-icon>
+</button>
 

@@ -14,9 +14,9 @@
         <div class="colum"><div>{{lifeEvent$.id}}</div></div>
         <div class="colum"><div>{{lifeEvent$.label}}</div></div>
         <div class="colum">
-            <div>
-                <div class="action" (click)=onEditEventButton(lifeEvent$.id) id="edit">B</div>
-                <div class="action" id="delete">D</div>
+            <div class="actions">
+                <div class="action" (click)=onEditEventButton(lifeEvent$.id) id="edit"><mat-icon color="primary">edit</mat-icon></div>
+                <div class="action" id="delete"><mat-icon color="primary">delete_sweep</mat-icon></div>
             </div>
         </div>
     </div>

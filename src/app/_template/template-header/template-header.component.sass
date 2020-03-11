@@ -7,7 +7,7 @@ p
 .header
     border-top: 5px solid $accent-color
     background: $primary-color-dark
-    height: 4*$cube
+    height: 4.5*$cube
     display: flex
     justify-content: space-between
     align-items: center
@@ -23,17 +23,20 @@ p
             margin: 0
             span
                 color: $accent-color
-    menu
-        padding: $cube
+    .menu
         margin-right: $cube
         background: $primary-color-darker
-        border-radius: 5%
+        display: flex
+        justify-content: space-between
+        box-shadow: 1px 1px 4px black inset
+
         
 
-        menuitem
+        .menuitem
             padding: $cube - 0.2
             color: $primary-color-text
             font-family: sans-serif
-            border-radius: 8%
+            height: 95%
         .selected
             background: $accent-color
+            border-radius: 5px
