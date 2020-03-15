@@ -26,19 +26,25 @@
                     <mat-radio-button [checked]="!this.selected.male" value="female" (click)="onChangeGenderButton('female')" >weiblich</mat-radio-button>
                   </mat-radio-group>
                 <div class="input-group">
-                    <mat-form-field>
-                        <mat-label>Geburtstag</mat-label>
-                        <input name="Geburtstag" matInput [matDatepicker]="gd" disabled required (ngModelChange)="onChangeGebDate($event)" [ngModel]="this.selected.gebDatum | date:'yyyy-MM-dd'">
-                        <mat-datepicker-toggle matSuffix [for]="gd"></mat-datepicker-toggle>
-                        <mat-datepicker #gd disabled="false"></mat-datepicker>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Geburtstag" [(ngModel)]="this.selected.gDay" name="gDay">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Geburtsmonat" [(ngModel)]="this.selected.gMonth" name="gMonth">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Geburtsjahr" [(ngModel)]="this.selected.gYear" name="gYear" minlength="3">
                     </mat-form-field>
                 </div>
                 <div class="input-group">
-                    <mat-form-field>
-                        <mat-label>Sterbetag</mat-label>
-                        <input name="SterbeDatum" matInput [matDatepicker]="st" disabled (ngModelChange)="onChangeSterbDate($event)" [ngModel]="this.selected.sterbDatum | date:'yyyy-MM-dd'">
-                        <mat-datepicker-toggle matSuffix [for]="st"></mat-datepicker-toggle>
-                        <mat-datepicker #st disabled="false"></mat-datepicker>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Sterbetag" [(ngModel)]="this.selected.sDay" name="sDay">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Sterbemonat" [(ngModel)]="this.selected.sMonth" name="sMonth">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Sterbejahr" [(ngModel)]="this.selected.sYear" name="sYear" minlength="3">
                     </mat-form-field>
                 </div>
                 <div class="input-group">
@@ -64,7 +70,7 @@
                     <div class="parents">
                         
 
-
+        
                         <div class="fatherselector parent">
                             <label for="fatherSelect">Vater</label>
                             <select name="fatherSelect" [(ngModel)]="this.fatherId">

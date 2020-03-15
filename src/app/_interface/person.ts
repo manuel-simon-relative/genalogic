@@ -3,7 +3,13 @@ export interface Person {
     nachname : string;
     gebName? : string
     vorname : string;
+    gDay?: number;
+    gMonth?: number;
+    gYear?:number;
     gebDatum? : Date;
+    sDay?: number;
+    sMonth?: number;
+    sYear?:number;
     sterbDatum? : Date;
     partner? : string;
     partnerId? : number;

@@ -134,7 +134,20 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
 
 
   function comparePerson(person1: Person, person2: Person): number {
-    if (person1.gebDatum > person2.gebDatum) {
-      return 1;
-    } else return -1;
+    var result: number = 0;
+    if (person1.gYear == person2.gYear) {
+      if (person1.gMonth == person2.gMonth) {
+        if (person1.gDay == person2.gDay) {
+          result = 0
+        }
+        if (person1.gDay > person2.gDay) result = -1;
+        if (person1.gDay < person2.gDay) result = 1;
+      }
+      if (person1.gMonth > person2.gMonth) result = -1;
+      if (person1.gMonth < person2.gMonth) result = 1;
+    }
+    if (person1.gYear > person2.gYear) result = -1;
+    if (person1.gYear < person2.gYear) result = 1;
+
+    return result;
   }

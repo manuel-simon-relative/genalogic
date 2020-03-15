@@ -20,12 +20,12 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
    ngOnChanges() {
     this.gebDateString = "";
     this.sterbDateString = "";
-    if (this.person$.gebDatum != null ) {this.gebDateString = this.dateToString(this.person$.gebDatum);}
-    if (this.person$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.person$.sterbDatum);}
+    this.gebDateString = this.dateToString(this.person$, "g");
+    this.sterbDateString = this.dateToString(this.person$, "s");
 
     
     
-    if (this.person$.imageSrc == "") {
+    if (this.person$.imageSrc == undefined) {
       console.log('kein Bild vorhanden');
       if (this.person$.male) {
         this.person$.imageSrc = "../../../assets/pics/jpg/placeholderMan.jpg";
@@ -39,24 +39,69 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
     
 
   }
-  public dateToString(datum: Date):string {
+  public dateToString(p: Person, date: String):string {
     var datestring = "";
+    var germanMonth: Array<string> = ['Januar','Februar','März','April','Mai', 'Juni', 'Juli', 'August','September', 'Oktober', 'November', 'Dezember'];
     //Geburtsdatum bauen
     var day:string;
     var month:string;
-    var year:string = datum.getFullYear().toString();
-    if (datum.getDate() < 10) {
-      day = '0' + datum.getDate();
-    } else {
-      day = datum.getDate().toString();
+    
+    if (date === "g") {
+      if (p.gYear != undefined) {
+        var year:string = p.gYear.toString();
+        if (p.gMonth != undefined) {
+          if (p.gDay != undefined) {
+            console.log('Tag, monat und Jahr gefunden')
+            if (p.gDay < 10) {
+              day = '0' + p.gDay;
+            } else {
+              day = p.gDay.toString();
+            }
+            if ((p.gMonth) < 10) {
+              month = '0' + (p.gMonth.toString());
+            } else {
+              month = "" + (p.gMonth.toString());
+            }
+            datestring = day + '.' + month + '.' +year;
+            console.log(datestring)
+          } else {
+            console.log ('nur Monat und Jahr da')
+            month = germanMonth[p.gMonth-1];
+            datestring = month + ' ' + year
+          }
+        } else {
+        datestring = year;   
+        }     
+      }
+  }
+  if (date === "s") {
+    if (p.sYear != undefined) {
+      var year:string = p.sYear.toString();
+      if (p.sMonth != undefined) {
+        if (p.sDay != undefined) {
+          console.log('Tag, monat und Jahr gefunden')
+          if (p.sDay < 10) {
+            day = '0' + p.sDay;
+          } else {
+            day = p.sDay.toString();
+          }
+          if ((p.sMonth) < 10) {
+            month = '0' + (p.sMonth.toString());
+          } else {
+            month = "" + (p.sMonth.toString());
+          }
+          datestring = day + '.' + month + '.' +year;
+          console.log(datestring)
+        } else {
+          console.log ('nur Monat und Jahr da')
+          month = germanMonth[p.sMonth-1];
+          datestring = month + ' ' + year
+        }
+      } else {
+      datestring = year;   
+      }     
     }
-    if ((datum.getMonth()+1) < 10) {
-      month = '0' + (datum.getMonth()+1);
-    } else {
-      month = "" + (datum.getMonth()+1);
-    }
-    datestring = day + '.' + month + '.' +year;
-
+}
 
     return datestring
   }

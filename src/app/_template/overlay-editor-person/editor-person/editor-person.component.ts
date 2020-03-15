@@ -48,9 +48,13 @@ export class EditorPersonComponent implements OnInit {
           this.selected.id = person$.id;
           this.selected.vorname = person$.vorname;
           this.selected.nachname = person$.nachname;
-          this.selected.gebDatum = person$.gebDatum;
+          this.selected.gDay = person$.gDay;
+          this.selected.gMonth = person$.gMonth;
+          this.selected.gYear = person$.gYear;
+          this.selected.sDay = person$.sDay;
+          this.selected.sMonth = person$.sMonth;
+          this.selected.sYear = person$.sYear;
           this.selected.gebName = person$.gebName;
-          this.selected.sterbDatum = person$.sterbDatum;
           this.selected.male = person$.male;
           this.selected.partner = person$.partner;
           this.selected.partnerId = person$.partnerId;
@@ -92,9 +96,49 @@ export class EditorPersonComponent implements OnInit {
 
   }
 
+  validateForm():Boolean {
+    var result:Boolean = true;
+    if (this.selected.vorname == "") {
+      result = false;
+      console.log('kein Vorname gesetzt');
+    }
+    if (this.selected.nachname == "") {
+      result = false;
+      console.log('kein Nachname gesetzt');
+    }
+    if (this.selected.gDay != undefined) {
+      if (this.selected.gMonth == undefined || this.selected.gYear == undefined) {
+        result = false;
+        console.log('Tag gesetzt, aber Monat und/oder Jahr nicht')
+      }
+    }
+    if (this.selected.gMonth != undefined) {
+      if (this.selected.gYear == undefined) {
+        result = false;
+        console.log('Monat gesetzt, aber kein Jahr')
+      }
+    }
+    if (this.selected.sDay != undefined) {
+      if (this.selected.sMonth == undefined || this.selected.sYear == undefined) {
+        result = false;
+        console.log('Tag gesetzt, aber Monat und/oder Jahr nicht')
+      }
+    }
+    if (this.selected.sMonth != undefined) {
+      if (this.selected.sYear == undefined) {
+        result = false;
+        console.log('Monat gesetzt, aber kein Jahr')
+      }
+    }
+
+    console.log(result)
+    return result;
+  }
+
 
   onClickSaveButton() {
-    if ((this.selected.vorname != "") && (this.selected.nachname != "") && (this.selected.gebDatum != undefined)) { //form validate
+    if (this.validateForm()) { //form validate
+      
       if (this.selected.id == 0) { //neue Person
         // neue PersonID finden
         var newPersonId:number = 0;

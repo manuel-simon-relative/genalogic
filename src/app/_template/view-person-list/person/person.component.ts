@@ -22,31 +22,70 @@ export class PersonComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.pPerson$.gebDatum != null ) {this.gebDateString = this.dateToString(this.pPerson$.gebDatum);}
-    if (this.pPerson$.sterbDatum != null ) {this.sterbDateString = this.dateToString(this.pPerson$.sterbDatum);}
-    
+    this.gebDateString = this.dateToString(this.pPerson$, "g");
+    this.sterbDateString = this.dateToString(this.pPerson$, "s");
     
 
   }
 
-  public dateToString(datum: Date):string {
+
+  public dateToString(p: Person, date: String):string {
     var datestring = "";
+    var germanMonth: Array<string> = ['Januar','Februar','März','April','Mai', 'Juni', 'Juli', 'August','September', 'Oktober', 'November', 'Dezember'];
     //Geburtsdatum bauen
     var day:string;
     var month:string;
-    var year:string = datum.getFullYear().toString();
-    if (datum.getDate() < 10) {
-      day = '0' + datum.getDate();
-    } else {
-      day = datum.getDate().toString();
+    
+    if (date === "g") {
+      if (p.gYear != undefined) {
+        var year:string = p.gYear.toString();
+        if (p.gMonth != undefined) {
+          if (p.gDay != undefined) {
+            if (p.gDay < 10) {
+              day = '0' + p.gDay;
+            } else {
+              day = p.gDay.toString();
+            }
+            if ((p.gMonth) < 10) {
+              month = '0' + (p.gMonth.toString());
+            } else {
+              month = "" + (p.gMonth.toString());
+            }
+            datestring = day + '.' + month + '.' +year;
+          } else {
+            month = germanMonth[p.gMonth-1];
+            datestring = month + ' ' + year
+          }
+        } else {
+        datestring = year;   
+        }     
+      }
+  }
+  if (date === "s") {
+    if (p.sYear != undefined) {
+      var year:string = p.sYear.toString();
+      if (p.sMonth != undefined) {
+        if (p.sDay != undefined) {
+          if (p.sDay < 10) {
+            day = '0' + p.sDay;
+          } else {
+            day = p.sDay.toString();
+          }
+          if ((p.sMonth) < 10) {
+            month = '0' + (p.sMonth.toString());
+          } else {
+            month = "" + (p.sMonth.toString());
+          }
+          datestring = day + '.' + month + '.' +year;
+        } else {
+          month = germanMonth[p.sMonth-1];
+          datestring = month + ' ' + year
+        }
+      } else {
+      datestring = year;   
+      }     
     }
-    if ((datum.getMonth()+1) < 10) {
-      month = '0' + (datum.getMonth()+1);
-    } else {
-      month = "" + (datum.getMonth()+1);
-    }
-    datestring = day + '.' + month + '.' +year;
-
+}
 
     return datestring
   }
