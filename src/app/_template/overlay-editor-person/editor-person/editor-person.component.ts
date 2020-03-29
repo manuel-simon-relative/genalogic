@@ -368,18 +368,8 @@ export class EditorPersonComponent implements OnInit {
   onKeyUpPartnerName() {
     this.selected.partnerId = 0
   }
-  onChangeGebDate($event) {
-    this.selected.gebDatum = new Date($event)
-  }
+  
 
-  onChangeSterbDate($event) {
-    if ($event != "") {
-      this.selected.sterbDatum = new Date($event)
-    } else {
-      this.selected.sterbDatum = null;
-
-    }
-  }
 }
 
 

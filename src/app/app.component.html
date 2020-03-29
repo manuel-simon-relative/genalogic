@@ -8,16 +8,25 @@
 </head>
 <body>
   <div class="loading" *ngIf="!this.loadPerson || !this.loadEvent || !this.loadRelPersonPerson || !this.loadRelEventPerson">
-    <h1>Gena<span>logic</span></h1>
-    <p>Daten werden geladen...</p>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    <div class="error" *ngIf="this.errorPerson">Fehler beim Laden der Personendaten vom Server...</div>
-    <div class="error" *ngIf="this.errorEvent">Fehler beim Laden der Ereignisdaten vom Server...</div>
-    <div class="error" *ngIf="this.errorRelPersonPerson">Fehler beim Laden der Personenrelationendaten vom Server...</div>
-    <div class="error" *ngIf="this.errorRelEventPerson">Fehler beim Laden der Eventrelationendaten vom Server...</div>
+    <div class="loadingScreen mat-elevation-z5">
+      <h1>Gena<span>logic</span></h1>
+      <div class="infos">
+        <p>Daten werden geladen...</p>
+        <div class="loaded-data" *ngIf="this.loadPerson">Personen geladen...</div>
+        <div class="loaded-data" *ngIf="this.loadEvent">Lebensereignisse geladen...</div>
+        <div class="loaded-data" *ngIf="this.loadRelPersonPerson">Personenrelationen geladen...</div>
+        <div class="loaded-data" *ngIf="this.loadRelEventPerson">Ereignisrelationen geladen...</div>
+        <div class="error" *ngIf="this.errorPerson">Fehler beim Laden der Personendaten vom Server...</div>
+        <div class="error" *ngIf="this.errorEvent">Fehler beim Laden der Ereignisdaten vom Server...</div>
+        <div class="error" *ngIf="this.errorRelPersonPerson">Fehler beim Laden der Personenrelationendaten vom Server...</div>
+        <div class="error" *ngIf="this.errorRelEventPerson">Fehler beim Laden der Eventrelationendaten vom Server...</div>
+      </div>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
   </div>
+  <app-loginscreen *ngIf="this.loadPerson && this.loadEvent && this.loadRelPersonPerson && this.loadRelEventPerson && !this.loggedIn" (login)="onLogin($event)"></app-loginscreen>
   <div>
-    <div class="site" [class.blur]="this.showOverlay != 0" *ngIf="this.loadPerson && this.loadEvent && this.loadRelPersonPerson && this.loadRelEventPerson">
+    <div class="site" [class.blur]="this.showOverlay != 0" *ngIf="this.loadPerson && this.loadEvent && this.loadRelPersonPerson && this.loadRelEventPerson && this.loggedIn">
       <div class="title">
         <app-template-header [selectedMenu]="this.selectedMenu" (changeMenu)=onChangeMenu($event)></app-template-header>
       </div>

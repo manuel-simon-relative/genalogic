@@ -6,11 +6,9 @@ export interface Person {
     gDay?: number;
     gMonth?: number;
     gYear?:number;
-    gebDatum? : Date;
     sDay?: number;
     sMonth?: number;
     sYear?:number;
-    sterbDatum? : Date;
     partner? : string;
     partnerId? : number;
     married? :boolean;

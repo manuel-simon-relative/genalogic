@@ -17,4 +17,32 @@
 
 .error
     color: red
-    font-size: 3*$cube
+    font-size: 1*$cube
+    margin-top: $cube
+
+.loading
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: $divider-color
+    color: $primary-color-text
+    font-family: sans-serif
+    display: flex
+    justify-content: center
+    .loadingScreen
+        width: 50%
+        height: 30%
+        margin: auto
+        background: $primary-color-dark
+        padding: $cube $cube $cube $cube
+        .infos
+            margin: 2*$cube 0 0 0
+            .loaded-data
+                margin-top: 0.5*$cube
+        h1
+            margin: auto
+            span
+                color: $accent-color
+

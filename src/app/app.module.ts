@@ -35,6 +35,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginscreenComponent } from './_template/loginscreen/loginscreen.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatIconModule } from '@angular/material/icon';
     ViewEventListComponent,
     EventComponent,
     EditorPersonComponent,
-    EditorEventComponent    
+    EditorEventComponent,
+    LoginscreenComponent    
   ],
   imports: [
     BrowserModule,

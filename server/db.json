@@ -76,7 +76,7 @@
       "gYear": 1996,
       "partner": "Konstantin Müller",
       "imageSrc": "../../../assets/data/pics/p06.jpeg",
-      "married": true
+      "married": false
     },
     {
       "id": 7,
@@ -193,16 +193,6 @@
       "sDay": 20,
       "sMonth": 4,
       "sYear": 1986
-    },
-    {
-      "id": 16,
-      "vorname": "Palim ",
-      "nachname": "Palum",
-      "male": false,
-      "partnerId": 0,
-      "gDay": "3",
-      "gMonth": "3",
-      "gYear": "1223"
     }
   ],
   "relPersonPerson": [
@@ -282,12 +272,6 @@
       "id": 22,
       "parentId": 15,
       "childId": 4,
-      "real": true
-    },
-    {
-      "id": 28,
-      "parentId": 13,
-      "childId": 16,
       "real": true
     }
   ],

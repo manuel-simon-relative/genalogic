@@ -12,9 +12,7 @@ p
     margin-bottom: 0.5*$cube
     height: 15*$cube
     display: flex
-    justify-content: space-between
     align-content: center
-    box-shadow: 3px 3px 5px $primary-color-darker
 
 
     .picture
@@ -25,13 +23,35 @@ p
             height: 15*$cube
     
     .details
+        padding-left: $cube
         margin-top: auto
         margin-bottom: auto
         magrin-right: 10%
+        font-family: sans-serif
+        font-size: 1*$cube
+
+        .name
+            font-weight: bolder
+            font-size: 1.5*$cube
+        
+        .dates
+            color: $primary-text-color
+            .keyword
+                color: $divider-color
+                font-weight: bold
+        
+        .adress
+            margin-top: $cube
+        
+        .partner
+            color: $divider-color
+            margin-top: $cube
+            cursor: pointer
+            .keyword
+                font-weight: bold
+
 
         p
-            font-family: sans-serif
-            font-size: 1*$cube
             color: $primary-text-color
 
             span

@@ -231,8 +231,24 @@ public isSort: Boolean = false;
 
     return result;
   }
+
   public comparePersonBySterbdatum(person1:Person, person2:Person): number {
-    if (person1.sterbDatum < person2.sterbDatum) {return -1} else {return 1}
+    var result: number = 0;
+    if (person1.sYear == person2.sYear) {
+      if (person1.sMonth == person2.sMonth) {
+        if (person1.sDay == person2.sDay) {
+          result = 0
+        }
+        if (person1.sDay > person2.sDay) result = -1;
+        if (person1.sDay < person2.sDay) result = 1;
+      }
+      if (person1.sMonth > person2.sMonth) result = -1;
+      if (person1.sMonth < person2.sMonth) result = 1;
+    }
+    if (person1.sYear > person2.sYear) result = -1;
+    if (person1.sYear < person2.sYear) result = 1;
+
+    return result;
   }
 
 }

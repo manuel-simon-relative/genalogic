@@ -1,0 +1,16 @@
+<div class="fullscreen">
+    <div class="loginwindow mat-elevation-z5">
+        <div class="loginform">
+            <h1>Gena<span>logic</span></h1>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Loginname" [(ngModel)]="this.loginName" name="loginname">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Passwort" type="password" [(ngModel)]="this.passwort" name="password">
+            </mat-form-field>
+            <div class="button">
+                <button mat-raised-button color="primary" (click)="onClickLoginbutton()">Login</button>
+            </div>
+        </div>
+    </div>
+</div>

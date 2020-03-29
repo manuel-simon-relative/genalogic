@@ -16,7 +16,7 @@
 <div class="personlist">
     <app-person (deletePerson)=onDeleteOPerson($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event) [pPerson$]="person"  *ngFor="let person of this.searchedPersonList"></app-person>
 </div>
-<button mat-fab aria-label="Example icon-button with a heart icon" (click)="onClickPlusButton()" class="newPerson" mat-fab color="primary" >
+<button mat-fab aria-label="Example icon-button with a heart icon" (click)="onClickPlusButton()" class="newPerson" mat-fab color="accent" >
     <mat-icon >person_add</mat-icon>
 </button>
 

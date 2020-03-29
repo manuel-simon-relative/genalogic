@@ -1,20 +1,23 @@
-<div class="personDetails">
+<div class="personDetails mat-elevation-z5">
         <div class="picture">
             <img  [src]="person$.imageSrc" alt="">
         </div>
         <div class="details">
-        <p class="Name">{{person$.nachname}}, {{person$.vorname}} <br>
-            <span *ngIf="person$.gebName">geb. {{person$.gebName}}<br></span>
-            <span class="keyword">geboren: </span>{{gebDateString}}<br>
-            <span class= keyword *ngIf="person$.sterbDatum">gestorben:</span><span *ngIf="person$.sterbDatum != null">{{sterbDateString}}</span>
-        </p>
-        <p>
+            <div class="name">
+                {{person$.nachname}}, {{person$.vorname}}
+            </div>
+            <div class="dates">
+                <span *ngIf="person$.gebName">geb. {{person$.gebName}}<br></span>
+                <span class="keyword">geboren: </span>{{gebDateString}}<br>
+                <span class= keyword *ngIf="person$.sterbDatum">gestorben:</span><span *ngIf="person$.sterbDatum != null">{{sterbDateString}}</span>
+            </div>
+        <div class="adress">
           <span *ngIf="person$.adress1">{{person$.adress1}}<br></span>
           <span *ngIf="person$.adress2">{{person$.adress2}}</span>   
-        </p>
-        <p>
+        </div>
+        <div class="partner">
             <span class="keyword" *ngIf="person$.married && person$.partner != ''">verheiratet </span><span *ngIf="person$.married && person$.partner != ''" (click)="onClickPartner()">mit {{person$.partner}}</span>
             <span class="keyword" *ngIf="!person$.married && person$.partner != ''">zusammen  </span><span *ngIf="!person$.married && person$.partner != ''" (click)="onClickPartner()">mit {{person$.partner}}</span>
-        </p>
+        </div>
         </div>
     </div>

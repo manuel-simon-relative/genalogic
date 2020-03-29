@@ -15,10 +15,11 @@ import { RelEventPerson } from './_interface/rel-event-person';
 })
 export class AppComponent implements OnInit{
   title = 'genalogic';
+  public productionMode: Boolean = true;
   public selectedPersonId: number = 1;
   public selectedMenu : number = 1; //1:PersonOverview 2:Personlist 3:Eventlist
   public showOverlay: number = 0; //0:aus; 1:EditorPerson; 2:EditorEvent
-  public editPersonId: number = 1; //für Personeditorübergabe
+  public editPersonId: number = 0; //für Personeditorübergabe
   public editEventId: number = 3; //für Eventeditorübergabe
   public searchTextPerson: string = "";
   public searchTextEvent: string = "";
@@ -30,11 +31,12 @@ export class AppComponent implements OnInit{
   public loadRelEventPerson: Boolean = false;
 
   //für Error
-
   public errorPerson: Boolean = false;
   public errorEvent: Boolean = false;
   public errorRelPersonPerson: Boolean = false;
   public errorRelEventPerson: Boolean = false;
+
+  public loggedIn: Boolean = false;
 
 
   constructor(
@@ -44,6 +46,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    if (this.productionMode) {
+      this.loggedIn = true;
+    }
   }
 
   public loadData(): void {
@@ -52,15 +57,6 @@ export class AppComponent implements OnInit{
     this._dbconnect.getPerson().subscribe((data: Person[]) => {
       GlobalConstants.personList = data;
       console.log('PersonList: ',GlobalConstants.personList)
-      //Datum korrigieren
-      for (var p of GlobalConstants.personList) {
-        if (p.gebDatum != undefined) {
-          p.gebDatum = new Date(p.gebDatum)
-        }
-        if (p.sterbDatum != undefined) {
-          p.sterbDatum = new Date(p.sterbDatum)
-        }
-      }
       this.loadPerson = true;
     }, error => {
       console.log(error.message);
@@ -147,5 +143,10 @@ export class AppComponent implements OnInit{
     console.log($event)
     this.showOverlay=2
     this.editEventId = $event;
+  }
+
+  public onLogin($event: any) {
+    console.log($event)
+    this.loggedIn = true
   }
 }
