@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Person } from '../_interface/person';
 import { Event } from '../_interface/event';
-import { RelPersonPerson } from '../_interface/rel-person-person';
+import { RelParentChild } from '../_interface/rel-person-person';
 import { RelEventPerson } from '../_interface/rel-event-person';
 
 
@@ -148,7 +148,7 @@ export class GlobalConstants {
 
     ];
 
-    public static relPersonPerson: Array<RelPersonPerson> = [{
+    public static relPersonPerson: Array<RelParentChild> = [{
       id: 1,
       parentId: 1,
       childId: 2,

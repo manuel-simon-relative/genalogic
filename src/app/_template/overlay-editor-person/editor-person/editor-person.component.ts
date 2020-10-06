@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { GlobalConstants } from '../../../_service/globalconstants.service';
 import { Person } from '../../../_interface/person';
-import { RelPersonPerson } from '../../../_interface/rel-person-person';
+import { RelParentChild } from '../../../_interface/rel-person-person';
 import { DbConnectService } from '../../../_service/dbconnect.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class EditorPersonComponent implements OnInit {
   @Input() personId: number;
   @Output('closePersonEditor') closePersonEditorEvent: EventEmitter<any> = new EventEmitter<any>();
   public selected: Person;
-  public relations : Array<RelPersonPerson> = new Array<RelPersonPerson>();
+  public relations : Array<RelParentChild> = new Array<RelParentChild>();
   public partnerList : Array<Person> = new Array<Person>();
   public menList : Array<Person> = new Array<Person>();
   public womanList : Array<Person> = new Array<Person>();
@@ -169,7 +169,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.fatherId,
             childId: newPersonId,
             real: true
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
@@ -182,7 +182,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.motherId,
             childId: newPersonId,
             real: true
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
@@ -195,7 +195,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.stepFatherId,
             childId: newPersonId,
             real: false
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
@@ -208,7 +208,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.stepMotherId,
             childId: newPersonId,
             real: false
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
@@ -257,7 +257,7 @@ export class EditorPersonComponent implements OnInit {
             if ((GlobalConstants.relPersonPerson[j].parentId != this.fatherId) && (GlobalConstants.relPersonPerson[j].parentId != this.motherId) &&(GlobalConstants.relPersonPerson[j].parentId != this.stepFatherId) && (GlobalConstants.relPersonPerson[j].parentId != this.stepMotherId)) {
               var elemetToDelete = GlobalConstants.relPersonPerson[j];
               GlobalConstants.relPersonPerson.splice(j-1,1);  
-              this._dbconnect.deleteRelPersonPerson(elemetToDelete).subscribe((data: RelPersonPerson) => {
+              this._dbconnect.deleteRelPersonPerson(elemetToDelete).subscribe((data: RelParentChild) => {
                 
               }, error => {
                 console.log("Error: ", GlobalConstants.relPersonPerson[j], " konnte nicht gelöscht werden.")
@@ -279,7 +279,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.fatherId,
             childId: this.selected.id,
             real: true
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
@@ -293,7 +293,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.motherId,
             childId: this.selected.id,
             real: true
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
@@ -307,7 +307,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.stepFatherId,
             childId: this.selected.id,
             real: false
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
             GlobalConstants.relPersonPerson.push(data);
           }, error => {
@@ -321,7 +321,7 @@ export class EditorPersonComponent implements OnInit {
             parentId: +this.stepMotherId,
             childId: this.selected.id,
             real: false
-          }).subscribe((data: RelPersonPerson) => {
+          }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
             GlobalConstants.relPersonPerson.push(data);
           }, error => {

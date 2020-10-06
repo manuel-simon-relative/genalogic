@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angul
 import { GlobalConstants } from '../../../_service/globalconstants.service'
 import { Person } from '../../../_interface/person'
 import { DbConnectService } from '../../../_service/dbconnect.service';
-import { RelPersonPerson } from '../../../_interface/rel-person-person';
+import { RelParentChild } from '../../../_interface/rel-person-person';
 import { RelEventPerson } from '../../../_interface/rel-event-person';
 
 @Component({
@@ -179,7 +179,7 @@ public isSort: Boolean = false;
         var relPersonPersonToDelete = GlobalConstants.relPersonPerson[r1];
         console.log("Element gefunden zum löschen")
         GlobalConstants.relPersonPerson.splice(r1,1)
-        this._dbconnect.deleteRelPersonPerson(relPersonPersonToDelete).subscribe((data: RelPersonPerson) => {
+        this._dbconnect.deleteRelPersonPerson(relPersonPersonToDelete).subscribe((data: RelParentChild) => {
                 
         }, error => {
           console.log("Error: ", relPersonPersonToDelete, " konnte nicht gelöscht werden.")

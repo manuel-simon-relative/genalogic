@@ -4,7 +4,7 @@ import { DbConnectService } from './_service/dbconnect.service';
 import { Subscription } from 'rxjs';
 import { Person } from './_interface/person';
 import { Event } from './_interface/event';
-import { RelPersonPerson } from './_interface/rel-person-person';
+import { RelParentChild } from './_interface/rel-person-person';
 import { RelEventPerson } from './_interface/rel-event-person';
 
 
@@ -79,7 +79,7 @@ export class AppComponent implements OnInit{
     })
     //RelPersonPerson laden
     GlobalConstants.relPersonPerson = [];
-    this._dbconnect.getRelPersonPerson().subscribe((data: RelPersonPerson[]) => {
+    this._dbconnect.getRelPersonPerson().subscribe((data: RelParentChild[]) => {
       GlobalConstants.relPersonPerson = data;
       this.loadRelPersonPerson = true;
     }, error => {

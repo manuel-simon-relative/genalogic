@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Person } from '../_interface/person';
 import { Event } from '../_interface/event';
-import { RelPersonPerson } from '../_interface/rel-person-person';
+import { RelParentChild } from '../_interface/rel-person-person';
 import { RelEventPerson } from '../_interface/rel-event-person';
 
 
@@ -40,13 +40,13 @@ export class DbConnectService {
   }
 
   //Get Person
-  public getRelPersonPerson(): Observable<RelPersonPerson[]> {
+  public getRelPersonPerson(): Observable<RelParentChild[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }
-    return this._http.get<RelPersonPerson[]>(`${this.serverUrl}/RelPersonPerson`, httpOptions);
+    return this._http.get<RelParentChild[]>(`${this.serverUrl}/RelPersonPerson`, httpOptions);
   }
 
   //Get Person
@@ -79,13 +79,13 @@ export class DbConnectService {
     return this._http.post<Event>(`${this.serverUrl}/Event`, object, httpOptions);
   }
   //Post RelPersonPerson
-  public postRelPersonPerson(object: RelPersonPerson): Observable<RelPersonPerson> {
+  public postRelPersonPerson(object: RelParentChild): Observable<RelParentChild> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this._http.post<RelPersonPerson>(`${this.serverUrl}/RelPersonPerson`, object, httpOptions);
+    return this._http.post<RelParentChild>(`${this.serverUrl}/RelPersonPerson`, object, httpOptions);
   }
   //Post RelEventPerson
   public postRelEventPerson(object: RelEventPerson): Observable<RelEventPerson> {
@@ -114,13 +114,13 @@ export class DbConnectService {
     }
       return this._http.delete<Event>(`${this.serverUrl}/Event/${object.id}`, httpOptions);
   }
-  public deleteRelPersonPerson(object: RelPersonPerson) : Observable<RelPersonPerson> {
+  public deleteRelPersonPerson(object: RelParentChild) : Observable<RelParentChild> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }
-      return this._http.delete<RelPersonPerson>(`${this.serverUrl}/RelPersonPerson/${object.id}`, httpOptions);
+      return this._http.delete<RelParentChild>(`${this.serverUrl}/RelPersonPerson/${object.id}`, httpOptions);
   }
   public deleteRelEventPerson(object: RelEventPerson) : Observable<RelEventPerson> {
     const httpOptions = {

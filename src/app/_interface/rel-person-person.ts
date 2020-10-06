@@ -1,4 +1,4 @@
-export interface RelPersonPerson {
+export interface RelParentChild {
     id : number;
     parentId: number;
     childId: number;
