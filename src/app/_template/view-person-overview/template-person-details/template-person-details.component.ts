@@ -12,6 +12,7 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
   @Output('changeSelectedPerson') showNewPersonEvent: EventEmitter<number> = new EventEmitter<number>();
   public gebDateString: string = ""
   public sterbDateString: string = ""
+  public haspartner : Boolean = false
 
   constructor() {
     
@@ -33,7 +34,16 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
         this.person$.imageSrc = "../../../assets/pics/jpg/placeholderWoman.jpg";
       }
     }
-   }
+    if (this.person$.partnerId == 0)  {
+      this.haspartner = false
+      console.log(this.haspartner)
+    } else {
+      this.haspartner = true
+      console.log(this.haspartner)
+    }
+  }
+
+
 
   ngOnInit() {
     
@@ -106,7 +116,8 @@ export class TemplatePersonDetailsComponent implements OnInit, OnChanges {
     return datestring
   }
 
-  onClickPartner() {
+  onClickPartner(partnername) {
+    console.log(partnername)
     if (this.person$.partnerId != 0) {
       this.showNewPersonEvent.emit(this.person$.partnerId);
     }

@@ -59,14 +59,6 @@ export class EditorEventComponent implements OnInit {
         }
       }
     }
-    console.log('Verfügbar: ',this.availablePersons)
-    console.log('gewählt: ',this.choosedPersons)
-    console.log('Alle: ',GlobalConstants.personList)
-    
-
-    
-
-    console.log(this.selected)
 
 }
 
@@ -87,8 +79,6 @@ onClickDeletePersonBatch(id:number) {
       this.choosedPersons.splice(i,1);
     }
   }
-  console.log('Verfügbar: ',this.availablePersons)
-  console.log('gewählt: ',this.choosedPersons)
 }
 
 onClickAbortButton() {
@@ -160,5 +150,12 @@ onClickSaveButton() {
   this.closePersonEditorEvent.emit('save');
 
 } //of onClickSaveButton
+
+onChangeDate($event){
+  console.log($event)
+  console.log(this.selected)
+
+
+}
 
 }

@@ -45,25 +45,26 @@
       "nachname": "Richter",
       "male": false,
       "partnerId": "11",
+      "imageSrc": "../../../assets/data/pics/p04.jpeg",
       "gDay": 8,
       "gMonth": 8,
       "gYear": 1967,
       "gebName": "Odrich",
       "partner": "Jan Richter",
-      "imageSrc": "../../../assets/data/pics/p04.jpeg",
       "married": true
     },
     {
       "id": 5,
       "vorname": "Michael",
       "nachname": "Simon",
+      "male": true,
       "gDay": 5,
       "gMonth": 2,
       "gYear": 1968,
-      "imageSrc": "../../../assets/data/pics/p05.jpeg",
+      "partnerId": 0,
       "partner": "Yvonne Simon",
-      "married": true,
-      "male": true
+      "imageSrc": "../../../assets/data/pics/p05.jpeg",
+      "married": true
     },
     {
       "id": 6,
@@ -84,25 +85,25 @@
       "nachname": "Heinrich",
       "male": false,
       "partnerId": "10",
+      "imageSrc": "../../../assets/data/pics/p07.jpeg",
+      "partner": "Konstantin Decker",
       "gDay": 5,
       "gMonth": 7,
       "gYear": 1998,
-      "partner": "Konstantin Decker",
-      "imageSrc": "../../../assets/data/pics/p07.jpeg",
       "married": false
     },
     {
       "id": 8,
       "vorname": "Luisa",
       "nachname": "Heinrich",
+      "male": false,
+      "partnerId": null,
+      "imageSrc": "../../../assets/data/pics/p08.jpeg",
+      "partner": "",
       "gDay": 13,
       "gMonth": 11,
       "gYear": 1993,
-      "imageSrc": "../../../assets/data/pics/p08.jpeg",
-      "partner": "",
-      "partnerId": null,
-      "married": false,
-      "male": false
+      "married": false
     },
     {
       "id": 9,
@@ -147,52 +148,270 @@
       "id": 12,
       "vorname": "Jonas",
       "nachname": "Simon",
+      "male": true,
       "gDay": 27,
       "gMonth": 3,
       "gYear": 1990,
-      "imageSrc": "../../../assets/data/pics/p12.jpeg",
       "partner": "",
-      "married": false,
-      "male": true
+      "imageSrc": "../../../assets/data/pics/p12.jpeg",
+      "married": false
     },
     {
       "id": 13,
       "vorname": "Daniela",
       "nachname": "Simon",
+      "male": false,
+      "partnerId": 1,
+      "imageSrc": "../../../assets/data/pics/p13.jpeg",
       "gDay": 19,
       "gMonth": 9,
       "gYear": 1987,
-      "imageSrc": "../../../assets/data/pics/p13.jpeg",
+      "gebName": "Kerber",
       "partner": "Manuel Simon",
-      "partnerId": 1,
-      "married": true,
-      "male": false,
-      "gebName": "Kerber"
+      "married": true
     },
     {
       "id": 14,
       "vorname": "Maximilian",
       "nachname": "Nicolaus",
+      "male": true,
+      "imageSrc": "../../../assets/data/pics/p14.jpeg",
+      "partner": "",
       "gDay": 16,
       "gMonth": 8,
       "gYear": 2002,
-      "imageSrc": "../../../assets/data/pics/p14.jpeg",
-      "partner": "",
-      "married": false,
-      "male": true
+      "married": false
     },
     {
       "id": 15,
       "vorname": "Hubert",
       "nachname": "Odrich",
       "male": true,
-      "partnerId": 0,
+      "partnerId": "20",
+      "imageSrc": "../../../assets/pics/jpg/placeholderMan.jpg",
+      "partner": "Christine Odrich",
       "gDay": 2,
       "gMonth": 3,
       "gYear": 1935,
       "sDay": 20,
       "sMonth": 4,
-      "sYear": 1986
+      "sYear": 1986,
+      "married": true
+    },
+    {
+      "id": 16,
+      "vorname": "Udo",
+      "nachname": "Kerber",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "gDay": "25",
+      "gMonth": "12",
+      "gYear": "1970",
+      "partner": "Elke Kerber"
+    },
+    {
+      "id": 17,
+      "vorname": "Manfred",
+      "nachname": "Simon",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": "Edith Simon",
+      "married": true
+    },
+    {
+      "id": 18,
+      "vorname": "Elke",
+      "nachname": "Kerber",
+      "male": false,
+      "partnerId": "16",
+      "imageSrc": "",
+      "gDay": "2",
+      "gMonth": "2",
+      "gYear": "1964",
+      "partner": "Udo Kerber",
+      "married": true
+    },
+    {
+      "id": 19,
+      "vorname": "Marion",
+      "nachname": "von Ramin",
+      "male": false,
+      "partnerId": 0,
+      "partner": "",
+      "imageSrc": "../../../assets/pics/jpg/placeholderWoman.jpg",
+      "gDay": "14",
+      "gMonth": "3",
+      "gYear": "1969",
+      "gebName": "Odrich"
+    },
+    {
+      "id": 20,
+      "vorname": "Christine",
+      "nachname": "Odrich",
+      "male": false,
+      "partnerId": "15",
+      "imageSrc": "",
+      "partner": "Hubert Odrich",
+      "married": true
+    },
+    {
+      "id": 21,
+      "vorname": "Lucas",
+      "nachname": "von Ramin",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "../../../assets/pics/jpg/placeholderMan.jpg",
+      "gDay": "2",
+      "gMonth": "2",
+      "gYear": "1989",
+      "gebName": "Odrich",
+      "partner": "Claudia Fischer"
+    },
+    {
+      "id": 22,
+      "vorname": "Leopold",
+      "nachname": "von Ramin",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 23,
+      "vorname": "Ilse",
+      "nachname": "Odrich",
+      "male": false,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": "",
+      "gebName": "Bellmann"
+    },
+    {
+      "id": 24,
+      "vorname": "Kurt",
+      "nachname": "Bellmann",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 25,
+      "vorname": "Gudrun",
+      "nachname": "Popp",
+      "male": false,
+      "partnerId": "32",
+      "imageSrc": "../../../assets/pics/jpg/placeholderWoman.jpg",
+      "partner": "Siegfried Popp",
+      "gebName": "Bellmann",
+      "married": true
+    },
+    {
+      "id": 26,
+      "vorname": "Tilmann",
+      "nachname": "Popp",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "../../../assets/pics/jpg/placeholderMan.jpg",
+      "partner": ""
+    },
+    {
+      "id": 27,
+      "vorname": "Rüdiger",
+      "nachname": "Popp",
+      "male": true,
+      "partnerId": "33",
+      "imageSrc": "../../../assets/pics/jpg/placeholderMan.jpg",
+      "partner": "Britta Popp",
+      "married": true
+    },
+    {
+      "id": 28,
+      "vorname": "Dagmar",
+      "nachname": "Popp",
+      "male": false,
+      "partnerId": 0,
+      "imageSrc": "../../../assets/pics/jpg/placeholderWoman.jpg",
+      "partner": ""
+    },
+    {
+      "id": 29,
+      "vorname": "Anna",
+      "nachname": "Popp",
+      "male": false,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 30,
+      "vorname": "Ludwig",
+      "nachname": "Popp",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 31,
+      "vorname": "Aaron",
+      "nachname": "Popp",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 32,
+      "vorname": "Siegfried",
+      "nachname": "Popp",
+      "male": true,
+      "partnerId": "25",
+      "imageSrc": "",
+      "partner": "Gudrun Popp",
+      "married": true
+    },
+    {
+      "id": 33,
+      "vorname": "Britta",
+      "nachname": "Popp",
+      "male": false,
+      "partnerId": "27",
+      "imageSrc": "",
+      "partner": "Rüdiger Popp",
+      "married": true
+    },
+    {
+      "id": 34,
+      "vorname": "Janne",
+      "nachname": "Popp",
+      "male": false,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 35,
+      "vorname": "Moritz",
+      "nachname": "Popp",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
+    },
+    {
+      "id": 36,
+      "vorname": "Stefan",
+      "nachname": "Nicolaus",
+      "male": true,
+      "partnerId": 0,
+      "imageSrc": "../../../assets/pics/jpg/placeholderMan.jpg",
+      "partner": "",
+      "gDay": "5",
+      "gMonth": "4",
+      "gYear": "1960"
     }
   ],
   "relPersonPerson": [
@@ -272,6 +491,174 @@
       "id": 22,
       "parentId": 15,
       "childId": 4,
+      "real": true
+    },
+    {
+      "id": 23,
+      "parentId": 16,
+      "childId": 13,
+      "real": false
+    },
+    {
+      "id": 24,
+      "parentId": 5,
+      "childId": 12,
+      "real": true
+    },
+    {
+      "id": 25,
+      "parentId": 17,
+      "childId": 5,
+      "real": true
+    },
+    {
+      "id": 26,
+      "parentId": 18,
+      "childId": 13,
+      "real": true
+    },
+    {
+      "id": 27,
+      "parentId": 15,
+      "childId": 19,
+      "real": true
+    },
+    {
+      "id": 28,
+      "parentId": 20,
+      "childId": 4,
+      "real": true
+    },
+    {
+      "id": 29,
+      "parentId": 20,
+      "childId": 19,
+      "real": true
+    },
+    {
+      "id": 30,
+      "parentId": 19,
+      "childId": 21,
+      "real": true
+    },
+    {
+      "id": 31,
+      "parentId": 19,
+      "childId": 22,
+      "real": true
+    },
+    {
+      "id": 32,
+      "parentId": 23,
+      "childId": 15,
+      "real": true
+    },
+    {
+      "id": 33,
+      "parentId": 24,
+      "childId": 23,
+      "real": true
+    },
+    {
+      "id": 34,
+      "parentId": 23,
+      "childId": 25,
+      "real": true
+    },
+    {
+      "id": 35,
+      "parentId": 25,
+      "childId": 26,
+      "real": true
+    },
+    {
+      "id": 36,
+      "parentId": 25,
+      "childId": 27,
+      "real": true
+    },
+    {
+      "id": 37,
+      "parentId": 25,
+      "childId": 28,
+      "real": true
+    },
+    {
+      "id": 38,
+      "parentId": 26,
+      "childId": 29,
+      "real": false
+    },
+    {
+      "id": 39,
+      "parentId": 26,
+      "childId": 30,
+      "real": false
+    },
+    {
+      "id": 40,
+      "parentId": 26,
+      "childId": 31,
+      "real": true
+    },
+    {
+      "id": 41,
+      "parentId": 32,
+      "childId": 26,
+      "real": true
+    },
+    {
+      "id": 42,
+      "parentId": 32,
+      "childId": 27,
+      "real": true
+    },
+    {
+      "id": 43,
+      "parentId": 32,
+      "childId": 28,
+      "real": true
+    },
+    {
+      "id": 44,
+      "parentId": 27,
+      "childId": 34,
+      "real": true
+    },
+    {
+      "id": 45,
+      "parentId": 33,
+      "childId": 34,
+      "real": true
+    },
+    {
+      "id": 46,
+      "parentId": 27,
+      "childId": 35,
+      "real": true
+    },
+    {
+      "id": 47,
+      "parentId": 33,
+      "childId": 35,
+      "real": true
+    },
+    {
+      "id": 48,
+      "parentId": 36,
+      "childId": 14,
+      "real": true
+    },
+    {
+      "id": 49,
+      "parentId": 36,
+      "childId": 7,
+      "real": true
+    },
+    {
+      "id": 50,
+      "parentId": 36,
+      "childId": 8,
       "real": true
     }
   ],

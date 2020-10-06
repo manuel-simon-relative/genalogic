@@ -16,8 +16,8 @@
           <span *ngIf="person$.adress2">{{person$.adress2}}</span>   
         </div>
         <div class="partner">
-            <span class="keyword" *ngIf="person$.married && person$.partner != ''">verheiratet </span><span *ngIf="person$.married && person$.partner != ''" (click)="onClickPartner()">mit {{person$.partner}}</span>
-            <span class="keyword" *ngIf="!person$.married && person$.partner != ''">zusammen  </span><span *ngIf="!person$.married && person$.partner != ''" (click)="onClickPartner()">mit {{person$.partner}}</span>
+            <span class="keyword" *ngIf="person$.married && person$.partner != ''">verheiratet mit</span><span class="partnername" [ngClass]="{'clickable' : haspartner}" *ngIf="person$.married && person$.partner != ''" (click)="onClickPartner(person$.partner)"> {{person$.partner}}</span>
+            <span class="keyword" *ngIf="!person$.married && person$.partner != ''">zusammen  mit</span><span class="partnername" [ngClass]="{'clickable' : haspartner}" *ngIf="!person$.married && person$.partner != ''" (click)="onClickPartner(person$.partner)"> {{person$.partner}}</span>
         </div>
         </div>
     </div>

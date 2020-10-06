@@ -40,7 +40,10 @@ export class EditorPersonComponent implements OnInit {
       vorname: "",
       nachname: "",
       male: false,
-      partnerId : 0
+      partnerId : 0,
+      imageSrc: "",
+      partner: ""
+
     }
     //prüfen ob existierende ID übergeben wurde und verschiedene Auswahlisten erzeugen
       for (var person$ of GlobalConstants.personList) {
