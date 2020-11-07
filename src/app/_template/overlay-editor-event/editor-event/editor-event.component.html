@@ -24,7 +24,7 @@
                     <button (click)="onClickAddPersonButton(this.choose)">Person hinzufügen</button>
                 </div>
                 <div class="choosed-persons">
-                    <div class="personbatch" *ngFor="let p of this.choosedPersons" (click)="onClickDeletePersonBatch(p.id)">{{p.vorname}} {{p.nachname}}    <span>x</span></div>
+                    <div class="personbatch mat-elevation-z6" *ngFor="let p of this.choosedPersons" (click)="onClickDeletePersonBatch(p.id)">{{p.vorname}} {{p.nachname}}    <span>x</span></div>
                 </div>
             </div>
             <div class="footer-buttons">
