@@ -148,7 +148,7 @@ export class GlobalConstants {
 
     ];
 
-    public static relPersonPerson: Array<RelParentChild> = [{
+    public static relParentChild: Array<RelParentChild> = [{
       id: 1,
       parentId: 1,
       childId: 2,

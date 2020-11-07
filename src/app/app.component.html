@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +7,40 @@
   <title>genalogic</title>
 </head>
 <body>
-  <div class="loading" *ngIf="!this.loadPerson || !this.loadEvent || !this.loadRelPersonPerson || !this.loadRelEventPerson">
+  <div class="loading" *ngIf="!this.loadPerson || !this.loadEvent || !this.loadRelParentChild || !this.loadRelEventPerson">
     <div class="loadingScreen mat-elevation-z5">
       <h1>Gena<span>logic</span></h1>
       <div class="infos">
         <p>Daten werden geladen...</p>
         <div class="loaded-data" *ngIf="this.loadPerson">Personen geladen...</div>
         <div class="loaded-data" *ngIf="this.loadEvent">Lebensereignisse geladen...</div>
-        <div class="loaded-data" *ngIf="this.loadRelPersonPerson">Personenrelationen geladen...</div>
+        <div class="loaded-data" *ngIf="this.loadRelParentChild">Personenrelationen geladen...</div>
         <div class="loaded-data" *ngIf="this.loadRelEventPerson">Ereignisrelationen geladen...</div>
-        <div class="error" *ngIf="this.errorPerson">Fehler beim Laden der Personendaten vom Server...</div>
-        <div class="error" *ngIf="this.errorEvent">Fehler beim Laden der Ereignisdaten vom Server...</div>
-        <div class="error" *ngIf="this.errorRelPersonPerson">Fehler beim Laden der Personenrelationendaten vom Server...</div>
-        <div class="error" *ngIf="this.errorRelEventPerson">Fehler beim Laden der Eventrelationendaten vom Server...</div>
+        <div class="error" *ngIf="this.errorOnLoadPersonFromDB">Fehler beim Laden der Personendaten vom Server...</div>
+        <div class="error" *ngIf="this.errorOnLoadEventFromDB">Fehler beim Laden der Ereignisdaten vom Server...</div>
+        <div class="error" *ngIf="this.errorOnLoadRelParentChildFromDB">Fehler beim Laden der Personenrelationendaten vom Server...</div>
+        <div class="error" *ngIf="this.errorOnLoadRelEventPersonFromDB">Fehler beim Laden der Eventrelationendaten vom Server...</div>
       </div>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
   </div>
-  <app-loginscreen *ngIf="this.loadPerson && this.loadEvent && this.loadRelPersonPerson && this.loadRelEventPerson && !this.loggedIn" (login)="onLogin($event)"></app-loginscreen>
+  <app-loginscreen *ngIf="this.loadPerson && this.loadEvent && this.loadRelParentChild && this.loadRelEventPerson && !this.userIsLoggedIn" (login)="onLogin($event)"></app-loginscreen>
   <div>
-    <div class="site" [class.blur]="this.showOverlay != 0" *ngIf="this.loadPerson && this.loadEvent && this.loadRelPersonPerson && this.loadRelEventPerson && this.loggedIn">
+    <div class="site" [class.blur]="this.showBlurredOverlay != 0" *ngIf="this.loadPerson && this.loadEvent && this.loadRelParentChild && this.loadRelEventPerson && this.userIsLoggedIn">
       <div class="title">
-        <app-template-header [selectedMenu]="this.selectedMenu" (changeMenu)=onChangeMenu($event)></app-template-header>
+        <app-template-header [selectedMenu]="this.selectedMenuInTopBar" (changeMenu)=onChangeMenu($event)></app-template-header>
       </div>
       <div class="content">
-        <app-view-person-overview *ngIf="this.selectedMenu == 1" (changeSelectedPerson)="onChangeSelectedPerson($event)"  [(selectedPersonId)]="this.selectedPersonId"></app-view-person-overview>
-        <app-view-person-list [searchText]="this.searchTextPerson" *ngIf="this.selectedMenu == 2" (changeSearchText)=onChangeSearchTextPerson($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event)></app-view-person-list>
-        <app-view-event-list [searchTextEvent]="this.searchTextEvent"  *ngIf="this.selectedMenu == 3" (editEvent)="onEditEvent($event)" (changeSearchText)=onChangeSearchTextEvent($event)></app-view-event-list>
+        <app-view-person-overview *ngIf="this.selectedMenuInTopBar == 1" (changeSelectedPerson)="onChangeSelectedPerson($event)"  [(selectedPersonId)]="this.selectedIdForPersonOverview"></app-view-person-overview>
+        <app-view-person-list [searchText]="this.searchTextPerson" *ngIf="this.selectedMenuInTopBar == 2" (changeSearchText)=onChangeSearchTextPerson($event) (showPerson)=onShowPerson($event) (editPerson)=onEditPerson($event)></app-view-person-list>
+        <app-view-event-list [searchTextEvent]="this.searchTextEvent"  *ngIf="this.selectedMenuInTopBar == 3" (editEvent)="onEditEvent($event)" (changeSearchText)=onChangeSearchTextEvent($event)></app-view-event-list>
       </div>
       <div class="credits">
         <app-template-footer></app-template-footer>
       </div>
     </div>
-    <app-editor-person *ngIf="this.showOverlay == 1" [personId]="this.editPersonId" (closePersonEditor)="onClosePersonEditor($event)"></app-editor-person>
-    <app-editor-event *ngIf="this.showOverlay == 2" [eventId]="this.editEventId" (closePersonEditor)="onCloseEventEditor($event)"></app-editor-event>
+    <app-editor-person *ngIf="this.showOverlay == 1" [personId]="this.selectedIdForPersonEditor" (closePersonEditor)="onClosePersonEditor($event)"></app-editor-person>
+    <app-editor-event *ngIf="this.showOverlay == 2" [eventId]="this.selectedIdForEventEditor" (closePersonEditor)="onCloseEventEditor($event)"></app-editor-event>
   </div>
 </body>
 </html>

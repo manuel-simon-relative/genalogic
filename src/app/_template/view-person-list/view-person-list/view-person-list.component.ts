@@ -174,11 +174,11 @@ public isSort: Boolean = false;
     }
     //löschen aller Relationen
     //PersonRelationen
-    for (var r1 = 0;r1 < GlobalConstants.relPersonPerson.length;r1++) {
-      if  ((GlobalConstants.relPersonPerson[r1].parentId == personId) || (GlobalConstants.relPersonPerson[r1].childId == personId)) {
-        var relPersonPersonToDelete = GlobalConstants.relPersonPerson[r1];
+    for (var r1 = 0;r1 < GlobalConstants.relParentChild.length;r1++) {
+      if  ((GlobalConstants.relParentChild[r1].parentId == personId) || (GlobalConstants.relParentChild[r1].childId == personId)) {
+        var relPersonPersonToDelete = GlobalConstants.relParentChild[r1];
         console.log("Element gefunden zum löschen")
-        GlobalConstants.relPersonPerson.splice(r1,1)
+        GlobalConstants.relParentChild.splice(r1,1)
         this._dbconnect.deleteRelPersonPerson(relPersonPersonToDelete).subscribe((data: RelParentChild) => {
                 
         }, error => {

@@ -45,7 +45,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     
 
     //Kinder finden
-    for (var i of GlobalConstants.relPersonPerson) {
+    for (var i of GlobalConstants.relParentChild) {
       if (this.selectedPersonId == i.parentId) {
         for (var forChild of GlobalConstants.personList) {
           if (i.childId == forChild.id) {
@@ -59,7 +59,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     var foundFather:Boolean = false;
     var foundMother:Boolean = false;
 
-    for (var i of GlobalConstants.relPersonPerson) {
+    for (var i of GlobalConstants.relParentChild) {
       if (this.selectedPersonId == i.childId && i.real) {
         for (var forFather of GlobalConstants.personList) {
           if (i.parentId == forFather.id && forFather.male) {
@@ -69,7 +69,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         }
       }
     }
-    for (var i of GlobalConstants.relPersonPerson) {
+    for (var i of GlobalConstants.relParentChild) {
       if (this.selectedPersonId == i.childId && i.real) {
         for (var forMother of GlobalConstants.personList) {
           if (i.parentId == forMother.id && !forMother.male) {
@@ -80,7 +80,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
       }
     }
     if (!foundFather) {
-      for (var i of GlobalConstants.relPersonPerson) {
+      for (var i of GlobalConstants.relParentChild) {
         if (this.selectedPersonId == i.childId) {
           for (var forFather of GlobalConstants.personList) {
             if (i.parentId == forFather.id && forFather.male) {
@@ -93,7 +93,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     }
 
     if (!foundMother) {
-      for (var i of GlobalConstants.relPersonPerson) {
+      for (var i of GlobalConstants.relParentChild) {
         if (this.selectedPersonId == i.childId) {
           for (var forMother of GlobalConstants.personList) {
             if (i.parentId == forMother.id && !forMother.male) {
