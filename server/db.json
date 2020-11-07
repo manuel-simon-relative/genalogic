@@ -412,6 +412,15 @@
       "gDay": "5",
       "gMonth": "4",
       "gYear": "1960"
+    },
+    {
+      "id": 37,
+      "vorname": "Kati",
+      "nachname": "Simon",
+      "male": false,
+      "partnerId": 0,
+      "imageSrc": "",
+      "partner": ""
     }
   ],
   "relPersonPerson": [
@@ -659,6 +668,12 @@
       "id": 50,
       "parentId": 36,
       "childId": 8,
+      "real": true
+    },
+    {
+      "id": 51,
+      "parentId": 17,
+      "childId": 37,
       "real": true
     }
   ],
