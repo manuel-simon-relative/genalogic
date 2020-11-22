@@ -37,8 +37,8 @@ export class EditorPersonComponent implements OnInit {
     //selectedPerson initialisieren
     this.selected = {
       id: 0,
-      vorname: "",
-      nachname: "",
+      name: "",
+      lastName: "",
       male: false,
       partnerId : 0,
       imageSrc: "",
@@ -49,15 +49,15 @@ export class EditorPersonComponent implements OnInit {
       for (var person$ of GlobalConstants.personList) {
         if ( person$.id == this.personId) {
           this.selected.id = person$.id;
-          this.selected.vorname = person$.vorname;
-          this.selected.nachname = person$.nachname;
-          this.selected.gDay = person$.gDay;
-          this.selected.gMonth = person$.gMonth;
-          this.selected.gYear = person$.gYear;
-          this.selected.sDay = person$.sDay;
-          this.selected.sMonth = person$.sMonth;
-          this.selected.sYear = person$.sYear;
-          this.selected.gebName = person$.gebName;
+          this.selected.name = person$.name;
+          this.selected.lastName = person$.lastName;
+          this.selected.birthDay = person$.birthDay;
+          this.selected.birthMonth = person$.birthMonth;
+          this.selected.birthYear = person$.birthYear;
+          this.selected.deathDay = person$.deathDay;
+          this.selected.deathMonth = person$.deathMonth;
+          this.selected.deathYear = person$.deathYear;
+          this.selected.birthName = person$.birthName;
           this.selected.male = person$.male;
           this.selected.partner = person$.partner;
           this.selected.partnerId = person$.partnerId;
@@ -76,7 +76,7 @@ export class EditorPersonComponent implements OnInit {
         }
       }
       //bekannte Eltern finden und setzen
-      for (var rel of GlobalConstants.relPersonPerson) {
+      for (var rel of GlobalConstants.relParentChild) {
         if (this.personId == rel.childId) {
           for (var parent of GlobalConstants.personList) {
             if (parent.id == rel.parentId) {
@@ -101,34 +101,34 @@ export class EditorPersonComponent implements OnInit {
 
   validateForm():Boolean {
     var result:Boolean = true;
-    if (this.selected.vorname == "") {
+    if (this.selected.name == "") {
       result = false;
       console.log('kein Vorname gesetzt');
     }
-    if (this.selected.nachname == "") {
+    if (this.selected.lastName == "") {
       result = false;
       console.log('kein Nachname gesetzt');
     }
-    if (this.selected.gDay != undefined) {
-      if (this.selected.gMonth == undefined || this.selected.gYear == undefined) {
+    if (this.selected.birthDay != undefined) {
+      if (this.selected.birthMonth == undefined || this.selected.birthYear == undefined) {
         result = false;
         console.log('Tag gesetzt, aber Monat und/oder Jahr nicht')
       }
     }
-    if (this.selected.gMonth != undefined) {
-      if (this.selected.gYear == undefined) {
+    if (this.selected.birthMonth != undefined) {
+      if (this.selected.birthYear == undefined) {
         result = false;
         console.log('Monat gesetzt, aber kein Jahr')
       }
     }
-    if (this.selected.sDay != undefined) {
-      if (this.selected.sMonth == undefined || this.selected.sYear == undefined) {
+    if (this.selected.deathDay != undefined) {
+      if (this.selected.deathMonth == undefined || this.selected.deathYear == undefined) {
         result = false;
         console.log('Tag gesetzt, aber Monat und/oder Jahr nicht')
       }
     }
-    if (this.selected.sMonth != undefined) {
-      if (this.selected.sYear == undefined) {
+    if (this.selected.deathMonth != undefined) {
+      if (this.selected.deathYear == undefined) {
         result = false;
         console.log('Monat gesetzt, aber kein Jahr')
       }
@@ -159,7 +159,7 @@ export class EditorPersonComponent implements OnInit {
         })
         // neue RelID finden
         var newRelId:number = 0;
-        for (var r of GlobalConstants.relPersonPerson) {
+        for (var r of GlobalConstants.relParentChild) {
           if (r.id > newRelId) {newRelId = r.id};
         }
         newRelId = newRelId+1;
@@ -170,7 +170,7 @@ export class EditorPersonComponent implements OnInit {
             childId: newPersonId,
             real: true
           }).subscribe((data: RelParentChild) => {
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -183,7 +183,7 @@ export class EditorPersonComponent implements OnInit {
             childId: newPersonId,
             real: true
           }).subscribe((data: RelParentChild) => {
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -196,7 +196,7 @@ export class EditorPersonComponent implements OnInit {
             childId: newPersonId,
             real: false
           }).subscribe((data: RelParentChild) => {
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -209,7 +209,7 @@ export class EditorPersonComponent implements OnInit {
             childId: newPersonId,
             real: false
           }).subscribe((data: RelParentChild) => {
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -235,32 +235,32 @@ export class EditorPersonComponent implements OnInit {
         var stepFatherExist:Boolean = false;
         var stepMotherExist:Boolean = false;
         //prüfen ob schon einträge existieren
-        for (var j=0; j<GlobalConstants.relPersonPerson.length;j++) {
-          if (GlobalConstants.relPersonPerson[j].childId == this.selected.id) {
-            if ((GlobalConstants.relPersonPerson[j].parentId == this.fatherId) && GlobalConstants.relPersonPerson[j].real){
+        for (var j=0; j<GlobalConstants.relParentChild.length;j++) {
+          if (GlobalConstants.relParentChild[j].childId == this.selected.id) {
+            if ((GlobalConstants.relParentChild[j].parentId == this.fatherId) && GlobalConstants.relParentChild[j].real){
               //Vaterrelation schon bekannt
               fatherExist = true;
             }
-            if ((GlobalConstants.relPersonPerson[j].parentId == this.motherId) && GlobalConstants.relPersonPerson[j].real){
+            if ((GlobalConstants.relParentChild[j].parentId == this.motherId) && GlobalConstants.relParentChild[j].real){
               //Mutterrelation schon bekannt
               motherExist = true;
             }
-            if ((GlobalConstants.relPersonPerson[j].parentId == this.stepFatherId) && !GlobalConstants.relPersonPerson[j].real){
+            if ((GlobalConstants.relParentChild[j].parentId == this.stepFatherId) && !GlobalConstants.relParentChild[j].real){
               //Stiefvaterrelation schon bekannt
               stepFatherExist = true;
             }
-            if ((GlobalConstants.relPersonPerson[j].parentId == this.stepMotherId) && !GlobalConstants.relPersonPerson[j].real){
+            if ((GlobalConstants.relParentChild[j].parentId == this.stepMotherId) && !GlobalConstants.relParentChild[j].real){
               //Stiefmutterrelation schon bekannt
               stepMotherExist = true;
             }
             //prüfen nach vorhandenen aber alten Einträgen und diese löschem
-            if ((GlobalConstants.relPersonPerson[j].parentId != this.fatherId) && (GlobalConstants.relPersonPerson[j].parentId != this.motherId) &&(GlobalConstants.relPersonPerson[j].parentId != this.stepFatherId) && (GlobalConstants.relPersonPerson[j].parentId != this.stepMotherId)) {
-              var elemetToDelete = GlobalConstants.relPersonPerson[j];
-              GlobalConstants.relPersonPerson.splice(j-1,1);  
+            if ((GlobalConstants.relParentChild[j].parentId != this.fatherId) && (GlobalConstants.relParentChild[j].parentId != this.motherId) &&(GlobalConstants.relParentChild[j].parentId != this.stepFatherId) && (GlobalConstants.relParentChild[j].parentId != this.stepMotherId)) {
+              var elemetToDelete = GlobalConstants.relParentChild[j];
+              GlobalConstants.relParentChild.splice(j-1,1);  
               this._dbconnect.deleteRelPersonPerson(elemetToDelete).subscribe((data: RelParentChild) => {
                 
               }, error => {
-                console.log("Error: ", GlobalConstants.relPersonPerson[j], " konnte nicht gelöscht werden.")
+                console.log("Error: ", GlobalConstants.relParentChild[j], " konnte nicht gelöscht werden.")
               });
               
               
@@ -269,7 +269,7 @@ export class EditorPersonComponent implements OnInit {
         }
         // neue RelID finden
         var newRelId:number = 0;
-        for (var r of GlobalConstants.relPersonPerson) {
+        for (var r of GlobalConstants.relParentChild) {
           if (r.id > newRelId) {newRelId = r.id};
         }
         newRelId = newRelId+1;
@@ -281,7 +281,7 @@ export class EditorPersonComponent implements OnInit {
             real: true
           }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -295,7 +295,7 @@ export class EditorPersonComponent implements OnInit {
             real: true
           }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -309,7 +309,7 @@ export class EditorPersonComponent implements OnInit {
             real: false
           }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -323,7 +323,7 @@ export class EditorPersonComponent implements OnInit {
             real: false
           }).subscribe((data: RelParentChild) => {
             console.log(`"${data.id}" wurde erstellt.`)
-            GlobalConstants.relPersonPerson.push(data);
+            GlobalConstants.relParentChild.push(data);
           }, error => {
             console.log(`%cERROR: ${error.message}`);
           })
@@ -363,7 +363,7 @@ export class EditorPersonComponent implements OnInit {
     } else {
       for (var i of GlobalConstants.personList) {
         if (i.id == +this.selected.partnerId) {
-          this.selected.partner = i.vorname + " " + i.nachname;
+          this.selected.partner = i.name + " " + i.lastName;
         }
       }
     }

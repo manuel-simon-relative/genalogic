@@ -16,42 +16,45 @@ import { RelEventPerson } from './_interface/rel-event-person';
 export class AppComponent implements OnInit{
   title = 'genalogic';
   public productionMode: Boolean = true;
-  public selectedPersonId: number = 1;
-  public selectedMenu : number = 1; //1:PersonOverview 2:Personlist 3:Eventlist
-  public showOverlay: number = 0; //0:aus; 1:EditorPerson; 2:EditorEvent
-  public editPersonId: number = 0; //für Personeditorübergabe
-  public editEventId: number = 3; //für Eventeditorübergabe
+  
+  public selectedIdForPersonOverview: number = 1; 
+  public selectedIdForPersonEditor: number = 0; //für Personeditorübergabe
+  public selectedIdForEventEditor: number = 3; //für Eventeditorübergabe
+
+  public selectedMenuInTopBar : number = 1; //1:PersonOverview 2:Personlist 3:Eventlist
+  public showBlurredOverlay: number = 0; //0:aus; 1:EditorPerson; 2:EditorEvent
+  
   public searchTextPerson: string = "";
   public searchTextEvent: string = "";
 
   //für Loading
   public loadPerson: Boolean = false;
   public loadEvent: Boolean = false;
-  public loadRelPersonPerson: Boolean = false;
+  public loadRelParentChild: Boolean = false;
   public loadRelEventPerson: Boolean = false;
 
   //für Error
-  public errorPerson: Boolean = false;
-  public errorEvent: Boolean = false;
-  public errorRelPersonPerson: Boolean = false;
-  public errorRelEventPerson: Boolean = false;
+  public errorOnLoadPersonFromDB: Boolean = false;
+  public errorOnLoadEventFromDB: Boolean = false;
+  public errorOnLoadRelParentChildFromDB: Boolean = false;
+  public errorOnLoadRelEventPersonFromDB: Boolean = false;
 
-  public loggedIn: Boolean = false;
+  public userIsLoggedIn: Boolean = false;
 
 
   constructor(
     public _dbconnect : DbConnectService
   ) {
-    this.loadData();
+    this.loadAllDataFromDBInLocalStorage();
   }
 
   ngOnInit() {
     if (this.productionMode) {
-      this.loggedIn = true;
+      this.userIsLoggedIn = true;
     }
   }
 
-  public loadData(): void {
+  public loadAllDataFromDBInLocalStorage(): void {
     //Person laden
     GlobalConstants.personList = [];
     this._dbconnect.getPerson().subscribe((data: Person[]) => {
@@ -60,7 +63,7 @@ export class AppComponent implements OnInit{
       this.loadPerson = true;
     }, error => {
       console.log(error.message);
-      this.errorPerson = true;
+      this.errorOnLoadPersonFromDB = true;
     })
     //Event laden
     GlobalConstants.eventList = [];
@@ -75,16 +78,16 @@ export class AppComponent implements OnInit{
       this.loadEvent = true;
     }, error => {
       console.log(error.message);
-      this.errorEvent = true;
+      this.errorOnLoadEventFromDB = true;
     })
     //RelPersonPerson laden
-    GlobalConstants.relPersonPerson = [];
+    GlobalConstants.relParentChild = [];
     this._dbconnect.getRelPersonPerson().subscribe((data: RelParentChild[]) => {
-      GlobalConstants.relPersonPerson = data;
-      this.loadRelPersonPerson = true;
+      GlobalConstants.relParentChild = data;
+      this.loadRelParentChild = true;
     }, error => {
       console.log(error.message);
-      this.errorRelPersonPerson = true;
+      this.errorOnLoadRelParentChildFromDB = true;
     })
     //RelEventPerson laden
     GlobalConstants.relEventPerson = [];
@@ -93,7 +96,7 @@ export class AppComponent implements OnInit{
       this.loadRelEventPerson = true;
     }, error => {
       console.log(error.message);
-      this.errorRelEventPerson = true;
+      this.errorOnLoadRelEventPersonFromDB = true;
     })
 
 
@@ -102,11 +105,11 @@ export class AppComponent implements OnInit{
   }
 
   public onChangeMenu(selected: number) {
-    this.selectedMenu = selected;
+    this.selectedMenuInTopBar = selected;
   }
 
   public onChangeSelectedPerson(selected: number) {
-    this.selectedPersonId = selected;
+    this.selectedIdForPersonOverview = selected;
   }
   
   public onChangeSearchTextPerson(searchText: string) {
@@ -118,35 +121,36 @@ export class AppComponent implements OnInit{
   }
 
   public onEditPerson(personId: number) {
-    this.editPersonId = personId;
-    this.showOverlay = 1
+    console.log('ich soll Person abändern: ' + personId)
+    this.selectedIdForPersonEditor = personId;
+    this.showBlurredOverlay = 1
   }
 
   public onShowPerson(personId:number) {
-    this.selectedPersonId = personId;
-    this.selectedMenu = 1;
+    this.selectedIdForPersonOverview = personId;
+    this.selectedMenuInTopBar = 1;
   }
   public onClosePersonEditor($event: any) {
     console.log('PersonEditor wird geschlossen');
     console.log($event);
     console.log(GlobalConstants.personList)
-    this.showOverlay = 0;
+    this.showBlurredOverlay = 0;
   }
   public onCloseEventEditor($event: any) {
     console.log('EventEditor wird geschlossen');
     console.log($event);
     
-    this.showOverlay = 0;
+    this.showBlurredOverlay = 0;
   }
 
   public onEditEvent($event: any) {
     console.log($event)
-    this.showOverlay=2
-    this.editEventId = $event;
+    this.showBlurredOverlay=2
+    this.selectedIdForEventEditor = $event;
   }
 
   public onLogin($event: any) {
     console.log($event)
-    this.loggedIn = true
+    this.userIsLoggedIn = true
   }
 }

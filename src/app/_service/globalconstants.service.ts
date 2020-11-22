@@ -14,8 +14,8 @@ export class GlobalConstants {
 
   public static personList: Array<Person> = [{
       id: 1,
-      vorname: "Manuel",
-      nachname: "Simon",
+      name: "Manuel",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p01.jpeg",
       partner: "Daniela Simon",
       married: true,
@@ -26,8 +26,8 @@ export class GlobalConstants {
     },
     {
       id: 2,
-      vorname: "Nathaniel",
-      nachname: "Simon",
+      name: "Nathaniel",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p02.jpeg",
       partner: "",
       married: false,
@@ -35,8 +35,8 @@ export class GlobalConstants {
      },
      {
       id: 3,
-      vorname: "Mathilda",
-      nachname: "Simon",
+      name: "Mathilda",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p03.jpeg",
       partner: "",
       married: false,
@@ -44,18 +44,18 @@ export class GlobalConstants {
      },
      {
       id: 4,
-      vorname: "Stefanie",
-      nachname: "Richter",
+      name: "Stefanie",
+      lastName: "Richter",
       imageSrc: "../../../assets/data/pics/p04.jpeg",
       partner: "Jan Richter",
       married: true,
       male: false,
-      gebName: "Odrich"
+      birthName: "Odrich"
      },
      {
       id: 5,
-      vorname: "Michael",
-      nachname: "Simon",
+      name: "Michael",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p05.jpeg",
       partner: "Yvonne Simon",
       married: true,
@@ -63,8 +63,8 @@ export class GlobalConstants {
      },
      {
       id: 6,
-      vorname: "Deborah",
-      nachname: "Simon",
+      name: "Deborah",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p06.jpeg",
       partner: "Konstantin Müller",
       married: false,
@@ -72,8 +72,8 @@ export class GlobalConstants {
      },
      {
       id: 7,
-      vorname: "Philomena",
-      nachname: "Heinrich",
+      name: "Philomena",
+      lastName: "Heinrich",
       imageSrc: "../../../assets/data/pics/p07.jpeg",
       partner: "Konstantin Decker",
       married: false,
@@ -81,8 +81,8 @@ export class GlobalConstants {
      },
      {
       id: 8,
-      vorname: "Luisa",
-      nachname: "Heinrich",
+      name: "Luisa",
+      lastName: "Heinrich",
       imageSrc: "../../../assets/data/pics/p08.jpeg",
       partner: "",
       partnerId: null,
@@ -91,8 +91,8 @@ export class GlobalConstants {
      },
      {
       id: 9,
-      vorname: "Konstantin",
-      nachname: "Müller",
+      name: "Konstantin",
+      lastName: "Müller",
       imageSrc: "../../../assets/data/pics/p09.jpeg",
       partner: "Deborah Simon",
       married: false,
@@ -100,8 +100,8 @@ export class GlobalConstants {
      },
      {
       id: 10,
-      vorname: "Konstantin",
-      nachname: "Decker",
+      name: "Konstantin",
+      lastName: "Decker",
       imageSrc: "../../../assets/data/pics/p10.jpeg",
       partner: "Philomena Heinrich",
       married: false,
@@ -109,8 +109,8 @@ export class GlobalConstants {
      },
      {
       id: 11,
-      vorname: "Jan",
-      nachname: "Richter",
+      name: "Jan",
+      lastName: "Richter",
       imageSrc: "../../../assets/data/pics/p11.jpeg",
       partner: "Stefanie Richter",
       married: true,
@@ -118,8 +118,8 @@ export class GlobalConstants {
      },
      {
       id: 12,
-      vorname: "Jonas",
-      nachname: "Simon",
+      name: "Jonas",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p12.jpeg",
       partner: "",
       married: false,
@@ -127,19 +127,19 @@ export class GlobalConstants {
      },
      {
       id: 13,
-      vorname: "Daniela",
-      nachname: "Simon",
+      name: "Daniela",
+      lastName: "Simon",
       imageSrc: "../../../assets/data/pics/p13.jpeg",
       partner: "Manuel Simon",
       partnerId: 1,
       married: true,
       male: false,
-      gebName: "Kerber"
+      birthName: "Kerber"
      },
      {
       id: 14,
-      vorname: "Maximilian",
-      nachname: "Nicolaus",
+      name: "Maximilian",
+      lastName: "Nicolaus",
       imageSrc: "../../../assets/data/pics/p14.jpeg",
       partner: "",
       married: false,
@@ -148,7 +148,7 @@ export class GlobalConstants {
 
     ];
 
-    public static relPersonPerson: Array<RelParentChild> = [{
+    public static relParentChild: Array<RelParentChild> = [{
       id: 1,
       parentId: 1,
       childId: 2,

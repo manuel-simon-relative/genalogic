@@ -43,8 +43,8 @@ public isSort: Boolean = false;
         for (var i of this.personList) {
           var sumIndex: number = -1;
           if (i.id.toString().toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
-          if (i.vorname.toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
-          if (i.nachname.toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
+          if (i.name.toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
+          if (i.lastName.toLowerCase().indexOf(searchString) != -1) {sumIndex = sumIndex + 1;}
           if (i.adress1 != null) {
             if (i.adress1.toLowerCase().indexOf(searchString) != -1) { sumIndex = sumIndex + 1;}
           }
@@ -174,11 +174,11 @@ public isSort: Boolean = false;
     }
     //löschen aller Relationen
     //PersonRelationen
-    for (var r1 = 0;r1 < GlobalConstants.relPersonPerson.length;r1++) {
-      if  ((GlobalConstants.relPersonPerson[r1].parentId == personId) || (GlobalConstants.relPersonPerson[r1].childId == personId)) {
-        var relPersonPersonToDelete = GlobalConstants.relPersonPerson[r1];
+    for (var r1 = 0;r1 < GlobalConstants.relParentChild.length;r1++) {
+      if  ((GlobalConstants.relParentChild[r1].parentId == personId) || (GlobalConstants.relParentChild[r1].childId == personId)) {
+        var relPersonPersonToDelete = GlobalConstants.relParentChild[r1];
         console.log("Element gefunden zum löschen")
-        GlobalConstants.relPersonPerson.splice(r1,1)
+        GlobalConstants.relParentChild.splice(r1,1)
         this._dbconnect.deleteRelPersonPerson(relPersonPersonToDelete).subscribe((data: RelParentChild) => {
                 
         }, error => {
@@ -207,46 +207,46 @@ public isSort: Boolean = false;
     if (person1.id < person2.id) {return -1} else {return 1}
   }
   public comparePersonByVorname(person1:Person, person2:Person): number {
-    if (person1.vorname < person2.vorname) {return -1} else {return 1}
+    if (person1.name < person2.name) {return -1} else {return 1}
   }
   public comparePersonByNachname(person1:Person, person2:Person): number {
-    if (person1.nachname < person2.nachname) {return -1} else {return 1}
+    if (person1.lastName < person2.lastName) {return -1} else {return 1}
   }
 
   public comparePersonByGebDate(person1:Person, person2:Person): number {
     var result: number = 0;
-    if (person1.gYear == person2.gYear) {
-      if (person1.gMonth == person2.gMonth) {
-        if (person1.gDay == person2.gDay) {
+    if (person1.birthYear == person2.birthYear) {
+      if (person1.birthMonth == person2.birthMonth) {
+        if (person1.birthDay == person2.birthDay) {
           result = 0
         }
-        if (person1.gDay > person2.gDay) result = -1;
-        if (person1.gDay < person2.gDay) result = 1;
+        if (person1.birthDay > person2.birthDay) result = -1;
+        if (person1.birthDay < person2.birthDay) result = 1;
       }
-      if (person1.gMonth > person2.gMonth) result = -1;
-      if (person1.gMonth < person2.gMonth) result = 1;
+      if (person1.birthMonth > person2.birthMonth) result = -1;
+      if (person1.birthMonth < person2.birthMonth) result = 1;
     }
-    if (person1.gYear > person2.gYear) result = -1;
-    if (person1.gYear < person2.gYear) result = 1;
+    if (person1.birthYear > person2.birthYear) result = -1;
+    if (person1.birthYear < person2.birthYear) result = 1;
 
     return result;
   }
 
   public comparePersonBySterbdatum(person1:Person, person2:Person): number {
     var result: number = 0;
-    if (person1.sYear == person2.sYear) {
-      if (person1.sMonth == person2.sMonth) {
-        if (person1.sDay == person2.sDay) {
+    if (person1.deathYear == person2.deathYear) {
+      if (person1.deathMonth == person2.deathMonth) {
+        if (person1.deathDay == person2.deathDay) {
           result = 0
         }
-        if (person1.sDay > person2.sDay) result = -1;
-        if (person1.sDay < person2.sDay) result = 1;
+        if (person1.deathDay > person2.deathDay) result = -1;
+        if (person1.deathDay < person2.deathDay) result = 1;
       }
-      if (person1.sMonth > person2.sMonth) result = -1;
-      if (person1.sMonth < person2.sMonth) result = 1;
+      if (person1.deathMonth > person2.deathMonth) result = -1;
+      if (person1.deathMonth < person2.deathMonth) result = 1;
     }
-    if (person1.sYear > person2.sYear) result = -1;
-    if (person1.sYear < person2.sYear) result = 1;
+    if (person1.deathYear > person2.deathYear) result = -1;
+    if (person1.deathYear < person2.deathYear) result = 1;
 
     return result;
   }

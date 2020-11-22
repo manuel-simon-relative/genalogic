@@ -8,17 +8,17 @@
             <div class="formular">
                 <div class="input-group">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Vorname" [(ngModel)]="this.selected.vorname" name="vorname" required>
+                        <input matInput placeholder="Vorname" [(ngModel)]="this.selected.name" name="name" required>
                       </mat-form-field>
                 </div>
                 <div class="input-group">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Nachname" [(ngModel)]="this.selected.nachname" name="nachname" required>
+                        <input matInput placeholder="Nachname" [(ngModel)]="this.selected.lastName" name="LastName" required>
                       </mat-form-field>
                 </div>
                 <div class="input-group">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Geburtsname" [(ngModel)]="this.selected.gebName" name="gebname">
+                        <input matInput placeholder="Geburtsname" [(ngModel)]="this.selected.birthName" name="birthName">
                       </mat-form-field>
                 </div>
                 <mat-radio-group aria-label="Geschlecht">
@@ -27,24 +27,24 @@
                   </mat-radio-group>
                 <div class="input-group">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Geburtstag" [(ngModel)]="this.selected.gDay" name="gDay">
+                        <input matInput placeholder="Geburtstag" [(ngModel)]="this.selected.birthDay" name="birthDay">
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Geburtsmonat" [(ngModel)]="this.selected.gMonth" name="gMonth">
+                        <input matInput placeholder="Geburtsmonat" [(ngModel)]="this.selected.birthMonth" name="birthMonth">
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Geburtsjahr" [(ngModel)]="this.selected.gYear" name="gYear" minlength="3">
+                        <input matInput placeholder="Geburtsjahr" [(ngModel)]="this.selected.birthYear" name="birthYear" minlength="3">
                     </mat-form-field>
                 </div>
                 <div class="input-group">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Sterbetag" [(ngModel)]="this.selected.sDay" name="sDay">
+                        <input matInput placeholder="Sterbetag" [(ngModel)]="this.selected.deathDay" name="deathDay">
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Sterbemonat" [(ngModel)]="this.selected.sMonth" name="sMonth">
+                        <input matInput placeholder="Sterbemonat" [(ngModel)]="this.selected.deathMonth" name="deathMonth">
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Sterbejahr" [(ngModel)]="this.selected.sYear" name="sYear" minlength="3">
+                        <input matInput placeholder="Sterbejahr" [(ngModel)]="this.selected.deathYear" name="deathYear" minlength="3">
                     </mat-form-field>
                 </div>
                 <div class="input-group">
@@ -61,7 +61,7 @@
                     <label for="partnerSelect">Aktueller Lebenspartner</label>
                     <select name="partnerSelect" [(ngModel)]="this.selected.partnerId" (change)="onChangeSelectPartner()">
                         <option value="0">-----kein----</option>
-                        <option *ngFor="let p of this.partnerList" [value]="p.id" [selected]="this.selected.partnerId == p.id">{{p.vorname}} {{p.nachname}}</option>
+                        <option *ngFor="let p of this.partnerList" [value]="p.id" [selected]="this.selected.partnerId == p.id">{{p.name}} {{p.lastName}}</option>
                     </select>
                     <input name="partnername" type="text" [(ngModel)]="this.selected.partner" (keyup)="onKeyUpPartnerName()">
                     <mat-checkbox name="married" [(ngModel)]="this.selected.married">verheiratet?</mat-checkbox>
@@ -75,14 +75,14 @@
                             <label for="fatherSelect">Vater</label>
                             <select name="fatherSelect" [(ngModel)]="this.fatherId">
                                 <option value="0">Unbekannt</option>
-                                <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.fatherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                                <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.fatherId== p.id">{{p.name}} {{p.lastName}}</option>
                             </select>
                         </div>
                         <div class="motherselector parent">
                             <label for="motherSelect">Mutter</label>
                             <select name="motherSelect" [(ngModel)]="this.motherId">
                                 <option value="0">Unbekannt</option>
-                                <option *ngFor="let p of this.womanList" [value]="p.id" [selected]="this.motherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                                <option *ngFor="let p of this.womanList" [value]="p.id" [selected]="this.motherId== p.id">{{p.name}} {{p.lastName}}</option>
                             </select>
                         </div>
                     </div>
@@ -91,14 +91,14 @@
                             <label for="stepFatherSelect">evtl. Stiefvater</label>
                             <select name="stepFatherSelect" [(ngModel)]="this.stepFatherId">
                                 <option value="0">Unbekannt/nicht vorhanden</option>
-                                <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.stepFatherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                                <option *ngFor="let p of this.menList" [value]="p.id" [selected]="this.stepFatherId== p.id">{{p.name}} {{p.lastName}}</option>
                             </select>
                         </div>
                         <div class="motherselector parent">
                             <label for="stepMotherSelect">evtl. Stiefmutter</label>
                             <select name="stepMotherSelect" [(ngModel)]="this.stepMotherId">
                                 <option value="0">Unbekannt/nicht vorhanden</option>
-                                <option *ngFor="let p of this.womanList" [value]="p.id" [selected]="this.stepMotherId== p.id">{{p.vorname}} {{p.nachname}}</option>
+                                <option *ngFor="let p of this.womanList" [value]="p.id" [selected]="this.stepMotherId== p.id">{{p.name}} {{p.lastName}}</option>
                             </select>                            
                         </div>
                     </div>

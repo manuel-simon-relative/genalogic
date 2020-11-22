@@ -45,7 +45,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     
 
     //Kinder finden
-    for (var i of GlobalConstants.relPersonPerson) {
+    for (var i of GlobalConstants.relParentChild) {
       if (this.selectedPersonId == i.parentId) {
         for (var forChild of GlobalConstants.personList) {
           if (i.childId == forChild.id) {
@@ -54,12 +54,12 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         }
       }
     }
-    this.$childs.sort(comparePerson);
+    this.$childs.sort(comparePersonByBirthDate);
     //Eltern finden
     var foundFather:Boolean = false;
     var foundMother:Boolean = false;
 
-    for (var i of GlobalConstants.relPersonPerson) {
+    for (var i of GlobalConstants.relParentChild) {
       if (this.selectedPersonId == i.childId && i.real) {
         for (var forFather of GlobalConstants.personList) {
           if (i.parentId == forFather.id && forFather.male) {
@@ -69,7 +69,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
         }
       }
     }
-    for (var i of GlobalConstants.relPersonPerson) {
+    for (var i of GlobalConstants.relParentChild) {
       if (this.selectedPersonId == i.childId && i.real) {
         for (var forMother of GlobalConstants.personList) {
           if (i.parentId == forMother.id && !forMother.male) {
@@ -80,7 +80,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
       }
     }
     if (!foundFather) {
-      for (var i of GlobalConstants.relPersonPerson) {
+      for (var i of GlobalConstants.relParentChild) {
         if (this.selectedPersonId == i.childId) {
           for (var forFather of GlobalConstants.personList) {
             if (i.parentId == forFather.id && forFather.male) {
@@ -93,7 +93,7 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     }
 
     if (!foundMother) {
-      for (var i of GlobalConstants.relPersonPerson) {
+      for (var i of GlobalConstants.relParentChild) {
         if (this.selectedPersonId == i.childId) {
           for (var forMother of GlobalConstants.personList) {
             if (i.parentId == forMother.id && !forMother.male) {
@@ -108,8 +108,8 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     if (!foundFather) {
       this.father$ = {
         id: 0,
-        vorname: "unbekannt",
-        nachname: "unbekannt",
+        name: "unbekannt",
+        lastName: "unbekannt",
         male: true,
         imageSrc : "../../../assets/pics/jpg/placeholderMan.jpg"
       }
@@ -118,36 +118,36 @@ export class TemplatePersonshowerComponent implements OnInit, OnChanges {
     if (!foundMother) {
       this.mother$ = {
         id: 0,
-        vorname: "unbekannt",
-        nachname: "unbekannt",
+        name: "unbekannt",
+        lastName: "unbekannt",
         male: false,
         imageSrc : "../../../assets/pics/jpg/placeholderWoman.jpg"       
       }
     }
     this.$parents.push(this.father$);
     this.$parents.push(this.mother$); 
-    this.$parents.sort(comparePerson);
+    this.$parents.sort(comparePersonByBirthDate);
       
    
     }
   }
 
 
-  function comparePerson(person1: Person, person2: Person): number {
+  function comparePersonByBirthDate(person1: Person, person2: Person): number {
     var result: number = 0;
-    if (person1.gYear == person2.gYear) {
-      if (person1.gMonth == person2.gMonth) {
-        if (person1.gDay == person2.gDay) {
+    if (person1.birthYear == person2.birthYear) {
+      if (person1.birthMonth == person2.birthMonth) {
+        if (person1.birthDay == person2.birthDay) {
           result = 0
         }
-        if (person1.gDay > person2.gDay) result = -1;
-        if (person1.gDay < person2.gDay) result = 1;
+        if (person1.birthDay > person2.birthDay) result = -1;
+        if (person1.birthDay < person2.birthDay) result = 1;
       }
-      if (person1.gMonth > person2.gMonth) result = -1;
-      if (person1.gMonth < person2.gMonth) result = 1;
+      if (person1.birthMonth > person2.birthMonth) result = -1;
+      if (person1.birthMonth < person2.birthMonth) result = 1;
     }
-    if (person1.gYear > person2.gYear) result = -1;
-    if (person1.gYear < person2.gYear) result = 1;
+    if (person1.birthYear > person2.birthYear) result = -1;
+    if (person1.birthYear < person2.birthYear) result = 1;
 
     return result;
   }

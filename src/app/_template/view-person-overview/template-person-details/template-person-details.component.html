@@ -4,12 +4,12 @@
         </div>
         <div class="details">
             <div class="name">
-                {{person$.nachname}}, {{person$.vorname}}
+                {{person$.lastName}}, {{person$.name}}
             </div>
             <div class="dates">
-                <span *ngIf="person$.gebName">geb. {{person$.gebName}}<br></span>
-                <span class="keyword">geboren: </span>{{gebDateString}}<br>
-                <span class= keyword *ngIf="person$.sterbDatum">gestorben:</span><span *ngIf="person$.sterbDatum != null">{{sterbDateString}}</span>
+                <span *ngIf="person$.birthName">geb. {{person$.gebName}}<br></span>
+                <span class="keyword" *ngIf="this.showBirthDate">geboren: </span><span *ngIf="this.showBirthDate">{{birthDateString}}<br></span>
+                <span class="keyword" *ngIf="this.showDeathDate">gestorben: </span><span *ngIf="this.showDeathDate">{{deathDateString}}</span>
             </div>
         <div class="adress">
           <span *ngIf="person$.adress1">{{person$.adress1}}<br></span>
