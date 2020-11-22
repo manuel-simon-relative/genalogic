@@ -121,6 +121,7 @@ export class AppComponent implements OnInit{
   }
 
   public onEditPerson(personId: number) {
+    console.log('ich soll Person abändern: ' + personId)
     this.selectedIdForPersonEditor = personId;
     this.showBlurredOverlay = 1
   }

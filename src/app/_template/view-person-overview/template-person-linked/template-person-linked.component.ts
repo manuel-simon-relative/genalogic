@@ -9,8 +9,10 @@ import { Person } from '../../../_interface/person';
 export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   @Input() person$ : Person;
   @Output('changeSelectedPerson') changeSelectedPersonEvent: EventEmitter<string> = new EventEmitter<string>();
-  public gebDateString: string = ""
-  public sterbDateString: string = ""
+  public birthDateString: string = ""
+  public deathDateString: string = ""
+  public showBirthDate: Boolean = true
+  public showDeathDate: Boolean = true
 
   constructor() { }
 
@@ -18,8 +20,10 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-  this.gebDateString = this.dateToString(this.person$, "g");
-  this.sterbDateString = this.dateToString(this.person$, "s");
+  this.birthDateString = this.dateToString(this.person$, "b");
+  this.deathDateString = this.dateToString(this.person$, "d");
+  if (this.birthDateString == "") { this.showBirthDate = false }
+  if (this.deathDateString == "") { this.showDeathDate = false }
     
     if (this.person$.imageSrc == "") {
       console.log('kein Bild vorhanden');
@@ -44,24 +48,24 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
     var day:string;
     var month:string;
     
-    if (date === "g") {
-      if (p.gYear != undefined) {
-        var year:string = p.gYear.toString();
-        if (p.gMonth != undefined) {
-          if (p.gDay != undefined) {
-            if (p.gDay < 10) {
-              day = '0' + p.gDay;
+    if (date === "b") {
+      if (p.birthYear != undefined) {
+        var year:string = p.birthYear.toString();
+        if (p.birthMonth != undefined) {
+          if (p.birthDay != undefined) {
+            if (p.birthDay < 10) {
+              day = '0' + p.birthDay;
             } else {
-              day = p.gDay.toString();
+              day = p.birthDay.toString();
             }
-            if ((p.gMonth) < 10) {
-              month = '0' + (p.gMonth.toString());
+            if ((p.birthMonth) < 10) {
+              month = '0' + (p.birthMonth.toString());
             } else {
-              month = "" + (p.gMonth.toString());
+              month = "" + (p.birthMonth.toString());
             }
             datestring = day + '.' + month + '.' +year;
           } else {
-            month = germanMonth[p.gMonth-1];
+            month = germanMonth[p.birthMonth-1];
             datestring = month + ' ' + year
           }
         } else {
@@ -69,24 +73,24 @@ export class TemplatePersonLinkedComponent implements OnInit, OnChanges {
         }     
       }
   }
-  if (date === "s") {
-    if (p.sYear != undefined) {
-      var year:string = p.sYear.toString();
-      if (p.sMonth != undefined) {
-        if (p.sDay != undefined) {
-          if (p.sDay < 10) {
-            day = '0' + p.sDay;
+  if (date === "d") {
+    if (p.deathYear != undefined) {
+      var year:string = p.deathYear.toString();
+      if (p.deathMonth != undefined) {
+        if (p.deathDay != undefined) {
+          if (p.deathDay < 10) {
+            day = '0' + p.deathDay;
           } else {
-            day = p.sDay.toString();
+            day = p.deathDay.toString();
           }
-          if ((p.sMonth) < 10) {
-            month = '0' + (p.sMonth.toString());
+          if ((p.deathMonth) < 10) {
+            month = '0' + (p.deathMonth.toString());
           } else {
-            month = "" + (p.sMonth.toString());
+            month = "" + (p.deathMonth.toString());
           }
           datestring = day + '.' + month + '.' +year;
         } else {
-          month = germanMonth[p.sMonth-1];
+          month = germanMonth[p.deathMonth-1];
           datestring = month + ' ' + year
         }
       } else {

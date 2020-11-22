@@ -39,8 +39,8 @@
         <app-template-footer></app-template-footer>
       </div>
     </div>
-    <app-editor-person *ngIf="this.showOverlay == 1" [personId]="this.selectedIdForPersonEditor" (closePersonEditor)="onClosePersonEditor($event)"></app-editor-person>
-    <app-editor-event *ngIf="this.showOverlay == 2" [eventId]="this.selectedIdForEventEditor" (closePersonEditor)="onCloseEventEditor($event)"></app-editor-event>
+    <app-editor-person *ngIf="this.showBlurredOverlay == 1" [personId]="this.selectedIdForPersonEditor" (closePersonEditor)="onClosePersonEditor($event)"></app-editor-person>
+    <app-editor-event *ngIf="this.showBlurredOverlay == 2" [eventId]="this.selectedIdForEventEditor" (closePersonEditor)="onCloseEventEditor($event)"></app-editor-event>
   </div>
 </body>
 </html>

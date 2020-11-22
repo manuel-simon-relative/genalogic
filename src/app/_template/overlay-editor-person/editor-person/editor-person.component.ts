@@ -37,8 +37,8 @@ export class EditorPersonComponent implements OnInit {
     //selectedPerson initialisieren
     this.selected = {
       id: 0,
-      vorname: "",
-      nachname: "",
+      name: "",
+      lastName: "",
       male: false,
       partnerId : 0,
       imageSrc: "",
@@ -49,15 +49,15 @@ export class EditorPersonComponent implements OnInit {
       for (var person$ of GlobalConstants.personList) {
         if ( person$.id == this.personId) {
           this.selected.id = person$.id;
-          this.selected.vorname = person$.vorname;
-          this.selected.nachname = person$.nachname;
-          this.selected.gDay = person$.gDay;
-          this.selected.gMonth = person$.gMonth;
-          this.selected.gYear = person$.gYear;
-          this.selected.sDay = person$.sDay;
-          this.selected.sMonth = person$.sMonth;
-          this.selected.sYear = person$.sYear;
-          this.selected.gebName = person$.gebName;
+          this.selected.name = person$.name;
+          this.selected.lastName = person$.lastName;
+          this.selected.birthDay = person$.birthDay;
+          this.selected.birthMonth = person$.birthMonth;
+          this.selected.birthYear = person$.birthYear;
+          this.selected.deathDay = person$.deathDay;
+          this.selected.deathMonth = person$.deathMonth;
+          this.selected.deathYear = person$.deathYear;
+          this.selected.birthName = person$.birthName;
           this.selected.male = person$.male;
           this.selected.partner = person$.partner;
           this.selected.partnerId = person$.partnerId;
@@ -101,34 +101,34 @@ export class EditorPersonComponent implements OnInit {
 
   validateForm():Boolean {
     var result:Boolean = true;
-    if (this.selected.vorname == "") {
+    if (this.selected.name == "") {
       result = false;
       console.log('kein Vorname gesetzt');
     }
-    if (this.selected.nachname == "") {
+    if (this.selected.lastName == "") {
       result = false;
       console.log('kein Nachname gesetzt');
     }
-    if (this.selected.gDay != undefined) {
-      if (this.selected.gMonth == undefined || this.selected.gYear == undefined) {
+    if (this.selected.birthDay != undefined) {
+      if (this.selected.birthMonth == undefined || this.selected.birthYear == undefined) {
         result = false;
         console.log('Tag gesetzt, aber Monat und/oder Jahr nicht')
       }
     }
-    if (this.selected.gMonth != undefined) {
-      if (this.selected.gYear == undefined) {
+    if (this.selected.birthMonth != undefined) {
+      if (this.selected.birthYear == undefined) {
         result = false;
         console.log('Monat gesetzt, aber kein Jahr')
       }
     }
-    if (this.selected.sDay != undefined) {
-      if (this.selected.sMonth == undefined || this.selected.sYear == undefined) {
+    if (this.selected.deathDay != undefined) {
+      if (this.selected.deathMonth == undefined || this.selected.deathYear == undefined) {
         result = false;
         console.log('Tag gesetzt, aber Monat und/oder Jahr nicht')
       }
     }
-    if (this.selected.sMonth != undefined) {
-      if (this.selected.sYear == undefined) {
+    if (this.selected.deathMonth != undefined) {
+      if (this.selected.deathYear == undefined) {
         result = false;
         console.log('Monat gesetzt, aber kein Jahr')
       }
@@ -363,7 +363,7 @@ export class EditorPersonComponent implements OnInit {
     } else {
       for (var i of GlobalConstants.personList) {
         if (i.id == +this.selected.partnerId) {
-          this.selected.partner = i.vorname + " " + i.nachname;
+          this.selected.partner = i.name + " " + i.lastName;
         }
       }
     }
